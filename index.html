@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>UTM URL Builder</title>
+<title>Generador UTM</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
@@ -98,6 +98,7 @@
     gap: 0.6rem;
     margin-bottom: 1.8rem;
     opacity: 0;
+    flex-wrap: wrap;
   }
 
   .hero-mark .mark-burst {
@@ -119,6 +120,19 @@
     letter-spacing: 0.22em;
     text-transform: uppercase;
     color: var(--orange);
+  }
+
+  .version-tag {
+    font-size: 0.65rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 0.2rem 0.55rem;
+    border-radius: 999px;
+    background: rgba(242, 100, 48, 0.15);
+    border: 1px solid rgba(242, 100, 48, 0.4);
+    color: var(--orange);
+    margin-left: 0.5rem;
   }
 
   h1 {
@@ -689,18 +703,19 @@
         </g>
       </svg>
       <div class="mark-line"></div>
-      <div class="mark-label">Bulk UTM Builder</div>
+      <div class="mark-label">Generador UTM en lote</div>
+      <span class="version-tag">Taxonomía v2 · jun 2026</span>
     </div>
 
     <h1 id="hero-h1">
-      <span class="word"><span class="word-inner">Tag</span></span>
-      <span class="word"><span class="word-inner">many</span></span>
+      <span class="word"><span class="word-inner">Muchas</span></span>
       <span class="word"><span class="word-inner">URLs.</span></span>
-      <span class="word"><span class="word-inner accent">One</span></span>
-      <span class="word"><span class="word-inner accent">campaign.</span></span>
+      <span class="word"><span class="word-inner accent">Una</span></span>
+      <span class="word"><span class="word-inner accent">sola</span></span>
+      <span class="word"><span class="word-inner accent">campaña.</span></span>
     </h1>
 
-    <p class="hero-sub">Paste your destination URLs, set the campaign once, generate tagged links for all of them. Source / medium values aligned to your live GA4 taxonomy.</p>
+    <p class="hero-sub">Pega tus URLs de destino, configura la campaña una sola vez y genera enlaces etiquetados para todas. Mediums alineados al modelo limpio de GA4 — sin mezclar formato con canal.</p>
   </div>
 </div>
 
@@ -710,56 +725,56 @@
   <!-- Channel presets -->
   <div class="card">
     <div class="card-head">
-      <div class="card-title"><span class="step-num">1</span>Channel</div>
-      <div class="card-aside">Click to auto-fill source &amp; medium</div>
+      <div class="card-title"><span class="step-num">1</span>Canal</div>
+      <div class="card-aside">Haz clic para autocompletar source y medium</div>
     </div>
     <div class="preset-grid">
       <button class="preset" data-source="whatsapp" data-medium="messaging">WhatsApp</button>
-      <button class="preset" data-source="approved_email" data-medium="deeplink">Approved Email</button>
-      <button class="preset" data-source="getresponse" data-medium="deeplink">GetResponse</button>
-      <button class="preset" data-source="myservier.com" data-medium="referral">MyServier Portal</button>
+      <button class="preset" data-source="approved_email" data-medium="email">Approved Email</button>
+      <button class="preset" data-source="getresponse" data-medium="email">GetResponse</button>
+      <button class="preset" data-source="myservier" data-medium="owned">Portal MyServier</button>
       <button class="preset" data-source="instagram" data-medium="social">Instagram</button>
       <button class="preset" data-source="facebook" data-medium="social">Facebook</button>
-      <button class="preset" data-source="qr_code" data-medium="qr_code">QR Code</button>
-      <button class="preset" data-source="qr_slide" data-medium="offline">QR (Slide)</button>
-      <button class="preset" data-source="gafete" data-medium="qr_code">Gafete</button>
-      <button class="preset" data-source="brochure" data-medium="print">Brochure</button>
+      <button class="preset" data-source="qr_code" data-medium="offline">Código QR</button>
+      <button class="preset" data-source="qr_slide" data-medium="offline">QR (Diapositiva)</button>
+      <button class="preset" data-source="gafete" data-medium="offline">Gafete</button>
+      <button class="preset" data-source="brochure" data-medium="print">Folleto</button>
     </div>
   </div>
 
   <!-- Bulk URL input -->
   <div class="card">
     <div class="card-head">
-      <div class="card-title"><span class="step-num">2</span>Destination URLs</div>
-      <div class="card-aside">One URL per line · paste as many as you need</div>
+      <div class="card-title"><span class="step-num">2</span>URLs de destino</div>
+      <div class="card-aside">Una URL por línea · pega todas las que necesites</div>
     </div>
     <textarea id="urls" placeholder="https://myservier.co/es/video/video-para-paciente-tome-el-control-de-su-presion-arterial/
 https://myservier.co/article/...
 https://myservier.co/..."></textarea>
     <div class="url-actions">
-      <button class="url-chip" data-url="https://myservier.co/es/video/video-para-paciente-tome-el-control-de-su-presion-arterial/">Example — Presión arterial</button>
+      <button class="url-chip" data-url="https://myservier.co/es/video/video-para-paciente-tome-el-control-de-su-presion-arterial/">Ejemplo — Presión arterial</button>
     </div>
     <div class="url-meta">
-      <span><strong id="url-count">0</strong> URLs detected</span>
-      <span id="url-invalid" style="color: var(--orange); display: none;"><strong id="url-invalid-count">0</strong> invalid</span>
+      <span><strong id="url-count">0</strong> URLs detectadas</span>
+      <span id="url-invalid" style="color: var(--orange); display: none;"><strong id="url-invalid-count">0</strong> inválidas</span>
     </div>
   </div>
 
   <!-- UTM parameters -->
   <div class="card">
     <div class="card-head">
-      <div class="card-title"><span class="step-num">3</span>Campaign Parameters</div>
-      <div class="card-aside">Applied to every URL above</div>
+      <div class="card-title"><span class="step-num">3</span>Parámetros de campaña</div>
+      <div class="card-aside">Se aplican a cada URL de arriba</div>
     </div>
     <div class="utm-grid">
       <div>
-        <label for="source">utm_source <span class="hint">— where</span></label>
-        <input id="source" list="source-list" placeholder="e.g. whatsapp">
+        <label for="source">utm_source <span class="hint">— dónde</span></label>
+        <input id="source" list="source-list" placeholder="ej. whatsapp">
         <datalist id="source-list">
           <option value="approved_email"></option>
           <option value="whatsapp"></option>
           <option value="getresponse"></option>
-          <option value="myservier.com"></option>
+          <option value="myservier"></option>
           <option value="instagram"></option>
           <option value="facebook"></option>
           <option value="qr_slide"></option>
@@ -772,34 +787,60 @@ https://myservier.co/..."></textarea>
         </datalist>
       </div>
       <div>
-        <label for="medium">utm_medium <span class="hint">— how</span></label>
-        <input id="medium" list="medium-list" placeholder="e.g. messaging">
+        <label for="medium">utm_medium <span class="hint">— cómo</span></label>
+        <input id="medium" list="medium-list" placeholder="ej. email">
         <datalist id="medium-list">
-          <option value="deeplink"></option>
-          <option value="messaging"></option>
-          <option value="referral"></option>
-          <option value="qr_code"></option>
-          <option value="offline"></option>
-          <option value="print"></option>
-          <option value="social"></option>
-          <option value="organic"></option>
           <option value="email"></option>
+          <option value="messaging"></option>
+          <option value="social"></option>
+          <option value="paid_social"></option>
           <option value="cpc"></option>
           <option value="display"></option>
+          <option value="organic"></option>
+          <option value="referral"></option>
+          <option value="offline"></option>
+          <option value="print"></option>
+          <option value="owned"></option>
+          <option value="affiliate"></option>
         </datalist>
       </div>
       <div class="span-2">
-        <label for="campaign">utm_campaign <span class="hint">— what</span></label>
+        <label for="campaign">utm_campaign <span class="hint">— qué</span></label>
         <input id="campaign" placeholder="202605_coversyl_hcp_bp_video">
-        <div class="convention" id="convention">Convention: <code>yyyymm_brand_audience_topic</code> · lowercase, underscores, no spaces</div>
+        <div class="convention" id="convention">Convención: <code>aaaamm_marca_audiencia_tema</code> · minúsculas, guiones bajos, sin espacios</div>
       </div>
       <div>
-        <label for="content">utm_content <span class="hint">— variant</span></label>
-        <input id="content" placeholder="cta_a · wave1 · es_male">
+        <label for="content">utm_content <span class="hint">— variante / formato</span></label>
+        <input id="content" list="content-list" placeholder="ej. deeplink_button">
+        <datalist id="content-list">
+          <option value="deeplink_button"></option>
+          <option value="header_link"></option>
+          <option value="cta_banner"></option>
+          <option value="footer_link"></option>
+          <option value="text_link"></option>
+          <option value="image_cta"></option>
+          <option value="inline_link"></option>
+          <option value="story"></option>
+          <option value="reel"></option>
+          <option value="post"></option>
+          <option value="paid_ad"></option>
+          <option value="broadcast"></option>
+          <option value="newsletter"></option>
+          <option value="promo"></option>
+          <option value="nurture_w1"></option>
+          <option value="nurture_w2"></option>
+          <option value="back_cover"></option>
+          <option value="inside_p2"></option>
+          <option value="home_card"></option>
+          <option value="sidebar_widget"></option>
+          <option value="article_inline"></option>
+          <option value="rep_visual_aid"></option>
+          <option value="event_lanyard"></option>
+        </datalist>
       </div>
       <div>
-        <label for="term">utm_term <span class="hint">— optional</span></label>
-        <input id="term" placeholder="optional keyword">
+        <label for="term">utm_term <span class="hint">— opcional</span></label>
+        <input id="term" placeholder="palabra clave opcional">
       </div>
     </div>
   </div>
@@ -808,13 +849,13 @@ https://myservier.co/..."></textarea>
   <div class="card output-card">
     <div class="output-head">
       <div>
-        <div class="card-title" style="margin-bottom: 0.25rem;"><span class="step-num">4</span>Tagged URLs</div>
-        <div class="output-count"><strong id="valid-count">0</strong> ready to deploy</div>
+        <div class="card-title" style="margin-bottom: 0.25rem;"><span class="step-num">4</span>URLs etiquetadas</div>
+        <div class="output-count"><strong id="valid-count">0</strong> listas para usar</div>
       </div>
       <div class="output-actions">
         <button id="copy-all" class="btn btn-ghost" disabled>
           <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
-          Copy all
+          Copiar todo
         </button>
         <button id="download-csv" class="btn btn-secondary" disabled>
           <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
@@ -827,19 +868,19 @@ https://myservier.co/..."></textarea>
       </div>
     </div>
     <div id="output-list" class="output-list">
-      <div class="output-empty">Paste URLs and set parameters above to generate tagged links.</div>
+      <div class="output-empty">Pega URLs y configura los parámetros para generar tus enlaces etiquetados.</div>
     </div>
   </div>
 
   <!-- Decode -->
   <div class="card decode-card">
     <div class="card-head">
-      <div class="card-title">Decode existing URL</div>
-      <div class="card-aside">Reverse-engineer a tagged URL into the fields above</div>
+      <div class="card-title">Decodificar URL existente</div>
+      <div class="card-aside">Extrae los componentes de una URL etiquetada hacia los campos de arriba</div>
     </div>
     <div class="decode-row">
       <input id="decode-input" type="url" placeholder="https://...?utm_source=...">
-      <button id="decode-btn" class="decode-btn">Decode</button>
+      <button id="decode-btn" class="decode-btn">Decodificar</button>
     </div>
   </div>
 
@@ -858,7 +899,7 @@ https://myservier.co/..."></textarea>
       <polygon points="0,-42 6,-6 0,0 -6,-6" transform="rotate(315)" />
     </g>
   </svg>
-  <div class="footer-text">Created by <span class="author">Milan</span></div>
+  <div class="footer-text">Creado por <span class="author">Milan</span></div>
 </footer>
 
 <script>
@@ -866,10 +907,9 @@ https://myservier.co/..."></textarea>
   const fields = ['urls', 'source', 'medium', 'campaign', 'content', 'term'];
 
   /* =====================================================
-     GSAP ANIMATIONS — entrance, ambient, micro-interactions
+     GSAP ANIMATIONS
   ===================================================== */
 
-  // Page load timeline
   const tl = gsap.timeline({ defaults: { ease: 'power3.out' } });
 
   tl.to('.hero-mark', { opacity: 1, duration: 0.5 }, 0.1)
@@ -891,45 +931,11 @@ https://myservier.co/..."></textarea>
       stagger: 0.08
     }, 0.4);
 
-  // Ambient: continuously rotating hero burst (slow)
-  gsap.to('.hero-burst', {
-    rotation: 360,
-    duration: 60,
-    repeat: -1,
-    ease: 'none',
-    transformOrigin: '50% 50%'
-  });
+  gsap.to('.hero-burst', { rotation: 360, duration: 60, repeat: -1, ease: 'none', transformOrigin: '50% 50%' });
+  gsap.to('.mark-burst', { rotation: 360, duration: 24, repeat: -1, ease: 'none', transformOrigin: '50% 50%' });
+  gsap.to('.footer-burst', { rotation: -360, duration: 30, repeat: -1, ease: 'none', transformOrigin: '50% 50%' });
+  gsap.to('.hero-bg-glow', { opacity: 0.65, scale: 1.08, duration: 4, repeat: -1, yoyo: true, ease: 'sine.inOut', transformOrigin: '70% 30%' });
 
-  // Ambient: mark burst rotates slightly faster
-  gsap.to('.mark-burst', {
-    rotation: 360,
-    duration: 24,
-    repeat: -1,
-    ease: 'none',
-    transformOrigin: '50% 50%'
-  });
-
-  // Ambient: footer burst rotates opposite direction
-  gsap.to('.footer-burst', {
-    rotation: -360,
-    duration: 30,
-    repeat: -1,
-    ease: 'none',
-    transformOrigin: '50% 50%'
-  });
-
-  // Ambient: hero glow breathes
-  gsap.to('.hero-bg-glow', {
-    opacity: 0.65,
-    scale: 1.08,
-    duration: 4,
-    repeat: -1,
-    yoyo: true,
-    ease: 'sine.inOut',
-    transformOrigin: '70% 30%'
-  });
-
-  // Animated number counter
   function animateNumber(el, to) {
     const from = parseInt(el.textContent) || 0;
     if (from === to) return;
@@ -945,7 +951,6 @@ https://myservier.co/..."></textarea>
      CORE LOGIC
   ===================================================== */
 
-  // Preset buttons
   document.querySelectorAll('.preset').forEach(btn => {
     btn.addEventListener('click', () => {
       document.querySelectorAll('.preset').forEach(b => b.classList.remove('active'));
@@ -957,7 +962,6 @@ https://myservier.co/..."></textarea>
     });
   });
 
-  // Append URL chip
   document.querySelectorAll('.url-chip').forEach(btn => {
     btn.addEventListener('click', () => {
       const ta = $('urls');
@@ -981,9 +985,9 @@ https://myservier.co/..."></textarea>
 
   function buildTagged(rawUrl, params) {
     let base = rawUrl.trim();
-    if (!base) return { valid: false, error: 'empty', url: '' };
+    if (!base) return { valid: false, error: 'vacía', url: '' };
     try { new URL(base); } catch (e) {
-      return { valid: false, error: 'Invalid URL: ' + base, url: base };
+      return { valid: false, error: 'URL inválida: ' + base, url: base };
     }
     let hash = '';
     const hashIdx = base.indexOf('#');
@@ -1018,21 +1022,20 @@ https://myservier.co/..."></textarea>
 
     lastParams = { source, medium, campaign, content, term };
 
-    // Campaign validation
     const campRaw = $('campaign').value.trim();
     const conv = $('convention');
     if (!campRaw) {
       conv.className = 'convention';
-      conv.innerHTML = 'Convention: <code>yyyymm_brand_audience_topic</code> · lowercase, underscores, no spaces';
+      conv.innerHTML = 'Convención: <code>aaaamm_marca_audiencia_tema</code> · minúsculas, guiones bajos, sin espacios';
     } else if (/^\d{6}_[a-z0-9]+_[a-z0-9]+_[a-z0-9_]+$/.test(campRaw)) {
       conv.className = 'convention good';
-      conv.innerHTML = '✓ Matches convention';
+      conv.innerHTML = '✓ Cumple con la convención';
     } else if (campRaw !== campaign) {
       conv.className = 'convention warn';
-      conv.innerHTML = '⚠ Will be auto-corrected to: <code>' + (campaign || '—') + '</code>';
+      conv.innerHTML = '⚠ Se corregirá a: <code>' + (campaign || '—') + '</code>';
     } else {
       conv.className = 'convention';
-      conv.innerHTML = 'Suggested pattern: <code>yyyymm_brand_audience_topic</code>';
+      conv.innerHTML = 'Patrón sugerido: <code>aaaamm_marca_audiencia_tema</code>';
     }
 
     const params = [];
@@ -1059,14 +1062,14 @@ https://myservier.co/..."></textarea>
 
     const list = $('output-list');
     if (rawList.length === 0) {
-      list.innerHTML = '<div class="output-empty">Paste URLs and set parameters above to generate tagged links.</div>';
+      list.innerHTML = '<div class="output-empty">Pega URLs y configura los parámetros para generar tus enlaces etiquetados.</div>';
       $('copy-all').disabled = true;
       $('download-csv').disabled = true;
       $('download-xlsx').disabled = true;
       return;
     }
     if (params.length === 0) {
-      list.innerHTML = '<div class="output-empty">Set at least one campaign parameter (source, medium, campaign) to tag your URLs.</div>';
+      list.innerHTML = '<div class="output-empty">Configura al menos un parámetro de campaña (source, medium o campaign) para etiquetar tus URLs.</div>';
       $('copy-all').disabled = true;
       $('download-csv').disabled = true;
       $('download-xlsx').disabled = true;
@@ -1084,20 +1087,14 @@ https://myservier.co/..."></textarea>
       return `<div class="output-row">
         <div class="row-index">${String(i+1).padStart(2,'0')}</div>
         <div class="row-url">${renderUrl(r.base, r.sep, params, r.hash)}</div>
-        <button class="row-copy" data-idx="${i}">Copy</button>
+        <button class="row-copy" data-idx="${i}">Copiar</button>
       </div>`;
     }).join('');
 
-    // Animate rows in
     gsap.to('.output-row', {
-      opacity: 1,
-      y: 0,
-      duration: 0.4,
-      stagger: 0.03,
-      ease: 'power2.out'
+      opacity: 1, y: 0, duration: 0.4, stagger: 0.03, ease: 'power2.out'
     });
 
-    // Row copy handlers
     list.querySelectorAll('.row-copy').forEach(btn => {
       btn.addEventListener('click', async () => {
         const idx = parseInt(btn.dataset.idx);
@@ -1105,7 +1102,7 @@ https://myservier.co/..."></textarea>
         if (!r || !r.valid) return;
         await copyText(r.url);
         const orig = btn.textContent;
-        btn.textContent = '✓ Copied';
+        btn.textContent = '✓ Copiada';
         btn.classList.add('success');
         gsap.fromTo(btn, { scale: 0.92 }, { scale: 1, duration: 0.35, ease: 'back.out(2)' });
         setTimeout(() => { btn.textContent = orig; btn.classList.remove('success'); }, 1500);
@@ -1125,17 +1122,16 @@ https://myservier.co/..."></textarea>
     }
   }
 
-  // Copy all
   $('copy-all').addEventListener('click', async () => {
     const validUrls = lastResults.filter(r => r.valid).map(r => r.url);
     if (!validUrls.length) return;
     await copyText(validUrls.join('\n'));
     const btn = $('copy-all');
-    btn.innerHTML = '✓ Copied ' + validUrls.length;
+    btn.innerHTML = '✓ Copiadas ' + validUrls.length;
     btn.classList.add('success');
     gsap.fromTo(btn, { scale: 0.95 }, { scale: 1, duration: 0.4, ease: 'back.out(2)' });
     setTimeout(() => {
-      btn.innerHTML = '<svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg> Copy all';
+      btn.innerHTML = '<svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg> Copiar todo';
       btn.classList.remove('success');
     }, 1800);
   });
@@ -1146,9 +1142,9 @@ https://myservier.co/..."></textarea>
     const yyyymmdd = new Date().toISOString().slice(0, 10);
     const filename = `utm_urls_${campaign || 'export'}_${yyyymmdd}`;
     const rows = validResults.map((r, i) => ({
-      'Index': i + 1,
-      'Original URL': r.base + r.hash,
-      'Tagged URL': r.url,
+      'Índice': i + 1,
+      'URL original': r.base + r.hash,
+      'URL etiquetada': r.url,
       'utm_source': source,
       'utm_medium': medium,
       'utm_campaign': campaign,
@@ -1158,7 +1154,6 @@ https://myservier.co/..."></textarea>
     return { rows, filename, validResults };
   }
 
-  // CSV download
   $('download-csv').addEventListener('click', () => {
     const { rows, filename, validResults } = getExportData();
     if (!validResults.length) return;
@@ -1168,7 +1163,7 @@ https://myservier.co/..."></textarea>
       return /[",\n]/.test(str) ? '"' + str.replace(/"/g, '""') + '"' : str;
     };
     const csv = headers.join(',') + '\n' + rows.map(r => headers.map(h => csvEscape(r[h])).join(',')).join('\n');
-    const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+    const blob = new Blob(['\ufeff' + csv], { type: 'text/csv;charset=utf-8;' });
     const url = URL.createObjectURL(blob);
     const a = document.createElement('a');
     a.href = url; a.download = filename + '.csv';
@@ -1177,28 +1172,17 @@ https://myservier.co/..."></textarea>
     flashBtn($('download-csv'), 'CSV');
   });
 
-  // XLSX download
   $('download-xlsx').addEventListener('click', () => {
     const { rows, filename, validResults } = getExportData();
     if (!validResults.length) return;
-
     const ws = XLSX.utils.json_to_sheet(rows);
     ws['!cols'] = [
-      { wch: 7 },   // Index
-      { wch: 55 },  // Original URL
-      { wch: 85 },  // Tagged URL
-      { wch: 18 },  // utm_source
-      { wch: 16 },  // utm_medium
-      { wch: 32 },  // utm_campaign
-      { wch: 18 },  // utm_content
-      { wch: 16 }   // utm_term
+      { wch: 8 }, { wch: 55 }, { wch: 85 }, { wch: 18 },
+      { wch: 16 }, { wch: 32 }, { wch: 22 }, { wch: 16 }
     ];
-
-    // Freeze header row
     ws['!freeze'] = { xSplit: 0, ySplit: 1 };
-
     const wb = XLSX.utils.book_new();
-    XLSX.utils.book_append_sheet(wb, ws, 'UTM URLs');
+    XLSX.utils.book_append_sheet(wb, ws, 'URLs UTM');
     XLSX.writeFile(wb, filename + '.xlsx');
     flashBtn($('download-xlsx'), 'Excel');
   });
@@ -1208,14 +1192,11 @@ https://myservier.co/..."></textarea>
       'CSV': '<svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>',
       'Excel': '<svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="8" y1="13" x2="16" y2="13"/><line x1="8" y1="17" x2="16" y2="17"/></svg>'
     };
-    btn.innerHTML = '✓ Downloaded';
+    btn.innerHTML = '✓ Descargado';
     gsap.fromTo(btn, { scale: 0.95 }, { scale: 1, duration: 0.4, ease: 'back.out(2)' });
-    setTimeout(() => {
-      btn.innerHTML = iconMap[originalLabel] + ' ' + originalLabel;
-    }, 1800);
+    setTimeout(() => { btn.innerHTML = iconMap[originalLabel] + ' ' + originalLabel; }, 1800);
   }
 
-  // Decode
   $('decode-btn').addEventListener('click', () => {
     const input = $('decode-input').value.trim();
     if (!input) return;
