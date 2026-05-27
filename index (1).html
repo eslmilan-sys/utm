@@ -1,0 +1,1015 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>UTM URL Builder — Servier ANCAC</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #1B1A6B;
+    --navy-deep: #15166B;
+    --navy-soft: #3A3A8E;
+    --navy-pale: #E8E8F4;
+    --orange: #F26430;
+    --orange-deep: #D24E1B;
+    --orange-pale: #FCE4D8;
+    --bg: #FAFAFC;
+    --paper: #FFFFFF;
+    --line: #E2E2EC;
+    --line-strong: #C5C5D4;
+    --text: #1B1A6B;
+    --text-soft: #5A5A78;
+    --good: #2D8659;
+    --good-pale: #DFF1E8;
+    --warn: #B8730E;
+    --warn-pale: #FBEFD8;
+    --shadow-sm: 0 1px 2px rgba(27, 26, 107, 0.06);
+    --shadow: 0 4px 16px -8px rgba(27, 26, 107, 0.18);
+    --shadow-lg: 0 12px 32px -12px rgba(27, 26, 107, 0.22);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html, body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Poppins', system-ui, sans-serif;
+    font-size: 14px;
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ===== Header ===== */
+  .topbar {
+    background: var(--navy);
+    color: white;
+    padding: 1.1rem 0;
+  }
+
+  .topbar-inner {
+    max-width: 1080px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .wordmark {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-weight: 700;
+    font-size: 1.5rem;
+    letter-spacing: 0.04em;
+    color: white;
+  }
+
+  .wordmark .burst {
+    width: 22px;
+    height: 22px;
+    flex-shrink: 0;
+  }
+
+  .topbar-meta {
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    opacity: 0.7;
+  }
+
+  /* ===== Hero ===== */
+  .hero {
+    background: var(--navy);
+    color: white;
+    padding: 2.5rem 0 3.5rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 85% 30%, rgba(242, 100, 48, 0.18), transparent 50%);
+    pointer-events: none;
+  }
+
+  .hero-inner {
+    max-width: 1080px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+    position: relative;
+    z-index: 1;
+  }
+
+  .hero-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--orange);
+    margin-bottom: 0.75rem;
+  }
+
+  .hero-eyebrow::before {
+    content: "";
+    width: 24px;
+    height: 1.5px;
+    background: var(--orange);
+  }
+
+  h1 {
+    font-size: clamp(1.9rem, 4vw, 2.6rem);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+    margin-bottom: 0.5rem;
+    color: white;
+  }
+
+  .hero-sub {
+    font-size: 0.95rem;
+    font-weight: 400;
+    max-width: 60ch;
+    color: rgba(255, 255, 255, 0.75);
+  }
+
+  /* ===== Main ===== */
+  main {
+    max-width: 1080px;
+    margin: -2rem auto 0;
+    padding: 0 1.5rem 4rem;
+    position: relative;
+    z-index: 2;
+  }
+
+  .card {
+    background: var(--paper);
+    border-radius: 12px;
+    padding: 1.75rem;
+    margin-bottom: 1.25rem;
+    box-shadow: var(--shadow-sm);
+    border: 1px solid var(--line);
+  }
+
+  .card-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 1rem;
+    gap: 1rem;
+  }
+
+  .card-title {
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--navy);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .step-num {
+    width: 22px;
+    height: 22px;
+    background: var(--navy);
+    color: white;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0;
+  }
+
+  .card-aside {
+    font-size: 0.78rem;
+    color: var(--text-soft);
+    font-weight: 400;
+  }
+
+  /* ===== Channel presets ===== */
+  .preset-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .preset {
+    font-family: inherit;
+    font-size: 0.83rem;
+    font-weight: 500;
+    padding: 0.55rem 1rem;
+    background: white;
+    border: 1px solid var(--line-strong);
+    border-radius: 999px;
+    color: var(--text);
+    cursor: pointer;
+    transition: all 0.15s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+  }
+
+  .preset::before {
+    content: "";
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--line-strong);
+    transition: background 0.15s ease;
+  }
+
+  .preset:hover {
+    border-color: var(--navy);
+    color: var(--navy);
+  }
+
+  .preset:hover::before { background: var(--navy); }
+
+  .preset.active {
+    background: var(--navy);
+    color: white;
+    border-color: var(--navy);
+  }
+
+  .preset.active::before { background: var(--orange); }
+
+  /* ===== Inputs ===== */
+  label {
+    display: block;
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--navy);
+    margin-bottom: 0.45rem;
+  }
+
+  label .hint {
+    text-transform: none;
+    letter-spacing: 0;
+    color: var(--text-soft);
+    font-weight: 400;
+    margin-left: 0.3rem;
+  }
+
+  input[type="text"], input[type="url"], input:not([type]), textarea {
+    width: 100%;
+    font-family: inherit;
+    font-size: 0.92rem;
+    padding: 0.7rem 0.9rem;
+    background: white;
+    border: 1px solid var(--line-strong);
+    border-radius: 6px;
+    color: var(--text);
+    transition: all 0.15s ease;
+  }
+
+  input:focus, textarea:focus {
+    outline: none;
+    border-color: var(--navy);
+    box-shadow: 0 0 0 3px rgba(27, 26, 107, 0.1);
+  }
+
+  input::placeholder, textarea::placeholder {
+    color: var(--text-soft);
+    opacity: 0.55;
+  }
+
+  textarea {
+    min-height: 110px;
+    resize: vertical;
+    font-family: 'SF Mono', Menlo, Consolas, monospace;
+    font-size: 0.82rem;
+    line-height: 1.55;
+  }
+
+  .url-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    margin-top: 0.7rem;
+  }
+
+  .url-chip {
+    font-family: inherit;
+    text-align: left;
+    background: var(--navy-pale);
+    border: 1px solid transparent;
+    padding: 0.5rem 0.85rem;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.82rem;
+    font-weight: 500;
+    color: var(--navy);
+    transition: all 0.15s ease;
+  }
+
+  .url-chip:hover {
+    background: white;
+    border-color: var(--navy);
+  }
+
+  .url-chip::before {
+    content: "+ ";
+    color: var(--orange);
+    font-weight: 700;
+  }
+
+  .url-meta {
+    margin-top: 0.5rem;
+    font-size: 0.78rem;
+    color: var(--text-soft);
+    display: flex;
+    gap: 1rem;
+  }
+
+  .url-meta strong {
+    color: var(--navy);
+    font-weight: 600;
+  }
+
+  /* ===== UTM grid ===== */
+  .utm-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.25rem 1rem;
+  }
+
+  .span-2 { grid-column: 1 / -1; }
+
+  @media (max-width: 640px) {
+    .utm-grid { grid-template-columns: 1fr; }
+    .span-2 { grid-column: 1; }
+  }
+
+  .convention {
+    font-size: 0.75rem;
+    color: var(--text-soft);
+    margin-top: 0.4rem;
+  }
+
+  .convention code {
+    background: var(--navy-pale);
+    padding: 0.1rem 0.4rem;
+    border-radius: 3px;
+    font-family: 'SF Mono', Menlo, Consolas, monospace;
+    font-size: 0.78rem;
+    color: var(--navy);
+  }
+
+  .convention.warn { color: var(--warn); }
+  .convention.warn code { background: var(--warn-pale); color: var(--warn); }
+  .convention.good { color: var(--good); }
+  .convention.good code { background: var(--good-pale); color: var(--good); }
+
+  /* ===== Output card ===== */
+  .output-card {
+    background: var(--navy);
+    color: white;
+    padding: 0;
+    overflow: hidden;
+    border: none;
+    box-shadow: var(--shadow-lg);
+  }
+
+  .output-head {
+    padding: 1.5rem 1.75rem 1.25rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .output-head .card-title { color: rgba(255, 255, 255, 0.7); }
+  .output-head .step-num { background: var(--orange); }
+
+  .output-count {
+    font-size: 0.78rem;
+    color: rgba(255, 255, 255, 0.6);
+  }
+
+  .output-count strong {
+    color: white;
+    font-weight: 600;
+  }
+
+  .output-actions {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+  }
+
+  .btn {
+    font-family: inherit;
+    font-size: 0.82rem;
+    font-weight: 500;
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.15s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+  }
+
+  .btn-primary { background: var(--orange); color: white; }
+  .btn-primary:hover { background: var(--orange-deep); }
+
+  .btn-ghost {
+    background: rgba(255, 255, 255, 0.08);
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+  }
+  .btn-ghost:hover { background: rgba(255, 255, 255, 0.15); }
+
+  .btn:disabled {
+    background: rgba(255, 255, 255, 0.08);
+    color: rgba(255, 255, 255, 0.35);
+    cursor: not-allowed;
+    border-color: transparent;
+  }
+
+  .btn.success { background: var(--good); }
+
+  /* ===== Output rows ===== */
+  .output-list {
+    max-height: 480px;
+    overflow-y: auto;
+  }
+
+  .output-empty {
+    padding: 3rem 1.75rem;
+    text-align: center;
+    color: rgba(255, 255, 255, 0.45);
+    font-style: italic;
+    font-size: 0.88rem;
+  }
+
+  .output-row {
+    padding: 0.85rem 1.75rem;
+    display: grid;
+    grid-template-columns: 28px 1fr auto;
+    gap: 0.85rem;
+    align-items: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    transition: background 0.15s ease;
+  }
+
+  .output-row:hover { background: rgba(255, 255, 255, 0.03); }
+  .output-row:last-child { border-bottom: none; }
+
+  .output-row.invalid { background: rgba(242, 100, 48, 0.08); }
+  .output-row.invalid:hover { background: rgba(242, 100, 48, 0.12); }
+
+  .row-index {
+    font-family: 'SF Mono', Menlo, Consolas, monospace;
+    font-size: 0.72rem;
+    color: rgba(255, 255, 255, 0.4);
+    text-align: right;
+  }
+
+  .row-url {
+    font-family: 'SF Mono', Menlo, Consolas, monospace;
+    font-size: 0.78rem;
+    line-height: 1.5;
+    color: white;
+    word-break: break-all;
+    overflow: hidden;
+  }
+
+  .row-url .param-key { color: #FFA47A; }
+  .row-url .punct { color: rgba(255, 255, 255, 0.4); }
+
+  .row-url.error {
+    color: var(--orange);
+    font-style: italic;
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.82rem;
+  }
+
+  .row-copy {
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    color: rgba(255, 255, 255, 0.8);
+    font-family: inherit;
+    font-size: 0.75rem;
+    padding: 0.35rem 0.7rem;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.15s ease;
+    font-weight: 500;
+  }
+
+  .row-copy:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    border-color: rgba(255, 255, 255, 0.3);
+  }
+
+  .row-copy.success {
+    background: var(--good);
+    color: white;
+    border-color: var(--good);
+  }
+
+  /* Scrollbar styling */
+  .output-list::-webkit-scrollbar { width: 8px; }
+  .output-list::-webkit-scrollbar-track { background: rgba(255, 255, 255, 0.02); }
+  .output-list::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 4px;
+  }
+  .output-list::-webkit-scrollbar-thumb:hover { background: rgba(255, 255, 255, 0.25); }
+
+  /* ===== Decode card ===== */
+  .decode-card {
+    background: transparent;
+    border: 1px dashed var(--line-strong);
+    box-shadow: none;
+  }
+
+  .decode-row {
+    display: flex;
+    gap: 0.5rem;
+    margin-top: 0.75rem;
+  }
+
+  .decode-row input { flex: 1; }
+
+  .decode-btn {
+    background: var(--navy);
+    color: white;
+    padding: 0.7rem 1.4rem;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 0.85rem;
+    font-weight: 500;
+    transition: background 0.15s ease;
+  }
+
+  .decode-btn:hover { background: var(--navy-deep); }
+
+  /* ===== Footer ===== */
+  footer {
+    max-width: 1080px;
+    margin: 1rem auto 0;
+    padding: 1.5rem 1.5rem 0;
+    font-size: 0.75rem;
+    color: var(--text-soft);
+    text-align: center;
+    border-top: 1px solid var(--line);
+  }
+
+  footer strong { color: var(--navy); font-weight: 600; }
+
+  /* Entry animation */
+  @keyframes rise {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .card { animation: rise 0.4s ease backwards; }
+  .card:nth-of-type(1) { animation-delay: 0.05s; }
+  .card:nth-of-type(2) { animation-delay: 0.1s; }
+  .card:nth-of-type(3) { animation-delay: 0.15s; }
+  .card:nth-of-type(4) { animation-delay: 0.2s; }
+  .card:nth-of-type(5) { animation-delay: 0.25s; }
+</style>
+</head>
+<body>
+
+<!-- ===== Top Brand Bar ===== -->
+<div class="topbar">
+  <div class="topbar-inner">
+    <div class="wordmark">
+      <span>SERVIER</span>
+      <svg class="burst" viewBox="-50 -50 100 100" xmlns="http://www.w3.org/2000/svg">
+        <g fill="#F26430">
+          <polygon points="0,-42 6,-6 0,0 -6,-6" />
+          <polygon points="0,-42 6,-6 0,0 -6,-6" transform="rotate(45)" />
+          <polygon points="0,-42 6,-6 0,0 -6,-6" transform="rotate(90)" />
+          <polygon points="0,-42 6,-6 0,0 -6,-6" transform="rotate(135)" />
+          <polygon points="0,-42 6,-6 0,0 -6,-6" transform="rotate(180)" />
+          <polygon points="0,-42 6,-6 0,0 -6,-6" transform="rotate(225)" />
+          <polygon points="0,-42 6,-6 0,0 -6,-6" transform="rotate(270)" />
+          <polygon points="0,-42 6,-6 0,0 -6,-6" transform="rotate(315)" />
+        </g>
+      </svg>
+    </div>
+    <div class="topbar-meta">Omnichannel · ANCAC</div>
+  </div>
+</div>
+
+<!-- ===== Hero ===== -->
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-eyebrow">Bulk UTM Builder</div>
+    <h1>Tag many URLs. One campaign.</h1>
+    <p class="hero-sub">Paste your destination URLs, set the campaign once, generate tagged links for all of them. Source / medium values match your live GA4 taxonomy.</p>
+  </div>
+</div>
+
+<!-- ===== Main ===== -->
+<main>
+
+  <!-- Channel presets -->
+  <div class="card">
+    <div class="card-head">
+      <div class="card-title"><span class="step-num">1</span>Channel</div>
+      <div class="card-aside">Click to auto-fill source &amp; medium</div>
+    </div>
+    <div class="preset-grid">
+      <button class="preset" data-source="whatsapp" data-medium="messaging">WhatsApp</button>
+      <button class="preset" data-source="approved_email" data-medium="deeplink">Approved Email</button>
+      <button class="preset" data-source="getresponse" data-medium="deeplink">GetResponse</button>
+      <button class="preset" data-source="myservier.com" data-medium="referral">MyServier Portal</button>
+      <button class="preset" data-source="instagram" data-medium="social">Instagram</button>
+      <button class="preset" data-source="facebook" data-medium="social">Facebook</button>
+      <button class="preset" data-source="qr_code" data-medium="qr_code">QR Code</button>
+      <button class="preset" data-source="qr_slide" data-medium="offline">QR (Slide)</button>
+      <button class="preset" data-source="gafete" data-medium="qr_code">Gafete</button>
+      <button class="preset" data-source="brochure" data-medium="print">Brochure</button>
+    </div>
+  </div>
+
+  <!-- Bulk URL input -->
+  <div class="card">
+    <div class="card-head">
+      <div class="card-title"><span class="step-num">2</span>Destination URLs</div>
+      <div class="card-aside">One URL per line · paste as many as you need</div>
+    </div>
+    <textarea id="urls" placeholder="https://myservier.co/es/video/video-para-paciente-tome-el-control-de-su-presion-arterial/
+https://myservier.co/video/patient-video-take-control-of-your-blood-pressure/
+https://myservier.co/article/..."></textarea>
+    <div class="url-actions">
+      <button class="url-chip" data-url="https://myservier.co/es/video/video-para-paciente-tome-el-control-de-su-presion-arterial/">ES — Presión arterial</button>
+      <button class="url-chip" data-url="https://myservier.co/video/patient-video-take-control-of-your-blood-pressure/">EN — Blood pressure</button>
+    </div>
+    <div class="url-meta">
+      <span><strong id="url-count">0</strong> URLs detected</span>
+      <span id="url-invalid" style="color: var(--orange); display: none;"><strong id="url-invalid-count">0</strong> invalid</span>
+    </div>
+  </div>
+
+  <!-- UTM parameters -->
+  <div class="card">
+    <div class="card-head">
+      <div class="card-title"><span class="step-num">3</span>Campaign Parameters</div>
+      <div class="card-aside">Applied to every URL above</div>
+    </div>
+    <div class="utm-grid">
+      <div>
+        <label for="source">utm_source <span class="hint">— where</span></label>
+        <input id="source" list="source-list" placeholder="e.g. whatsapp">
+        <datalist id="source-list">
+          <option value="approved_email"></option>
+          <option value="whatsapp"></option>
+          <option value="getresponse"></option>
+          <option value="myservier.com"></option>
+          <option value="instagram"></option>
+          <option value="facebook"></option>
+          <option value="qr_slide"></option>
+          <option value="qr_code"></option>
+          <option value="gafete"></option>
+          <option value="brochure"></option>
+          <option value="google"></option>
+          <option value="linkedin"></option>
+          <option value="youtube"></option>
+        </datalist>
+      </div>
+      <div>
+        <label for="medium">utm_medium <span class="hint">— how</span></label>
+        <input id="medium" list="medium-list" placeholder="e.g. messaging">
+        <datalist id="medium-list">
+          <option value="deeplink"></option>
+          <option value="messaging"></option>
+          <option value="referral"></option>
+          <option value="qr_code"></option>
+          <option value="offline"></option>
+          <option value="print"></option>
+          <option value="social"></option>
+          <option value="organic"></option>
+          <option value="email"></option>
+          <option value="cpc"></option>
+          <option value="display"></option>
+        </datalist>
+      </div>
+      <div class="span-2">
+        <label for="campaign">utm_campaign <span class="hint">— what</span></label>
+        <input id="campaign" placeholder="202605_coversyl_hcp_bp_video">
+        <div class="convention" id="convention">Convention: <code>yyyymm_brand_audience_topic</code> · lowercase, underscores, no spaces</div>
+      </div>
+      <div>
+        <label for="content">utm_content <span class="hint">— variant</span></label>
+        <input id="content" placeholder="cta_a · wave1 · es_male">
+      </div>
+      <div>
+        <label for="term">utm_term <span class="hint">— optional</span></label>
+        <input id="term" placeholder="optional keyword">
+      </div>
+    </div>
+  </div>
+
+  <!-- Output -->
+  <div class="card output-card">
+    <div class="output-head">
+      <div>
+        <div class="card-title" style="margin-bottom: 0.25rem;"><span class="step-num">4</span>Tagged URLs</div>
+        <div class="output-count"><strong id="valid-count">0</strong> ready to deploy</div>
+      </div>
+      <div class="output-actions">
+        <button id="copy-all" class="btn btn-ghost" disabled>Copy all</button>
+        <button id="download-csv" class="btn btn-primary" disabled>Download CSV</button>
+      </div>
+    </div>
+    <div id="output-list" class="output-list">
+      <div class="output-empty">Paste URLs and set parameters above to generate tagged links.</div>
+    </div>
+  </div>
+
+  <!-- Decode -->
+  <div class="card decode-card">
+    <div class="card-head">
+      <div class="card-title">Decode existing URL</div>
+      <div class="card-aside">Reverse-engineer a tagged URL into the fields above</div>
+    </div>
+    <div class="decode-row">
+      <input id="decode-input" type="url" placeholder="https://myservier.co/...?utm_source=...">
+      <button id="decode-btn" class="decode-btn">Decode</button>
+    </div>
+  </div>
+
+</main>
+
+<footer>
+  Built for <strong>Milan</strong> · Omnichannel ANCAC · Source / medium values aligned to live GA4 taxonomy
+</footer>
+
+<script>
+  const $ = (id) => document.getElementById(id);
+  const fields = ['urls', 'source', 'medium', 'campaign', 'content', 'term'];
+
+  // Preset buttons
+  document.querySelectorAll('.preset').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.preset').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      $('source').value = btn.dataset.source;
+      $('medium').value = btn.dataset.medium;
+      update();
+    });
+  });
+
+  // Append URL chips
+  document.querySelectorAll('.url-chip').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const ta = $('urls');
+      const current = ta.value.trim();
+      ta.value = current ? current + '\n' + btn.dataset.url : btn.dataset.url;
+      update();
+    });
+  });
+
+  fields.forEach(f => $(f).addEventListener('input', update));
+
+  function sanitize(v) {
+    return v.normalize('NFD').replace(/[\u0300-\u036f]/g, '')
+      .toLowerCase().trim().replace(/\s+/g, '_').replace(/[^a-z0-9_\-\.]/g, '');
+  }
+
+  function escape(s) {
+    return String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  }
+
+  function buildTagged(rawUrl, params) {
+    let base = rawUrl.trim();
+    if (!base) return { valid: false, error: 'empty', url: '' };
+    try {
+      new URL(base);
+    } catch (e) {
+      return { valid: false, error: 'Invalid URL: ' + base, url: base };
+    }
+    let hash = '';
+    const hashIdx = base.indexOf('#');
+    if (hashIdx >= 0) { hash = base.slice(hashIdx); base = base.slice(0, hashIdx); }
+    const sep = base.includes('?') ? '&' : '?';
+    let finalUrl = base;
+    if (params.length) {
+      finalUrl += sep + params.map(([k, v]) => `${k}=${encodeURIComponent(v)}`).join('&');
+    }
+    finalUrl += hash;
+    return { valid: true, url: finalUrl, base, hash, sep };
+  }
+
+  function renderUrl(base, sep, params, hash) {
+    const baseHtml = escape(base);
+    const paramHtml = params.map(([k, v], i) =>
+      `<span class="punct">${i === 0 ? sep : '&'}</span><span class="param-key">${k}</span><span class="punct">=</span>${escape(encodeURIComponent(v))}`
+    ).join('');
+    return baseHtml + paramHtml + escape(hash);
+  }
+
+  let lastResults = [];
+
+  function update() {
+    const rawList = $('urls').value.split('\n').map(l => l.trim()).filter(Boolean);
+    const source = sanitize($('source').value);
+    const medium = sanitize($('medium').value);
+    const campaign = sanitize($('campaign').value);
+    const content = sanitize($('content').value);
+    const term = sanitize($('term').value);
+
+    // Campaign validation
+    const campRaw = $('campaign').value.trim();
+    const conv = $('convention');
+    if (!campRaw) {
+      conv.className = 'convention';
+      conv.innerHTML = 'Convention: <code>yyyymm_brand_audience_topic</code> · lowercase, underscores, no spaces';
+    } else if (/^\d{6}_[a-z0-9]+_[a-z0-9]+_[a-z0-9_]+$/.test(campRaw)) {
+      conv.className = 'convention good';
+      conv.innerHTML = '✓ Matches convention';
+    } else if (campRaw !== campaign) {
+      conv.className = 'convention warn';
+      conv.innerHTML = '⚠ Will be auto-corrected to: <code>' + (campaign || '—') + '</code>';
+    } else {
+      conv.className = 'convention';
+      conv.innerHTML = 'Suggested pattern: <code>yyyymm_brand_audience_topic</code>';
+    }
+
+    const params = [];
+    if (source) params.push(['utm_source', source]);
+    if (medium) params.push(['utm_medium', medium]);
+    if (campaign) params.push(['utm_campaign', campaign]);
+    if (content) params.push(['utm_content', content]);
+    if (term) params.push(['utm_term', term]);
+
+    // Count + invalid counter
+    $('url-count').textContent = rawList.length;
+    const results = rawList.map(u => buildTagged(u, params));
+    const validResults = results.filter(r => r.valid);
+    const invalidCount = results.length - validResults.length;
+    $('valid-count').textContent = validResults.length;
+    if (invalidCount > 0) {
+      $('url-invalid').style.display = '';
+      $('url-invalid-count').textContent = invalidCount;
+    } else {
+      $('url-invalid').style.display = 'none';
+    }
+
+    lastResults = results;
+
+    // Render output
+    const list = $('output-list');
+    if (rawList.length === 0) {
+      list.innerHTML = '<div class="output-empty">Paste URLs and set parameters above to generate tagged links.</div>';
+      $('copy-all').disabled = true;
+      $('download-csv').disabled = true;
+      return;
+    }
+    if (params.length === 0) {
+      list.innerHTML = '<div class="output-empty">Set at least one campaign parameter (source, medium, campaign) to tag your URLs.</div>';
+      $('copy-all').disabled = true;
+      $('download-csv').disabled = true;
+      return;
+    }
+
+    list.innerHTML = results.map((r, i) => {
+      if (!r.valid) {
+        return `<div class="output-row invalid">
+          <div class="row-index">${String(i+1).padStart(2,'0')}</div>
+          <div class="row-url error">${escape(r.error)}</div>
+          <div></div>
+        </div>`;
+      }
+      return `<div class="output-row">
+        <div class="row-index">${String(i+1).padStart(2,'0')}</div>
+        <div class="row-url">${renderUrl(r.base, r.sep, params, r.hash)}</div>
+        <button class="row-copy" data-idx="${i}">Copy</button>
+      </div>`;
+    }).join('');
+
+    // Attach row copy handlers
+    list.querySelectorAll('.row-copy').forEach(btn => {
+      btn.addEventListener('click', async () => {
+        const idx = parseInt(btn.dataset.idx);
+        const r = lastResults[idx];
+        if (!r || !r.valid) return;
+        await copyText(r.url);
+        const orig = btn.textContent;
+        btn.textContent = '✓ Copied';
+        btn.classList.add('success');
+        setTimeout(() => { btn.textContent = orig; btn.classList.remove('success'); }, 1500);
+      });
+    });
+
+    $('copy-all').disabled = validResults.length === 0;
+    $('download-csv').disabled = validResults.length === 0;
+  }
+
+  async function copyText(text) {
+    try {
+      await navigator.clipboard.writeText(text);
+    } catch (e) {
+      const ta = document.createElement('textarea');
+      ta.value = text; document.body.appendChild(ta); ta.select();
+      document.execCommand('copy'); document.body.removeChild(ta);
+    }
+  }
+
+  // Copy all
+  $('copy-all').addEventListener('click', async () => {
+    const validUrls = lastResults.filter(r => r.valid).map(r => r.url);
+    if (!validUrls.length) return;
+    await copyText(validUrls.join('\n'));
+    const btn = $('copy-all');
+    const orig = btn.textContent;
+    btn.textContent = '✓ Copied ' + validUrls.length;
+    btn.classList.add('success');
+    setTimeout(() => { btn.textContent = orig; btn.classList.remove('success'); }, 1800);
+  });
+
+  // CSV download
+  $('download-csv').addEventListener('click', () => {
+    const source = sanitize($('source').value);
+    const medium = sanitize($('medium').value);
+    const campaign = sanitize($('campaign').value);
+    const content = sanitize($('content').value);
+    const term = sanitize($('term').value);
+
+    const validResults = lastResults.filter(r => r.valid);
+    if (!validResults.length) return;
+
+    const headers = ['index', 'original_url', 'tagged_url', 'utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term'];
+    const csvEscape = (s) => {
+      const str = String(s ?? '');
+      return /[",\n]/.test(str) ? '"' + str.replace(/"/g, '""') + '"' : str;
+    };
+    const rows = validResults.map((r, i) => {
+      const original = r.base + r.hash;
+      return [i + 1, original, r.url, source, medium, campaign, content, term].map(csvEscape).join(',');
+    });
+    const csv = headers.join(',') + '\n' + rows.join('\n');
+
+    const now = new Date();
+    const yyyymmdd = now.toISOString().slice(0, 10);
+    const filename = `utm_urls_${campaign || 'export'}_${yyyymmdd}.csv`;
+
+    const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url; a.download = filename;
+    document.body.appendChild(a); a.click();
+    document.body.removeChild(a); URL.revokeObjectURL(url);
+
+    const btn = $('download-csv');
+    const orig = btn.textContent;
+    btn.textContent = '✓ Downloaded';
+    setTimeout(() => btn.textContent = orig, 1800);
+  });
+
+  // Decode
+  $('decode-btn').addEventListener('click', () => {
+    const input = $('decode-input').value.trim();
+    if (!input) return;
+    try {
+      const u = new URL(input);
+      const params = u.searchParams;
+      const cleanUrl = u.origin + u.pathname;
+      const ta = $('urls');
+      const current = ta.value.trim();
+      ta.value = current ? current + '\n' + cleanUrl : cleanUrl;
+      $('source').value = params.get('utm_source') || '';
+      $('medium').value = params.get('utm_medium') || '';
+      $('campaign').value = params.get('utm_campaign') || '';
+      $('content').value = params.get('utm_content') || '';
+      $('term').value = params.get('utm_term') || '';
+      document.querySelectorAll('.preset').forEach(b => {
+        b.classList.toggle('active', b.dataset.source === $('source').value && b.dataset.medium === $('medium').value);
+      });
+      update();
+      $('decode-input').value = '';
+    } catch (e) {
+      alert('Not a valid URL');
+    }
+  });
+
+  update();
+</script>
+</body>
+</html>
