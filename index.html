@@ -3,10 +3,15 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>UTM URL Builder — Servier ANCAC</title>
+<title>UTM URL Builder</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<!-- External libraries -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+
 <style>
   :root {
     --navy: #1B1A6B;
@@ -40,63 +45,43 @@
     font-size: 14px;
     line-height: 1.55;
     -webkit-font-smoothing: antialiased;
-  }
-
-  /* ===== Header ===== */
-  .topbar {
-    background: var(--navy);
-    color: white;
-    padding: 1.1rem 0;
-  }
-
-  .topbar-inner {
-    max-width: 1080px;
-    margin: 0 auto;
-    padding: 0 1.5rem;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
-
-  .wordmark {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    font-weight: 700;
-    font-size: 1.5rem;
-    letter-spacing: 0.04em;
-    color: white;
-  }
-
-  .wordmark .burst {
-    width: 22px;
-    height: 22px;
-    flex-shrink: 0;
-  }
-
-  .topbar-meta {
-    font-size: 0.72rem;
-    font-weight: 500;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    opacity: 0.7;
+    overflow-x: hidden;
   }
 
   /* ===== Hero ===== */
   .hero {
     background: var(--navy);
     color: white;
-    padding: 2.5rem 0 3.5rem;
+    padding: 3.5rem 0 4rem;
     position: relative;
     overflow: hidden;
   }
 
-  .hero::after {
-    content: "";
+  .hero-bg-glow {
     position: absolute;
-    inset: 0;
-    background: radial-gradient(ellipse at 85% 30%, rgba(242, 100, 48, 0.18), transparent 50%);
+    top: -20%;
+    right: -10%;
+    width: 60%;
+    height: 140%;
+    background: radial-gradient(ellipse, rgba(242, 100, 48, 0.22), transparent 65%);
     pointer-events: none;
+    will-change: opacity, transform;
+  }
+
+  .hero-burst {
+    position: absolute;
+    top: 50%;
+    right: 8%;
+    width: 220px;
+    height: 220px;
+    transform: translateY(-50%);
+    opacity: 0.18;
+    pointer-events: none;
+    will-change: transform;
+  }
+
+  @media (max-width: 720px) {
+    .hero-burst { width: 140px; height: 140px; right: -30px; opacity: 0.12; }
   }
 
   .hero-inner {
@@ -104,42 +89,69 @@
     margin: 0 auto;
     padding: 0 1.5rem;
     position: relative;
-    z-index: 1;
+    z-index: 2;
   }
 
-  .hero-eyebrow {
+  .hero-mark {
     display: inline-flex;
     align-items: center;
-    gap: 0.5rem;
-    font-size: 0.7rem;
-    font-weight: 600;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: var(--orange);
-    margin-bottom: 0.75rem;
+    gap: 0.6rem;
+    margin-bottom: 1.8rem;
+    opacity: 0;
   }
 
-  .hero-eyebrow::before {
-    content: "";
-    width: 24px;
-    height: 1.5px;
+  .hero-mark .mark-burst {
+    width: 26px;
+    height: 26px;
+    will-change: transform;
+  }
+
+  .hero-mark .mark-line {
+    height: 1px;
+    width: 32px;
     background: var(--orange);
+    opacity: 0.7;
+  }
+
+  .hero-mark .mark-label {
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--orange);
   }
 
   h1 {
-    font-size: clamp(1.9rem, 4vw, 2.6rem);
+    font-size: clamp(2rem, 4.5vw, 3rem);
     font-weight: 700;
-    letter-spacing: -0.02em;
-    line-height: 1.1;
-    margin-bottom: 0.5rem;
+    letter-spacing: -0.025em;
+    line-height: 1.05;
+    margin-bottom: 0.75rem;
     color: white;
   }
 
+  h1 .word {
+    display: inline-block;
+    overflow: hidden;
+    vertical-align: top;
+  }
+
+  h1 .word-inner {
+    display: inline-block;
+    transform: translateY(110%);
+    will-change: transform;
+  }
+
+  h1 .accent { color: var(--orange); font-style: italic; font-weight: 600; }
+
   .hero-sub {
-    font-size: 0.95rem;
+    font-size: 1rem;
     font-weight: 400;
-    max-width: 60ch;
-    color: rgba(255, 255, 255, 0.75);
+    max-width: 62ch;
+    color: rgba(255, 255, 255, 0.78);
+    opacity: 0;
+    transform: translateY(10px);
+    will-change: transform, opacity;
   }
 
   /* ===== Main ===== */
@@ -148,7 +160,7 @@
     margin: -2rem auto 0;
     padding: 0 1.5rem 4rem;
     position: relative;
-    z-index: 2;
+    z-index: 3;
   }
 
   .card {
@@ -158,6 +170,9 @@
     margin-bottom: 1.25rem;
     box-shadow: var(--shadow-sm);
     border: 1px solid var(--line);
+    opacity: 0;
+    transform: translateY(24px);
+    will-change: transform, opacity;
   }
 
   .card-head {
@@ -166,6 +181,7 @@
     align-items: baseline;
     margin-bottom: 1rem;
     gap: 1rem;
+    flex-wrap: wrap;
   }
 
   .card-title {
@@ -191,6 +207,11 @@
     font-size: 0.72rem;
     font-weight: 700;
     letter-spacing: 0;
+    transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+
+  .card:hover .step-num {
+    transform: scale(1.12) rotate(-8deg);
   }
 
   .card-aside {
@@ -199,7 +220,7 @@
     font-weight: 400;
   }
 
-  /* ===== Channel presets ===== */
+  /* ===== Presets ===== */
   .preset-grid {
     display: flex;
     flex-wrap: wrap;
@@ -216,10 +237,12 @@
     border-radius: 999px;
     color: var(--text);
     cursor: pointer;
-    transition: all 0.15s ease;
+    transition: all 0.2s ease;
     display: inline-flex;
     align-items: center;
     gap: 0.4rem;
+    position: relative;
+    overflow: hidden;
   }
 
   .preset::before {
@@ -228,12 +251,14 @@
     height: 6px;
     border-radius: 50%;
     background: var(--line-strong);
-    transition: background 0.15s ease;
+    transition: all 0.2s ease;
   }
 
   .preset:hover {
     border-color: var(--navy);
     color: var(--navy);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px -4px rgba(27, 26, 107, 0.18);
   }
 
   .preset:hover::before { background: var(--navy); }
@@ -244,7 +269,7 @@
     border-color: var(--navy);
   }
 
-  .preset.active::before { background: var(--orange); }
+  .preset.active::before { background: var(--orange); transform: scale(1.3); }
 
   /* ===== Inputs ===== */
   label {
@@ -274,7 +299,7 @@
     border: 1px solid var(--line-strong);
     border-radius: 6px;
     color: var(--text);
-    transition: all 0.15s ease;
+    transition: all 0.2s ease;
   }
 
   input:focus, textarea:focus {
@@ -314,12 +339,13 @@
     font-size: 0.82rem;
     font-weight: 500;
     color: var(--navy);
-    transition: all 0.15s ease;
+    transition: all 0.2s ease;
   }
 
   .url-chip:hover {
     background: white;
     border-color: var(--navy);
+    transform: translateX(3px);
   }
 
   .url-chip::before {
@@ -339,6 +365,8 @@
   .url-meta strong {
     color: var(--navy);
     font-weight: 600;
+    display: inline-block;
+    min-width: 1ch;
   }
 
   /* ===== UTM grid ===== */
@@ -383,6 +411,18 @@
     overflow: hidden;
     border: none;
     box-shadow: var(--shadow-lg);
+    position: relative;
+  }
+
+  .output-card::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 50%;
+    height: 100%;
+    background: radial-gradient(ellipse at 100% 0%, rgba(242, 100, 48, 0.12), transparent 60%);
+    pointer-events: none;
   }
 
   .output-head {
@@ -391,6 +431,10 @@
     justify-content: space-between;
     align-items: center;
     border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    position: relative;
+    z-index: 1;
+    flex-wrap: wrap;
+    gap: 1rem;
   }
 
   .output-head .card-title { color: rgba(255, 255, 255, 0.7); }
@@ -399,11 +443,13 @@
   .output-count {
     font-size: 0.78rem;
     color: rgba(255, 255, 255, 0.6);
+    margin-top: 0.25rem;
   }
 
   .output-count strong {
     color: white;
     font-weight: 600;
+    font-variant-numeric: tabular-nums;
   }
 
   .output-actions {
@@ -420,35 +466,50 @@
     border: none;
     border-radius: 6px;
     cursor: pointer;
-    transition: all 0.15s ease;
+    transition: all 0.2s ease;
     display: inline-flex;
     align-items: center;
     gap: 0.4rem;
+    position: relative;
+    overflow: hidden;
   }
 
   .btn-primary { background: var(--orange); color: white; }
-  .btn-primary:hover { background: var(--orange-deep); }
+  .btn-primary:hover { background: var(--orange-deep); transform: translateY(-1px); box-shadow: 0 4px 12px -4px rgba(242, 100, 48, 0.5); }
+
+  .btn-secondary { background: white; color: var(--navy); }
+  .btn-secondary:hover { background: rgba(255, 255, 255, 0.9); transform: translateY(-1px); }
 
   .btn-ghost {
     background: rgba(255, 255, 255, 0.08);
     color: white;
     border: 1px solid rgba(255, 255, 255, 0.15);
   }
-  .btn-ghost:hover { background: rgba(255, 255, 255, 0.15); }
+  .btn-ghost:hover { background: rgba(255, 255, 255, 0.15); transform: translateY(-1px); }
 
   .btn:disabled {
     background: rgba(255, 255, 255, 0.08);
     color: rgba(255, 255, 255, 0.35);
     cursor: not-allowed;
     border-color: transparent;
+    transform: none !important;
+    box-shadow: none !important;
   }
 
-  .btn.success { background: var(--good); }
+  .btn.success { background: var(--good); color: white; }
+
+  .btn-icon {
+    width: 14px;
+    height: 14px;
+    flex-shrink: 0;
+  }
 
   /* ===== Output rows ===== */
   .output-list {
     max-height: 480px;
     overflow-y: auto;
+    position: relative;
+    z-index: 1;
   }
 
   .output-empty {
@@ -466,7 +527,10 @@
     gap: 0.85rem;
     align-items: center;
     border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-    transition: background 0.15s ease;
+    transition: background 0.2s ease;
+    opacity: 0;
+    transform: translateY(8px);
+    will-change: transform, opacity;
   }
 
   .output-row:hover { background: rgba(255, 255, 255, 0.03); }
@@ -510,7 +574,7 @@
     padding: 0.35rem 0.7rem;
     border-radius: 4px;
     cursor: pointer;
-    transition: all 0.15s ease;
+    transition: all 0.2s ease;
     font-weight: 500;
   }
 
@@ -526,13 +590,10 @@
     border-color: var(--good);
   }
 
-  /* Scrollbar styling */
+  /* Scrollbar */
   .output-list::-webkit-scrollbar { width: 8px; }
   .output-list::-webkit-scrollbar-track { background: rgba(255, 255, 255, 0.02); }
-  .output-list::-webkit-scrollbar-thumb {
-    background: rgba(255, 255, 255, 0.15);
-    border-radius: 4px;
-  }
+  .output-list::-webkit-scrollbar-thumb { background: rgba(255, 255, 255, 0.15); border-radius: 4px; }
   .output-list::-webkit-scrollbar-thumb:hover { background: rgba(255, 255, 255, 0.25); }
 
   /* ===== Decode card ===== */
@@ -560,46 +621,62 @@
     font-family: inherit;
     font-size: 0.85rem;
     font-weight: 500;
-    transition: background 0.15s ease;
+    transition: all 0.2s ease;
   }
 
-  .decode-btn:hover { background: var(--navy-deep); }
+  .decode-btn:hover { background: var(--navy-deep); transform: translateY(-1px); }
 
   /* ===== Footer ===== */
   footer {
     max-width: 1080px;
     margin: 1rem auto 0;
-    padding: 1.5rem 1.5rem 0;
-    font-size: 0.75rem;
-    color: var(--text-soft);
+    padding: 2rem 1.5rem 1rem;
     text-align: center;
     border-top: 1px solid var(--line);
   }
 
-  footer strong { color: var(--navy); font-weight: 600; }
-
-  /* Entry animation */
-  @keyframes rise {
-    from { opacity: 0; transform: translateY(8px); }
-    to { opacity: 1; transform: translateY(0); }
+  .footer-burst {
+    display: inline-block;
+    width: 18px;
+    height: 18px;
+    margin-bottom: 0.6rem;
+    will-change: transform;
   }
 
-  .card { animation: rise 0.4s ease backwards; }
-  .card:nth-of-type(1) { animation-delay: 0.05s; }
-  .card:nth-of-type(2) { animation-delay: 0.1s; }
-  .card:nth-of-type(3) { animation-delay: 0.15s; }
-  .card:nth-of-type(4) { animation-delay: 0.2s; }
-  .card:nth-of-type(5) { animation-delay: 0.25s; }
+  .footer-text {
+    font-size: 0.78rem;
+    color: var(--text-soft);
+    font-weight: 500;
+    letter-spacing: 0.04em;
+  }
+
+  .footer-text .author {
+    color: var(--navy);
+    font-weight: 600;
+  }
 </style>
 </head>
 <body>
 
-<!-- ===== Top Brand Bar ===== -->
-<div class="topbar">
-  <div class="topbar-inner">
-    <div class="wordmark">
-      <span>SERVIER</span>
-      <svg class="burst" viewBox="-50 -50 100 100" xmlns="http://www.w3.org/2000/svg">
+<!-- ===== Hero ===== -->
+<div class="hero">
+  <div class="hero-bg-glow"></div>
+  <svg class="hero-burst" viewBox="-50 -50 100 100" xmlns="http://www.w3.org/2000/svg">
+    <g fill="#F26430">
+      <polygon points="0,-42 6,-6 0,0 -6,-6" />
+      <polygon points="0,-42 6,-6 0,0 -6,-6" transform="rotate(45)" />
+      <polygon points="0,-42 6,-6 0,0 -6,-6" transform="rotate(90)" />
+      <polygon points="0,-42 6,-6 0,0 -6,-6" transform="rotate(135)" />
+      <polygon points="0,-42 6,-6 0,0 -6,-6" transform="rotate(180)" />
+      <polygon points="0,-42 6,-6 0,0 -6,-6" transform="rotate(225)" />
+      <polygon points="0,-42 6,-6 0,0 -6,-6" transform="rotate(270)" />
+      <polygon points="0,-42 6,-6 0,0 -6,-6" transform="rotate(315)" />
+    </g>
+  </svg>
+
+  <div class="hero-inner">
+    <div class="hero-mark">
+      <svg class="mark-burst" viewBox="-50 -50 100 100" xmlns="http://www.w3.org/2000/svg">
         <g fill="#F26430">
           <polygon points="0,-42 6,-6 0,0 -6,-6" />
           <polygon points="0,-42 6,-6 0,0 -6,-6" transform="rotate(45)" />
@@ -611,17 +688,19 @@
           <polygon points="0,-42 6,-6 0,0 -6,-6" transform="rotate(315)" />
         </g>
       </svg>
+      <div class="mark-line"></div>
+      <div class="mark-label">Bulk UTM Builder</div>
     </div>
-    <div class="topbar-meta">Omnichannel · ANCAC</div>
-  </div>
-</div>
 
-<!-- ===== Hero ===== -->
-<div class="hero">
-  <div class="hero-inner">
-    <div class="hero-eyebrow">Bulk UTM Builder</div>
-    <h1>Tag many URLs. One campaign.</h1>
-    <p class="hero-sub">Paste your destination URLs, set the campaign once, generate tagged links for all of them. Source / medium values match your live GA4 taxonomy.</p>
+    <h1 id="hero-h1">
+      <span class="word"><span class="word-inner">Tag</span></span>
+      <span class="word"><span class="word-inner">many</span></span>
+      <span class="word"><span class="word-inner">URLs.</span></span>
+      <span class="word"><span class="word-inner accent">One</span></span>
+      <span class="word"><span class="word-inner accent">campaign.</span></span>
+    </h1>
+
+    <p class="hero-sub">Paste your destination URLs, set the campaign once, generate tagged links for all of them. Source / medium values aligned to your live GA4 taxonomy.</p>
   </div>
 </div>
 
@@ -655,11 +734,10 @@
       <div class="card-aside">One URL per line · paste as many as you need</div>
     </div>
     <textarea id="urls" placeholder="https://myservier.co/es/video/video-para-paciente-tome-el-control-de-su-presion-arterial/
-https://myservier.co/video/patient-video-take-control-of-your-blood-pressure/
-https://myservier.co/article/..."></textarea>
+https://myservier.co/article/...
+https://myservier.co/..."></textarea>
     <div class="url-actions">
-      <button class="url-chip" data-url="https://myservier.co/es/video/video-para-paciente-tome-el-control-de-su-presion-arterial/">ES — Presión arterial</button>
-      <button class="url-chip" data-url="https://myservier.co/video/patient-video-take-control-of-your-blood-pressure/">EN — Blood pressure</button>
+      <button class="url-chip" data-url="https://myservier.co/es/video/video-para-paciente-tome-el-control-de-su-presion-arterial/">Example — Presión arterial</button>
     </div>
     <div class="url-meta">
       <span><strong id="url-count">0</strong> URLs detected</span>
@@ -734,8 +812,18 @@ https://myservier.co/article/..."></textarea>
         <div class="output-count"><strong id="valid-count">0</strong> ready to deploy</div>
       </div>
       <div class="output-actions">
-        <button id="copy-all" class="btn btn-ghost" disabled>Copy all</button>
-        <button id="download-csv" class="btn btn-primary" disabled>Download CSV</button>
+        <button id="copy-all" class="btn btn-ghost" disabled>
+          <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+          Copy all
+        </button>
+        <button id="download-csv" class="btn btn-secondary" disabled>
+          <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          CSV
+        </button>
+        <button id="download-xlsx" class="btn btn-primary" disabled>
+          <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="8" y1="13" x2="16" y2="13"/><line x1="8" y1="17" x2="16" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+          Excel
+        </button>
       </div>
     </div>
     <div id="output-list" class="output-list">
@@ -750,7 +838,7 @@ https://myservier.co/article/..."></textarea>
       <div class="card-aside">Reverse-engineer a tagged URL into the fields above</div>
     </div>
     <div class="decode-row">
-      <input id="decode-input" type="url" placeholder="https://myservier.co/...?utm_source=...">
+      <input id="decode-input" type="url" placeholder="https://...?utm_source=...">
       <button id="decode-btn" class="decode-btn">Decode</button>
     </div>
   </div>
@@ -758,12 +846,104 @@ https://myservier.co/article/..."></textarea>
 </main>
 
 <footer>
-  Built for <strong>Milan</strong> · Omnichannel ANCAC · Source / medium values aligned to live GA4 taxonomy
+  <svg class="footer-burst" viewBox="-50 -50 100 100" xmlns="http://www.w3.org/2000/svg">
+    <g fill="#F26430">
+      <polygon points="0,-42 6,-6 0,0 -6,-6" />
+      <polygon points="0,-42 6,-6 0,0 -6,-6" transform="rotate(45)" />
+      <polygon points="0,-42 6,-6 0,0 -6,-6" transform="rotate(90)" />
+      <polygon points="0,-42 6,-6 0,0 -6,-6" transform="rotate(135)" />
+      <polygon points="0,-42 6,-6 0,0 -6,-6" transform="rotate(180)" />
+      <polygon points="0,-42 6,-6 0,0 -6,-6" transform="rotate(225)" />
+      <polygon points="0,-42 6,-6 0,0 -6,-6" transform="rotate(270)" />
+      <polygon points="0,-42 6,-6 0,0 -6,-6" transform="rotate(315)" />
+    </g>
+  </svg>
+  <div class="footer-text">Created by <span class="author">Milan</span></div>
 </footer>
 
 <script>
   const $ = (id) => document.getElementById(id);
   const fields = ['urls', 'source', 'medium', 'campaign', 'content', 'term'];
+
+  /* =====================================================
+     GSAP ANIMATIONS — entrance, ambient, micro-interactions
+  ===================================================== */
+
+  // Page load timeline
+  const tl = gsap.timeline({ defaults: { ease: 'power3.out' } });
+
+  tl.to('.hero-mark', { opacity: 1, duration: 0.5 }, 0.1)
+    .to('.word-inner', {
+      y: 0,
+      duration: 0.9,
+      stagger: 0.06,
+      ease: 'power4.out'
+    }, 0.2)
+    .to('.hero-sub', {
+      opacity: 1,
+      y: 0,
+      duration: 0.7
+    }, 0.6)
+    .to('.card', {
+      opacity: 1,
+      y: 0,
+      duration: 0.7,
+      stagger: 0.08
+    }, 0.4);
+
+  // Ambient: continuously rotating hero burst (slow)
+  gsap.to('.hero-burst', {
+    rotation: 360,
+    duration: 60,
+    repeat: -1,
+    ease: 'none',
+    transformOrigin: '50% 50%'
+  });
+
+  // Ambient: mark burst rotates slightly faster
+  gsap.to('.mark-burst', {
+    rotation: 360,
+    duration: 24,
+    repeat: -1,
+    ease: 'none',
+    transformOrigin: '50% 50%'
+  });
+
+  // Ambient: footer burst rotates opposite direction
+  gsap.to('.footer-burst', {
+    rotation: -360,
+    duration: 30,
+    repeat: -1,
+    ease: 'none',
+    transformOrigin: '50% 50%'
+  });
+
+  // Ambient: hero glow breathes
+  gsap.to('.hero-bg-glow', {
+    opacity: 0.65,
+    scale: 1.08,
+    duration: 4,
+    repeat: -1,
+    yoyo: true,
+    ease: 'sine.inOut',
+    transformOrigin: '70% 30%'
+  });
+
+  // Animated number counter
+  function animateNumber(el, to) {
+    const from = parseInt(el.textContent) || 0;
+    if (from === to) return;
+    gsap.to({ val: from }, {
+      val: to,
+      duration: 0.6,
+      ease: 'power2.out',
+      onUpdate: function() { el.textContent = Math.round(this.targets()[0].val); }
+    });
+  }
+
+  /* =====================================================
+     CORE LOGIC
+  ===================================================== */
 
   // Preset buttons
   document.querySelectorAll('.preset').forEach(btn => {
@@ -772,16 +952,18 @@ https://myservier.co/article/..."></textarea>
       btn.classList.add('active');
       $('source').value = btn.dataset.source;
       $('medium').value = btn.dataset.medium;
+      gsap.fromTo(btn, { scale: 0.95 }, { scale: 1, duration: 0.4, ease: 'back.out(2)' });
       update();
     });
   });
 
-  // Append URL chips
+  // Append URL chip
   document.querySelectorAll('.url-chip').forEach(btn => {
     btn.addEventListener('click', () => {
       const ta = $('urls');
       const current = ta.value.trim();
       ta.value = current ? current + '\n' + btn.dataset.url : btn.dataset.url;
+      gsap.fromTo(ta, { borderColor: 'var(--orange)' }, { borderColor: 'var(--line-strong)', duration: 0.8 });
       update();
     });
   });
@@ -800,9 +982,7 @@ https://myservier.co/article/..."></textarea>
   function buildTagged(rawUrl, params) {
     let base = rawUrl.trim();
     if (!base) return { valid: false, error: 'empty', url: '' };
-    try {
-      new URL(base);
-    } catch (e) {
+    try { new URL(base); } catch (e) {
       return { valid: false, error: 'Invalid URL: ' + base, url: base };
     }
     let hash = '';
@@ -826,6 +1006,7 @@ https://myservier.co/article/..."></textarea>
   }
 
   let lastResults = [];
+  let lastParams = {};
 
   function update() {
     const rawList = $('urls').value.split('\n').map(l => l.trim()).filter(Boolean);
@@ -834,6 +1015,8 @@ https://myservier.co/article/..."></textarea>
     const campaign = sanitize($('campaign').value);
     const content = sanitize($('content').value);
     const term = sanitize($('term').value);
+
+    lastParams = { source, medium, campaign, content, term };
 
     // Campaign validation
     const campRaw = $('campaign').value.trim();
@@ -859,33 +1042,34 @@ https://myservier.co/article/..."></textarea>
     if (content) params.push(['utm_content', content]);
     if (term) params.push(['utm_term', term]);
 
-    // Count + invalid counter
-    $('url-count').textContent = rawList.length;
+    animateNumber($('url-count'), rawList.length);
+
     const results = rawList.map(u => buildTagged(u, params));
     const validResults = results.filter(r => r.valid);
     const invalidCount = results.length - validResults.length;
-    $('valid-count').textContent = validResults.length;
+    animateNumber($('valid-count'), validResults.length);
     if (invalidCount > 0) {
       $('url-invalid').style.display = '';
-      $('url-invalid-count').textContent = invalidCount;
+      animateNumber($('url-invalid-count'), invalidCount);
     } else {
       $('url-invalid').style.display = 'none';
     }
 
     lastResults = results;
 
-    // Render output
     const list = $('output-list');
     if (rawList.length === 0) {
       list.innerHTML = '<div class="output-empty">Paste URLs and set parameters above to generate tagged links.</div>';
       $('copy-all').disabled = true;
       $('download-csv').disabled = true;
+      $('download-xlsx').disabled = true;
       return;
     }
     if (params.length === 0) {
       list.innerHTML = '<div class="output-empty">Set at least one campaign parameter (source, medium, campaign) to tag your URLs.</div>';
       $('copy-all').disabled = true;
       $('download-csv').disabled = true;
+      $('download-xlsx').disabled = true;
       return;
     }
 
@@ -904,7 +1088,16 @@ https://myservier.co/article/..."></textarea>
       </div>`;
     }).join('');
 
-    // Attach row copy handlers
+    // Animate rows in
+    gsap.to('.output-row', {
+      opacity: 1,
+      y: 0,
+      duration: 0.4,
+      stagger: 0.03,
+      ease: 'power2.out'
+    });
+
+    // Row copy handlers
     list.querySelectorAll('.row-copy').forEach(btn => {
       btn.addEventListener('click', async () => {
         const idx = parseInt(btn.dataset.idx);
@@ -914,18 +1107,18 @@ https://myservier.co/article/..."></textarea>
         const orig = btn.textContent;
         btn.textContent = '✓ Copied';
         btn.classList.add('success');
+        gsap.fromTo(btn, { scale: 0.92 }, { scale: 1, duration: 0.35, ease: 'back.out(2)' });
         setTimeout(() => { btn.textContent = orig; btn.classList.remove('success'); }, 1500);
       });
     });
 
     $('copy-all').disabled = validResults.length === 0;
     $('download-csv').disabled = validResults.length === 0;
+    $('download-xlsx').disabled = validResults.length === 0;
   }
 
   async function copyText(text) {
-    try {
-      await navigator.clipboard.writeText(text);
-    } catch (e) {
+    try { await navigator.clipboard.writeText(text); } catch (e) {
       const ta = document.createElement('textarea');
       ta.value = text; document.body.appendChild(ta); ta.select();
       document.execCommand('copy'); document.body.removeChild(ta);
@@ -938,50 +1131,89 @@ https://myservier.co/article/..."></textarea>
     if (!validUrls.length) return;
     await copyText(validUrls.join('\n'));
     const btn = $('copy-all');
-    const orig = btn.textContent;
-    btn.textContent = '✓ Copied ' + validUrls.length;
+    btn.innerHTML = '✓ Copied ' + validUrls.length;
     btn.classList.add('success');
-    setTimeout(() => { btn.textContent = orig; btn.classList.remove('success'); }, 1800);
+    gsap.fromTo(btn, { scale: 0.95 }, { scale: 1, duration: 0.4, ease: 'back.out(2)' });
+    setTimeout(() => {
+      btn.innerHTML = '<svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg> Copy all';
+      btn.classList.remove('success');
+    }, 1800);
   });
+
+  function getExportData() {
+    const { source, medium, campaign, content, term } = lastParams;
+    const validResults = lastResults.filter(r => r.valid);
+    const yyyymmdd = new Date().toISOString().slice(0, 10);
+    const filename = `utm_urls_${campaign || 'export'}_${yyyymmdd}`;
+    const rows = validResults.map((r, i) => ({
+      'Index': i + 1,
+      'Original URL': r.base + r.hash,
+      'Tagged URL': r.url,
+      'utm_source': source,
+      'utm_medium': medium,
+      'utm_campaign': campaign,
+      'utm_content': content,
+      'utm_term': term
+    }));
+    return { rows, filename, validResults };
+  }
 
   // CSV download
   $('download-csv').addEventListener('click', () => {
-    const source = sanitize($('source').value);
-    const medium = sanitize($('medium').value);
-    const campaign = sanitize($('campaign').value);
-    const content = sanitize($('content').value);
-    const term = sanitize($('term').value);
-
-    const validResults = lastResults.filter(r => r.valid);
+    const { rows, filename, validResults } = getExportData();
     if (!validResults.length) return;
-
-    const headers = ['index', 'original_url', 'tagged_url', 'utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term'];
+    const headers = Object.keys(rows[0]);
     const csvEscape = (s) => {
       const str = String(s ?? '');
       return /[",\n]/.test(str) ? '"' + str.replace(/"/g, '""') + '"' : str;
     };
-    const rows = validResults.map((r, i) => {
-      const original = r.base + r.hash;
-      return [i + 1, original, r.url, source, medium, campaign, content, term].map(csvEscape).join(',');
-    });
-    const csv = headers.join(',') + '\n' + rows.join('\n');
-
-    const now = new Date();
-    const yyyymmdd = now.toISOString().slice(0, 10);
-    const filename = `utm_urls_${campaign || 'export'}_${yyyymmdd}.csv`;
-
+    const csv = headers.join(',') + '\n' + rows.map(r => headers.map(h => csvEscape(r[h])).join(',')).join('\n');
     const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
     const url = URL.createObjectURL(blob);
     const a = document.createElement('a');
-    a.href = url; a.download = filename;
+    a.href = url; a.download = filename + '.csv';
     document.body.appendChild(a); a.click();
     document.body.removeChild(a); URL.revokeObjectURL(url);
-
-    const btn = $('download-csv');
-    const orig = btn.textContent;
-    btn.textContent = '✓ Downloaded';
-    setTimeout(() => btn.textContent = orig, 1800);
+    flashBtn($('download-csv'), 'CSV');
   });
+
+  // XLSX download
+  $('download-xlsx').addEventListener('click', () => {
+    const { rows, filename, validResults } = getExportData();
+    if (!validResults.length) return;
+
+    const ws = XLSX.utils.json_to_sheet(rows);
+    ws['!cols'] = [
+      { wch: 7 },   // Index
+      { wch: 55 },  // Original URL
+      { wch: 85 },  // Tagged URL
+      { wch: 18 },  // utm_source
+      { wch: 16 },  // utm_medium
+      { wch: 32 },  // utm_campaign
+      { wch: 18 },  // utm_content
+      { wch: 16 }   // utm_term
+    ];
+
+    // Freeze header row
+    ws['!freeze'] = { xSplit: 0, ySplit: 1 };
+
+    const wb = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(wb, ws, 'UTM URLs');
+    XLSX.writeFile(wb, filename + '.xlsx');
+    flashBtn($('download-xlsx'), 'Excel');
+  });
+
+  function flashBtn(btn, originalLabel) {
+    const iconMap = {
+      'CSV': '<svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>',
+      'Excel': '<svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="8" y1="13" x2="16" y2="13"/><line x1="8" y1="17" x2="16" y2="17"/></svg>'
+    };
+    btn.innerHTML = '✓ Downloaded';
+    gsap.fromTo(btn, { scale: 0.95 }, { scale: 1, duration: 0.4, ease: 'back.out(2)' });
+    setTimeout(() => {
+      btn.innerHTML = iconMap[originalLabel] + ' ' + originalLabel;
+    }, 1800);
+  }
 
   // Decode
   $('decode-btn').addEventListener('click', () => {
@@ -1004,8 +1236,9 @@ https://myservier.co/article/..."></textarea>
       });
       update();
       $('decode-input').value = '';
+      gsap.fromTo('.output-card', { y: -5 }, { y: 0, duration: 0.5, ease: 'power3.out' });
     } catch (e) {
-      alert('Not a valid URL');
+      gsap.fromTo($('decode-input'), { x: -8 }, { x: 0, duration: 0.4, ease: 'elastic.out(1, 0.4)' });
     }
   });
 
