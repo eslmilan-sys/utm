@@ -23,7 +23,7 @@
      "Planta eléctrica",
      "Seguridad 24 h"
     ],
-    "libres": 3,
+    "libres": 2,
     "desde": 430,
     "esperan": 4
    }
@@ -128,7 +128,7 @@
      "Planta eléctrica",
      "Seguridad 24 h"
     ],
-    "libres": 2,
+    "libres": 1,
     "desde": 650,
     "esperan": 1
    }
@@ -281,7 +281,7 @@
      "Gimnasio",
      "Seguridad 24 h"
     ],
-    "libres": 2,
+    "libres": 1,
     "desde": 610,
     "esperan": 3
    }
@@ -363,7 +363,7 @@
      "Área social",
      "Seguridad 24 h"
     ],
-    "libres": 2,
+    "libres": 1,
     "desde": 620,
     "esperan": 3
    }
@@ -392,8 +392,8 @@
      "Planta eléctrica",
      "Seguridad 24 h"
     ],
-    "libres": 2,
-    "desde": 1150,
+    "libres": 0,
+    "desde": null,
     "esperan": 2
    }
   }

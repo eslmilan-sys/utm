@@ -3,19 +3,19 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Habitaciones y apartamentos en alquiler en Panamá | Nido</title>
-<meta name="description" content="Alquila una habitación con roomies compatibles o un apartamento verificado en Ciudad de Panamá. Visita acompañada, contrato y depósito en el MIVIOT.">
+<title>Habitaciones con roomies en Ciudad de Panamá | Nido</title>
+<meta name="description" content="Alquila una habitación con roomies compatibles en Ciudad de Panamá: visita acompañada, contrato y depósito en el MIVIOT. ¿Propietario? Lo alquilamos y lo cuidamos.">
 <meta name="theme-color" content="#FFF6F1">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="es_PA">
 <meta property="og:site_name" content="Nido">
 <meta property="og:title" content="Encuentra dónde vivir en Panamá. Y con quién.">
-<meta property="og:description" content="Habitaciones con roomies compatibles y apartamentos verificados en Ciudad de Panamá. Tú eliges; Nido se ocupa de la visita, el contrato y el depósito.">
+<meta property="og:description" content="Habitaciones con roomies compatibles en Ciudad de Panamá. Tú eliges; Nido se ocupa de la visita, el contrato y el depósito.">
 <meta property="og:image" content="img/habitacion.jpg">
 <!-- En el sitio real: <link rel="canonical" href="https://[dominio]/"> y og:image con URL absoluta de 1200×630 -->
 <script type="application/ld+json">
 {"@context":"https://schema.org","@graph":[
- {"@type":"RealEstateAgent","name":"Nido","description":"Conserjería digital de alquileres en Ciudad de Panamá: habitaciones con roomies compatibles, apartamentos verificados y gestión para propietarios.","areaServed":{"@type":"City","name":"Ciudad de Panamá"},"knowsLanguage":"es"},
+ {"@type":"RealEstateAgent","name":"Nido","description":"Conserjería digital de alquileres en Ciudad de Panamá: habitaciones con roomies compatibles, y alquiler y conserjería para propietarios.","areaServed":{"@type":"City","name":"Ciudad de Panamá"},"knowsLanguage":"es"},
  {"@type":"WebSite","name":"Nido","inLanguage":"es-PA"}
 ]}
 </script>
@@ -608,7 +608,7 @@ h1 em,h2 em,.h2 em{font-family:var(--serif);font-style:italic;font-weight:400;le
 .trust{color:var(--ink-2);--ckc:#fff}.trust svg{color:var(--brand)}
 .sbox.big{border:1px solid #F3E2D9;box-shadow:0 24px 48px -24px rgba(120,40,20,.30)}
 .aud{display:grid;gap:16px;grid-template-columns:minmax(0,1fr)}
-@container site (min-width:760px){.aud{grid-template-columns:repeat(3,minmax(0,1fr));gap:24px}}
+@container site (min-width:760px){.aud{grid-template-columns:repeat(2,minmax(0,1fr));gap:24px}}
 .acard,.bcard{position:relative;display:block;border:0;padding:0;overflow:hidden;cursor:pointer;text-align:left;color:#fff;background:#2B2420;border-radius:var(--r-lg)}
 .acard{height:320px}
 @container site (min-width:900px){.acard{height:440px;border-radius:var(--r-xl)}.bcard{border-radius:var(--r-xl)}}
@@ -842,11 +842,6 @@ body.placing #placeBtn{background:var(--plum);color:#fff}
 .kseg{display:inline-flex;flex:none;background:var(--surface-2);border-radius:999px;padding:3px;gap:2px}
 .kseg button{min-height:38px;padding:0 14px;border:0;border-radius:999px;background:none;font-weight:600;font-size:15px;color:var(--ink-2);cursor:pointer;white-space:nowrap}
 .kseg button[aria-pressed="true"]{background:var(--plum);color:#fff}
-.aptoshow{position:relative;border-radius:var(--r-xl);overflow:hidden;aspect-ratio:4/5;max-height:520px;align-self:stretch;box-shadow:var(--shadow)}
-.aptoshow img{width:100%;height:100%;object-fit:cover;display:block}
-.aptoshow .topb{left:16px;top:16px}
-.aptoshow .mini{position:absolute;left:16px;right:16px;bottom:16px;background:rgba(255,255,255,.95);border-radius:18px;padding:14px 16px;display:grid;gap:2px}
-.aptoshow .mini b{font-size:17px}.aptoshow .mini span{color:var(--muted);font-size:14px}
 @container site (min-width:600px){.grid3.g3{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @container site (min-width:1000px){.grid3.g3{grid-template-columns:repeat(3,minmax(0,1fr))}}
 .vlist{list-style:none;margin:0;padding:0;display:grid;gap:12px;grid-template-columns:minmax(0,1fr)}
@@ -890,11 +885,44 @@ body.placing #placeBtn{background:var(--plum);color:#fff}
 .wa{color:var(--muted);font-size:15px;display:flex;align-items:center;gap:4px;flex-wrap:wrap}
 .foot .lk button{background:none;border:0;padding:0;font:inherit;color:inherit;cursor:pointer;text-align:left}
 .foot .lk button:hover{color:var(--brand)}
+
+/* ===== v11: conserjería para propietarios ===== */
+.oform .osub{color:var(--muted);font-size:15px;margin:-6px 0 4px}
+@container site (min-width:1000px){.plans{grid-template-columns:repeat(3,minmax(0,1fr))}}
+.concier .cgrid{display:grid;gap:32px;align-items:center}
+@container site (min-width:900px){.concier .cgrid{grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:56px}}
+.concier h2 em{color:var(--brand)}
+.concier .sub{color:var(--ink-2);font-size:18px;line-height:28px;margin:16px 0 24px;max-width:56ch}
+.ondem{list-style:none;margin:0 0 16px;padding:0;display:grid;gap:10px;grid-template-columns:minmax(0,1fr)}
+@container site (min-width:600px){.ondem{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.ondem li{display:flex;gap:12px;align-items:center;border:1px solid var(--line);border-radius:16px;padding:12px 14px;font-size:15px;line-height:20px;font-weight:600}
+.ondem svg{width:22px;height:22px;color:var(--brand);flex:none}
+.cshow{position:relative;border-radius:var(--r-xl);overflow:hidden;min-height:420px;box-shadow:var(--shadow)}
+.cshow>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.report{position:absolute;left:16px;right:16px;bottom:16px;background:rgba(255,255,255,.97);border-radius:20px;padding:16px;display:grid;gap:10px;box-shadow:0 12px 32px rgba(31,26,23,.18)}
+@container site (min-width:600px){.report{left:auto;width:340px;right:24px;bottom:24px}}
+.report .rh{display:grid;gap:2px}.report .rh b{font-size:17px}.report .rh span{color:var(--muted);font-size:13px}
+.report .rr{display:grid;grid-template-columns:36px 1fr auto;gap:10px;align-items:center;font-size:14px;line-height:19px}
+.report .ri{width:36px;height:36px;border-radius:11px;background:var(--surface-2);color:var(--plum);display:grid;place-items:center}
+.report .ri svg{width:20px;height:20px}.report .rd{color:var(--muted);font-size:13px;white-space:nowrap}
+.report .rf{display:flex;justify-content:space-between;align-items:center;border-top:1px solid var(--line);padding-top:10px;font-size:13px;color:var(--muted)}
+.report .ok{display:inline-flex;gap:6px;align-items:center;color:var(--green);font-weight:700}.report .ok svg{width:16px;height:16px}
+.cad{list-style:none;margin:40px 0 0;padding:0;display:grid;gap:12px;grid-template-columns:minmax(0,1fr)}
+@container site (min-width:600px){.cad{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@container site (min-width:1000px){.cad{grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}}
+.cad li{background:var(--surface-2);border-radius:var(--r-lg);padding:24px;display:grid;gap:8px;align-content:start}
+.cad .when{justify-self:start;background:var(--plum);color:#fff;border-radius:999px;padding:4px 10px;font-size:13px;font-weight:700}
+.cad .ai{width:48px;height:48px;border-radius:14px;background:#fff;color:var(--brand);display:grid;place-items:center;margin:6px 0}
+.cad .ai svg{width:26px;height:26px}.cad b{font-size:19px}.cad p{color:var(--ink-2);font-size:16px;line-height:24px}
+/* aire que sale del split: se anima solo si el usuario no pidió reducir el movimiento */
+.plan .pp b{font-size:28px;line-height:1.15}
+svg .air{stroke-dasharray:3 3;animation:airflow 1.4s linear infinite}
+@keyframes airflow{to{stroke-dashoffset:-12}}
 </style>
 
 
 <div class="review" role="region" aria-label="Revisión del prototipo">
-  <div class="t"><b>Nido</b> · diseño del sitio · v10 · Balboa, TOP, apartamentos y propietarios</div>
+  <div class="t"><b>Nido</b> · diseño del sitio · v11 · roomies y propietarios con conserjería</div>
   <div class="ctl">
     <div class="seg devsel" role="group" aria-label="Tamaño de pantalla">
       <button type="button" data-dev="desktop" aria-pressed="true">Ordenador</button>
@@ -911,7 +939,14 @@ body.placing #placeBtn{background:var(--plum);color:#fff}
 </div>
 <aside class="notes" id="notes" hidden aria-label="Notes de design">
   <button type="button" class="icon-btn x" id="notesX" aria-label="Fermer les notes"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
-  <h2>v10 : Avenida Balboa, TOP, Apartamentos et Propietarios</h2>
+  <h2>v11 : roomies + propriétaires avec conciergerie</h2>
+  <ul>
+    <li>Le site ne parle plus que de deux publics : les roomies qui cherchent une chambre, et les propriétaires. Les apartamentos entiers, leur page et le sélecteur Todo / Habitaciones / Apartamentos sont retirés.</li>
+    <li>Page Propietarios : « ¿Tiene un apartamento? Publíquelo y nosotros hacemos el resto. » Le formulaire devient « Publique su apartamento », avec « Por habitaciones » choisi par défaut.</li>
+    <li>Nouvelle section Conserjería Nido : un rythme fixe (inspection chaque mois, aires acondicionados tous les 3 mois, fumigation tous les 6 mois, nettoyage entre deux roomies), des services à la demande (plomberie, électricité, clés, cuota du PH, luz, agua, trámites, livraisons) et un exemple de rapport mensuel avec photos.</li>
+    <li>Trois formules : Encontrar roomies (demi-mois par chambre, une fois), Gestión completa (10 % par mois, conciergerie incluse), Solo conserjería (dès 49 $ par mois, sans engagement). Prix d'exemple à valider.</li>
+  </ul>
+  <h2 style="margin-top:32px">v10 : Avenida Balboa, TOP, Apartamentos et Propietarios</h2>
   <ul>
     <li>Nouveau quartier Bella Vista, avec 3 PH sur l'Avenida Balboa : Yacht Club, Bahía Balboa et Mirador de la Bahía.</li>
     <li>6 apartamentos entiers s'ajoutent aux chambres. Dans Buscar, un sélecteur Todo / Habitaciones / Apartamentos ; « Habitaciones » dans le menu n'affiche que les chambres.</li>
@@ -1090,12 +1125,6 @@ body.placing #placeBtn{background:var(--plum);color:#fff}
   // casa: horario 0=temprano 1=normal 2=tarde; orden 0=muy 1=ordenada 2=relajada; visitas 0=casi nunca 1=a veces 2=seguido; pet = alguien tiene mascota; petsOk
   var ROOMS=[
     {id:'r17',ph:'bahia-balboa',top:true,price:620,bath:'privado',furn:true,av:'2026-10-15',min:6,people:[['Lucía',27,'arquitecta','Corre por la Cinta Costera al amanecer.']],h:{ho:0,or:1,vi:1,pet:false,petsOk:true},inc:'Luz, agua, internet'},
-    {id:'a1',ph:'bahia-balboa',top:true,apto:{rec:2,m2:95,ban:2},price:1650,bath:'privado',furn:true,av:'2026-10-20',min:12,people:[],h:{ho:1,or:1,vi:1,pet:false,petsOk:true},inc:'Agua, gas y mantenimiento del PH'},
-    {id:'a2',ph:'mirador-bahia',apto:{rec:1,m2:62,ban:1},price:1150,bath:'privado',furn:true,av:'2026-10-05',min:6,people:[],h:{ho:1,or:1,vi:1,pet:false,petsOk:true},inc:'Agua, internet'},
-    {id:'a3',ph:'mirador-bahia',top:true,apto:{rec:3,m2:140,ban:3},price:2300,bath:'privado',furn:false,av:'2026-11-15',min:12,people:[],h:{ho:1,or:1,vi:1,pet:false,petsOk:true},inc:'Agua y mantenimiento del PH'},
-    {id:'a4',ph:'vista-cangrejo',apto:{rec:1,m2:55,ban:1},price:950,bath:'privado',furn:true,av:'2026-10-05',min:6,people:[],h:{ho:1,or:1,vi:1,pet:false,petsOk:true},inc:'Agua, internet'},
-    {id:'a5',ph:'samuel-lewis',apto:{rec:2,m2:88,ban:2},price:1350,bath:'privado',furn:true,av:'2026-11-01',min:12,people:[],h:{ho:1,or:1,vi:1,pet:false,petsOk:true},inc:'Agua y mantenimiento del PH'},
-    {id:'a6',ph:'parque-omar',apto:{rec:2,m2:90,ban:2},price:1200,bath:'privado',furn:false,av:'2026-12-01',min:12,people:[],h:{ho:1,or:1,vi:1,pet:false,petsOk:true},inc:'Agua'},
     {id:'r15',ph:'yacht-club',top:true,price:690,bath:'privado',furn:true,av:'2026-10-05',min:6,people:[['Gabriela',28,'abogada','Nada en la piscina antes del trabajo.'],['Marco',30,'ingeniero naval','Sale a navegar los domingos.']],h:{ho:0,or:0,vi:1,pet:false,petsOk:false},inc:'Luz, agua, internet, limpieza'},
     {id:'r16',ph:'yacht-club',price:580,bath:'compartido',furn:true,av:'2026-11-01',min:6,people:[['Gabriela',28,'abogada','Nada en la piscina antes del trabajo.'],['Marco',30,'ingeniero naval','Sale a navegar los domingos.']],h:{ho:0,or:0,vi:1,pet:false,petsOk:false},inc:'Agua, internet'},
     {id:'r1',ph:'vista-cangrejo',price:480,bath:'privado',furn:true,av:'2026-11-01',min:6,people:[['Ana',29,'contadora','Madruga y trabaja en oficina.'],['Luis',31,'desarrollador','Trabaja desde casa 3 días; cocina mucho.']],h:{ho:0,or:1,vi:1,pet:false,petsOk:false},inc:'Luz, agua, internet'},
@@ -1243,12 +1272,12 @@ body.placing #placeBtn{background:var(--plum);color:#fff}
     var cur=S.route,blue=(cur==='inicio'||cur==='ph');
     return '<header class="hdr'+(blue?' blue':'')+'"><div class="in"><button type="button" class="logo" data-go="inicio" aria-label="Nido, ir al inicio"><img class="wm" src="img/nido-logo.png" alt="" width="81" height="31"></button>'+
       (cur!=='inicio'?'<div class="hsearch">'+sbox('q-top','compact','Busca un PH, una calle o un barrio')+'</div>':'')+
-      '<nav aria-label="Principal"><button type="button" data-go="buscar" data-kind="hab"'+(cur==='buscar'?' aria-current="page"':'')+'>Habitaciones</button><button type="button" data-go="apartamentos"'+(cur==='apartamentos'?' aria-current="page"':'')+'>Apartamentos</button><button type="button" data-go="propietarios"'+(cur==='propietarios'?' aria-current="page"':'')+'>Propietarios</button><button type="button" data-act="soon" data-what="Cómo funciona">Cómo funciona</button></nav>'+
+      '<nav aria-label="Principal"><button type="button" data-go="buscar" data-kind="hab"'+(cur==='buscar'?' aria-current="page"':'')+'>Habitaciones</button><button type="button" data-go="propietarios"'+(cur==='propietarios'?' aria-current="page"':'')+'>Propietarios</button><button type="button" data-act="soon" data-what="Cómo funciona">Cómo funciona</button></nav>'+
       '<div class="right"><button type="button" class="cta" data-act="profile">'+(S.profile?'Mi compatibilidad':'Unirme')+'</button><button type="button" class="icon-btn menu" aria-label="Abrir el menú" data-act="soon" data-what="Menú">'+I.menu+'</button></div></div></header>';
   }
   function footer(){
     return '<footer class="foot"><div class="in"><div class="fcols"><div class="about"><span class="logo" style="cursor:default"><img class="wm" src="img/nido-logo.png" alt="Nido" width="81" height="31"></span><p>Conserjería digital de alquileres en Ciudad de Panamá: habitaciones con roomies compatibles, apartamentos verificados y gestión completa para propietarios. Intermediación a través de corredor con licencia JTBR. Precios sin ITBMS.</p></div>'+
-      '<nav class="lk" aria-label="Para vivir"><b>Para vivir</b><span>Habitaciones</span><button type="button" data-go="apartamentos">Apartamentos</button><span>Cómo funciona</span><span>Preguntas</span></nav><nav class="lk" aria-label="Propietarios"><b>Propietarios</b><button type="button" data-go="propietarios">Alquilar mi apartamento</button><span>Conserjería</span><span>Guías</span></nav><nav class="lk" aria-label="Nido"><b>Nido</b><span>Quiénes somos</span><span>hola@nido.com.pa</span><span>Términos</span><span>Privacidad</span></nav></div>'+
+      '<nav class="lk" aria-label="Para vivir"><b>Para vivir</b><span>Habitaciones</span><span>Cómo funciona</span><span>Preguntas</span></nav><nav class="lk" aria-label="Propietarios"><b>Propietarios</b><button type="button" data-go="propietarios">Publicar mi apartamento</button><button type="button" data-go="propietarios">Conserjería</button><span>Guías</span></nav><nav class="lk" aria-label="Nido"><b>Nido</b><span>Quiénes somos</span><span>hola@nido.com.pa</span><span>Términos</span><span>Privacidad</span></nav></div>'+
       '<p class="base">© 2026 Nido · Hecho en Panamá</p></div></footer>';
   }
   function ring(p,sz){return '<span class="ring" style="--s:'+(sz||56)+'px" role="img" aria-label="'+p+' % de compatibilidad"><svg viewBox="0 0 36 36" aria-hidden="true"><circle class="rt" cx="18" cy="18" r="15.9"/><circle class="rv" cx="18" cy="18" r="15.9" pathLength="100" stroke-dasharray="'+p+' 100"/></svg><b>'+p+'%</b></span>';}
@@ -1594,12 +1623,12 @@ body.placing #placeBtn{background:var(--plum);color:#fff}
     return header()+'<main>'+
     '<section class="hero"><div class="in grid"><div class="copy">'+
     '<h1>Encuentra dónde vivir en Panamá. <em>Y con quién.</em></h1>'+
-    '<p class="lead">Nido es tu conserjería digital de alquileres en Ciudad de Panamá. Habitaciones con roomies compatibles y apartamentos verificados: tú eliges, nosotros nos ocupamos de la visita, el contrato y el depósito.</p>'+
+    '<p class="lead">Nido es tu conserjería digital de alquileres en Ciudad de Panamá. Habitaciones con roomies compatibles: tú eliges, nosotros nos ocupamos de la visita, el contrato y el depósito.</p>'+
     sbox('q-hero','big','Busca un PH, una calle o un barrio')+
     '<div class="quick" aria-label="Búsquedas rápidas">'+BARRIOS.map(function(b){return '<button type="button" class="chip" data-pick="barrio" data-id="'+b.id+'">'+I.area+esc(b.name)+'</button>';}).join('')+'<button type="button" class="chip" data-pick="lugar" data-id="m-via-argentina">'+I.metro+'Cerca del Metro</button></div>'+
     '<div class="trust"><span>'+I.checkc+'Identidad verificada</span><span>'+I.checkc+'Visitas acompañadas</span><span>'+I.checkc+'Depósito registrado en el MIVIOT</span></div></div>'+
     '<div class="stagecol">'+heroStage()+'</div></div></section>'+
-    '<section class="sec"><div class="in"><div class="head"><div><h2>¿Qué estás <em>buscando</em>?</h2></div></div><div class="aud">'+[['buscar',null,'habitacion','Roomies','Busco una habitación','Vive con personas compatibles. Desde $380 al mes.'],['apartamentos',null,'cocina','Alquileres','Busco un apartamento','Apartamentos completos, verificados y con visita acompañada.'],['propietarios',null,'sala','Propietarios','Tengo un apartamento','Lo alquilamos por usted: fotos, visitas, contrato y depósito.']].map(function(c){return '<button type="button" class="acard reveal" '+(c[0]?'data-go="'+c[0]+'"':'data-act="soon" data-what="'+c[1]+'"')+'>'+pimg(c[2])+'<span class="tag">'+c[3]+'</span><span class="t"><span class="h">'+c[4]+'</span><span class="s">'+c[5]+'</span></span><span class="arr">'+ARR+'</span></button>';}).join('')+'</div></div></section>'+
+    '<section class="sec"><div class="in"><div class="head"><div><h2>¿Qué estás <em>buscando</em>?</h2></div></div><div class="aud">'+[['buscar',null,'habitacion','Roomies','Busco una habitación','Vive con personas compatibles. Desde $380 al mes.'],['propietarios',null,'sala','Propietarios','Tengo un apartamento','Publíquelo: lo llenamos de roomies verificados y lo cuidamos cada mes.']].map(function(c){return '<button type="button" class="acard reveal" '+(c[0]?'data-go="'+c[0]+'"':'data-act="soon" data-what="'+c[1]+'"')+'>'+pimg(c[2])+'<span class="tag">'+c[3]+'</span><span class="t"><span class="h">'+c[4]+'</span><span class="s">'+c[5]+'</span></span><span class="arr">'+ARR+'</span></button>';}).join('')+'</div></div></section>'+
     
     '<section class="sec"><div class="in"><div class="head"><div><h2>¿En qué barrio quieres <em>vivir</em>?</h2></div><button type="button" class="btn text" data-go="buscar">Ver el mapa'+I.chev+'</button></div>'+
     '<div class="bcards">'+BARRIOS.map(bcard).join('')+'</div>'+
@@ -1607,7 +1636,7 @@ body.placing #placeBtn{background:var(--plum);color:#fff}
     '<section class="sec"><div class="in"><div class="head"><div><h2>Recién verificadas, <em>para visitar pronto</em></h2></div><button type="button" class="btn text" data-go="buscar">Ver las '+ROOMS.length+' en el mapa'+I.chev+'</button></div><div class="rail">'+recent.map(function(r){return rcard(r);}).join('')+'</div><p class="cap" style="margin-top:12px">Habitaciones de ejemplo.</p></div></section>'+
     '<section class="sec"><div class="in"><div class="head"><div><h2>Primero las personas, <em>después la habitación.</em></h2></div></div><div class="how">'+
     [[1,I.howq,'Cuéntanos cómo vives','4 preguntas para ver tu compatibilidad; el perfil completo toma 3 minutos.'],[2,I.howc,'Conoce a tus matches','Si los dos aceptan, se abre un chat dentro de Nido, sin compartir tu número.'],[3,I.howh,'Visiten y firmen juntos','Te acompañamos a la visita y registramos el depósito en el MIVIOT.']].map(function(h){return '<div class="hcard reveal"><div class="top"><span class="n">'+h[0]+'</span><span class="ic">'+h[1]+'</span></div><h3>'+h[2]+'</h3><p>'+h[3]+'</p></div>';}).join('')+'</div></div></section>'+
-    '<section class="sec"><div class="in"><div class="dblock"><div><h2>¿Es propietario? Su apartamento vacío <em>le cuesta</em> cada mes.</h2><p class="sub">Nos ocupamos de todo: fotos, anuncio, visitas, inquilinos verificados, contrato y depósito registrado. Usted no paga nada hasta la firma.</p><button type="button" class="btn text" data-go="propietarios">Ver cómo funciona para propietarios'+I.chev+'</button></div>'+calcHTML()+'</div></div></section>'+
+    '<section class="sec"><div class="in"><div class="dblock"><div><h2>¿Es propietario? Su apartamento vacío <em>le cuesta</em> cada mes.</h2><p class="sub">Publíquelo en Nido: lo llenamos de roomies verificados y lo cuidamos cada mes, del aire acondicionado a la cuota del PH. Usted no paga nada hasta la firma.</p><button type="button" class="btn text" data-go="propietarios">Publicar mi apartamento'+I.chev+'</button></div>'+calcHTML()+'</div></div></section>'+
     '<section class="sec"><div class="in faq"><h2 class="h2">Preguntas frecuentes</h2><div class="qs">'+faq.map(function(q,i){return '<details'+(i===0?' open':'')+'><summary>'+q[0]+I.plus+'</summary><p>'+q[1]+'</p></details>';}).join('')+'</div></div></section>'+
     '<section class="sec"><div class="in"><div class="ctablock"><h2>¿Buscamos tu <em>nido</em>?</h2><p>Empieza por un PH, una calle o una estación de Metro.</p>'+sbox('q-cta','big','Busca un PH, una calle o un barrio')+'</div></div></section>'+
     '</main>'+footer();
@@ -1616,7 +1645,6 @@ body.placing #placeBtn{background:var(--plum);color:#fff}
     var f=S.f,n=activeCount();
     function b(k,label,on){return '<button type="button" class="fchip desk" data-tog="'+k+'" aria-pressed="'+(on?'true':'false')+'">'+label+'</button>';}
     return '<div class="fbar"><div class="in" role="toolbar" aria-label="Filtros">'+
-      '<div class="kseg" role="group" aria-label="Tipo de anuncio">'+[['all','Todo'],['hab','Habitaciones'],['apto','Apartamentos']].map(function(k){return '<button type="button" data-kind="'+k[0]+'" aria-pressed="'+(f.kind===k[0])+'">'+k[1]+'</button>';}).join('')+'</div>'+
       '<button type="button" class="fchip mob'+(n?' on':'')+'" data-act="filters">'+I.sliders+'Filtros'+(n?' ('+n+')':'')+'</button>'+
       '<button type="button" class="fchip desk'+(f.max<DEF_F.max?' on':'')+'" data-act="pop-price" aria-haspopup="dialog">'+(f.max<DEF_F.max?'Hasta '+money(f.max):'Precio')+I.chevdown+'</button>'+
       b('pool','Piscina',f.pool)+b('gym','Gimnasio',f.gym)+b('bath','Baño privado',f.bath)+b('furn','Amoblada',f.furn)+b('pets','Acepta mascotas',f.pets)+
@@ -1710,46 +1738,49 @@ body.placing #placeBtn{background:var(--plum);color:#fff}
   }
 
 
-  // ---------- página: Apartamentos ----------
-  function pageAptos(){
-    var ap=ROOMS.filter(function(r){return r.apto;}).sort(function(a,b){if(!!a.top!==!!b.top)return a.top?-1:1;return a.price-b.price;});
-    var min=Math.min.apply(null,ap.map(function(r){return r.price;}));
-    var bar=BARRIOS.map(function(b){var n=ap.filter(function(r){return phById[r.ph].b===b.id;}).length;return n?'<button type="button" class="chip" data-pick="barrio" data-id="'+b.id+'" data-kind="apto">'+I.area+esc(b.name)+' · '+n+'</button>':'';}).join('');
-    var ver=[[I.checkc,'Lo visitamos antes que tú','Medimos, probamos el agua, la luz y el aire. Si algo no está, no se publica.'],[I.checkc,'Fotos nuestras, sin filtros','Lo que ves es lo que hay. Fotos tomadas por Nido en la visita.'],[I.checkc,'Propietario verificado','Identidad y título de propiedad revisados antes de publicar.'],[I.checkc,'Depósito en el MIVIOT','El contrato y el depósito quedan registrados. Te lo devuelven como dice la ley.']];
-    return header()+'<main><section class="bluehero aptohero"><div class="in">'+crumb(['<button type="button" data-go="inicio">Inicio</button>','<span>Apartamentos</span>'])+
-      '<div class="grid"><div><h1>Apartamentos en alquiler, <em>verificados</em> uno por uno.</h1><p class="lead">'+ap.length+' apartamentos enteros en El Cangrejo, Obarrio, San Francisco y la Avenida Balboa, desde '+money(min)+' al mes. Visita acompañada, contrato y depósito registrados.</p>'+
-      sbox('q-apto','big','Busca un PH, una calle o un barrio')+'<div class="quick" aria-label="Apartamentos por barrio">'+bar+'</div></div>'+
-      '<div class="aptoshow">'+pimg('torres','Torres frente a la Bahía de Panamá, foto de ejemplo')+'<span class="topb">TOP</span><div class="kv mini"><b>'+esc(phById['mirador-bahia'].name)+'</b><span>3 recámaras · 140 m² · vista al mar</span></div></div></div></div></section>'+
-      '<section class="sec"><div class="in"><div class="head"><div><h2>Destacados <em>esta semana</em></h2></div><button type="button" class="btn text" data-go="buscar" data-kind="apto">Ver los '+ap.length+' en el mapa'+I.chev+'</button></div>'+
-      '<div class="grid3 g3">'+ap.map(function(r){return rcard(r);}).join('')+'</div><p class="cap" style="margin-top:12px">Apartamentos de ejemplo.</p></div></section>'+
-      '<section class="sec"><div class="in"><div class="head"><div><h2>¿Qué quiere decir <em>verificado</em>?</h2></div></div><ul class="vlist">'+ver.map(function(v){return '<li>'+v[0]+'<div><b>'+v[1]+'</b><p>'+v[2]+'</p></div></li>';}).join('')+'</ul></div></section>'+
-      '<section class="sec"><div class="in"><div class="cta2"><div><h2>¿Prefieres compartir y pagar menos?</h2><p>Habitaciones con roomies compatibles desde $380 al mes.</p></div><button type="button" class="btn primary" data-go="buscar" data-kind="hab">Ver habitaciones</button></div></div></section></main>'+footer();
-  }
 
-  // ---------- página: Propietarios ----------
-  function nextBiz(){var d=new Date();d.setDate(d.getDate()+1);while(d.getDay()===0||d.getDay()===6)d.setDate(d.getDate()+1);var D=['domingo','lunes','martes','miércoles','jueves','viernes','sábado'],M=['enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre'];return D[d.getDay()]+' '+d.getDate()+' de '+M[d.getMonth()];}
+  // conserjería para propietarios: ritmo fijo + a pedido + un informe mensual de ejemplo
+  var CAIR='<rect x="3" y="4" width="18" height="8" rx="2"/><path d="M7 9h10"/><path class="air" d="M8 15c0 1.5 1 2 1 3.5M12 15c0 1.5 1 2 1 3.5M16 15c0 1.5 1 2 1 3.5"/>';
+  function conHTML(){
+    var ic=function(p){return '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">'+p+'</svg>';};
+    var cad=[['Cada mes','Inspección con fotos','Humedad, moho, filtraciones y electrodomésticos. Lo vemos antes de que sea caro.','<circle cx="11" cy="11" r="6"/><path d="m20 20-4.5-4.5"/>'],
+      ['Cada 3 meses','Aires acondicionados','Filtros, serpentín y desagüe limpios: menos luz, sin olor a humedad.',CAIR],
+      ['Cada 6 meses','Fumigación','Todo el apartamento, coordinada con la administración del PH.','<path d="M9 3h4v4H9z"/><path d="M8 7h6l1 4v10H7V11z"/><path d="M17 4h1M19 6h1M17 8h1"/>'],
+      ['Entre roomies','Limpieza y entrega','Limpieza profunda, retoques de pintura e inventario con fotos.','<path d="M12 3v4M12 17v4M3 12h4M17 12h4M6 6l2.5 2.5M15.5 15.5 18 18M6 18l2.5-2.5M15.5 8.5 18 6"/>']];
+    var dem=[['Plomería y electricidad','<path d="M13 2 4 14h7l-1 8 9-12h-7z"/>'],['Cerrajería y copias de llaves','<circle cx="8" cy="15" r="4"/><path d="m10.8 12.2 8.2-8.2M16 7l2 2M18 5l2 2"/>'],['Cuota del PH, luz, agua e internet al día','<rect x="3" y="6" width="18" height="12" rx="2"/><path d="M3 10h18"/>'],['Trámites con la administración del PH','<path d="M5 21V4h10v17M15 9h4v12M8 8h2M8 12h2M8 16h2"/>'],['Recibir técnicos, compras y entregas','<path d="M3 7l9-4 9 4v10l-9 4-9-4z"/><path d="M3 7l9 4 9-4M12 11v10"/>'],['Reparaciones de electrodomésticos','<rect x="5" y="3" width="14" height="18" rx="2"/><path d="M5 9h14M9 6h1"/>']];
+    var rows=[[CAIR,'3 aires limpiados','sáb 4'],['<circle cx="11" cy="11" r="6"/><path d="m20 20-4.5-4.5"/>','Inspección: sin humedad ni filtraciones','lun 13'],['<rect x="3" y="6" width="18" height="12" rx="2"/><path d="M3 10h18"/>','Cuota del PH y luz pagadas','mié 15']];
+    return '<section class="sec concier" aria-labelledby="con-t"><div class="in"><div class="cgrid"><div><h2 id="con-t">Conserjería Nido: cuidamos su apartamento <em>como si fuera nuestro.</em></h2>'+
+      '<p class="sub">Alquilado o vacío, viva usted en Panamá o fuera. Un solo contacto para todo lo que necesita el apartamento, con fotos y factura de cada visita.</p>'+
+      '<ul class="ondem" aria-label="También a pedido">'+dem.map(function(d){return '<li>'+ic(d[1])+'<span>'+d[0]+'</span></li>';}).join('')+'</ul>'+
+      '<p class="cap">Técnicos de confianza. Usted aprueba cada presupuesto antes de la reparación.</p></div>'+
+      '<div class="cshow">'+pimg('sala','Sala de un apartamento cuidado por Nido, foto de ejemplo')+
+      '<div class="report" role="img" aria-label="Ejemplo de informe mensual: 3 aires limpiados el sábado 4, inspección sin humedad el lunes 13, cuota del PH y luz pagadas el miércoles 15."><div class="rh"><b>Informe de octubre</b><span>PH Yacht Club · 12B</span></div>'+
+      rows.map(function(r){return '<div class="rr"><span class="ri">'+ic(r[0])+'</span><span class="rt">'+r[1]+'</span><span class="rd">'+r[2]+'</span></div>';}).join('')+
+      '<div class="rf"><span>8 fotos</span><span class="ok">'+I.check+'Todo en orden</span></div></div></div></div>'+
+      '<ol class="cad">'+cad.map(function(c){return '<li><span class="when">'+c[0]+'</span><span class="ai">'+ic(c[3])+'</span><b>'+c[1]+'</b><p>'+c[2]+'</p></li>';}).join('')+'</ol></div></section>';
+  }
   function ownerForm(){
     if(S.owner)return '<div class="oform done"><div class="ok" role="status">'+I.checkc+'<div><b>Listo, '+esc(S.owner.nm)+'.</b><br>Le llamamos al '+esc(S.owner.wa)+' antes del '+nextBiz()+' a las 6 p. m. Si prefiere otra hora, respóndanos por WhatsApp.</div></div><button type="button" class="btn text sm" data-act="ownerreset">Cambiar mis datos</button></div>';
-    return '<form class="oform" data-owner novalidate><h2>Le llamamos en menos de 24 h hábiles</h2>'+
+    return '<form class="oform" data-owner novalidate><h2>Publique su apartamento</h2><p class="osub">Le llamamos en menos de 24 h hábiles para verlo.</p>'+
       '<label class="field">Su nombre<input name="nm" autocomplete="given-name" required></label>'+
       '<label class="field">WhatsApp<input name="wa" inputmode="tel" autocomplete="tel-national" placeholder="6123 4567" required><span class="err" role="alert" hidden></span></label>'+
       '<label class="field">PH o dirección del apartamento<input name="ph" placeholder="Ej.: PH Yacht Club, Av. Balboa"></label>'+
-      '<fieldset class="q"><legend>¿Cómo lo quiere alquilar?</legend><div class="opts2"><button type="button" class="opt" data-otipo="entero" aria-pressed="'+(S.otipo!=='hab')+'">Entero</button><button type="button" class="opt" data-otipo="hab" aria-pressed="'+(S.otipo==='hab')+'">Por habitaciones</button></div></fieldset>'+
-      '<button type="submit" class="btn primary block">Pedir que me llamen</button><p class="fine">Sin compromiso. Usted no paga nada hasta la firma del contrato.</p></form>';
+      '<fieldset class="q"><legend>¿Cómo lo quiere alquilar?</legend><div class="opts2"><button type="button" class="opt" data-otipo="hab" aria-pressed="'+(S.otipo!=='entero')+'">Por habitaciones</button><button type="button" class="opt" data-otipo="entero" aria-pressed="'+(S.otipo==='entero')+'">Entero</button></div></fieldset>'+
+      '<button type="submit" class="btn primary block">Publicar mi apartamento</button><p class="fine">Sin compromiso. Usted no paga nada hasta la firma del contrato.</p></form>';
   }
   function pageOwners(){
     var wait=PH.slice().sort(function(a,b){return b.wait-a.wait;}).filter(function(p){return p.wait;}).slice(0,6),tw=PH.reduce(function(s,p){return s+p.wait;},0);
-    var serv=[['Fotos y anuncio','Fotos profesionales y un anuncio claro, publicado en Nido.','<path d="M4 8h3l2-3h6l2 3h3v11H4z"/><circle cx="12" cy="13" r="3.5"/>'],['Inquilinos verificados','Identidad, ingresos y referencias revisados antes de cada visita.','<path d="M12 3 5 6v5c0 4.5 3 8.3 7 10 4-1.7 7-5.5 7-10V6z"/><path d="m9 12 2 2 4-4"/>'],['Visitas por nosotros','Abrimos, enseñamos y le contamos quién vino. Usted no se mueve.','<path d="M4 11 12 4.5l8 6.5v9H4z"/><path d="M10 20.5v-5h4v5"/>'],['Contrato y depósito','Contrato revisado y depósito registrado en el MIVIOT, como dice la ley.','<rect x="5" y="3" width="14" height="18" rx="2"/><path d="M9 8h6M9 12h6M9 16h3"/>'],['Cobro cada mes','Recibe el alquiler a tiempo; nosotros hacemos el seguimiento.','<rect x="3" y="6" width="18" height="12" rx="2"/><circle cx="12" cy="12" r="2.5"/>'],['Conserjería','Mantenimiento, llaves, limpieza y entregas con un solo contacto.','<path d="M14.7 6.3a4 4 0 0 0-5.4 5.4L4 17v3h3l5.3-5.3a4 4 0 0 0 5.4-5.4l-2.5 2.5-2.4-.6-.6-2.4z"/>']];
-    var plans=[['Encontrar inquilino','Medio mes de alquiler','una sola vez, al firmar',['Fotos, anuncio y visitas','Inquilino verificado','Contrato y depósito en el MIVIOT'],false],['Gestión completa','10 % del alquiler','cada mes, solo si está alquilado',['Todo lo anterior','Cobro y seguimiento mensual','Conserjería y mantenimiento'],true]];
-    var fq=[['¿Cuánto tarda en alquilarse?','Nuestro objetivo es firmar en 14 días. Le decimos cada semana cuántas personas vieron y pidieron su apartamento.'],['¿Y si el inquilino deja de pagar?','En Gestión completa hacemos el seguimiento desde el primer día de retraso y le explicamos sus opciones.'],['¿Puedo alquilar por habitaciones?','Sí. Buscamos roomies compatibles para cada habitación y usted firma un solo contrato con Nido o uno por habitación.'],['¿Quién es Nido?','Una conserjería digital de alquileres en Ciudad de Panamá. Intermediamos a través de un corredor con licencia JTBR.']];
+    var serv=[['Fotos y anuncio','Fotos profesionales y un anuncio claro, publicado en Nido.','<path d="M4 8h3l2-3h6l2 3h3v11H4z"/><circle cx="12" cy="13" r="3.5"/>'],['Inquilinos verificados','Identidad, ingresos y referencias revisados antes de cada visita.','<path d="M12 3 5 6v5c0 4.5 3 8.3 7 10 4-1.7 7-5.5 7-10V6z"/><path d="m9 12 2 2 4-4"/>'],['Visitas por nosotros','Abrimos, enseñamos y le contamos quién vino. Usted no se mueve.','<path d="M4 11 12 4.5l8 6.5v9H4z"/><path d="M10 20.5v-5h4v5"/>'],['Contrato y depósito','Contrato revisado y depósito registrado en el MIVIOT, como dice la ley.','<rect x="5" y="3" width="14" height="18" rx="2"/><path d="M9 8h6M9 12h6M9 16h3"/>'],['Cobro cada mes','Recibe el alquiler a tiempo; nosotros hacemos el seguimiento.','<rect x="3" y="6" width="18" height="12" rx="2"/><circle cx="12" cy="12" r="2.5"/>'],['Roomies compatibles','Elegimos a cada roomie por horarios, orden y estilo de vida, para que la casa funcione.','<circle cx="9" cy="8" r="3.5"/><path d="M3 20c0-3.3 2.7-6 6-6s6 2.7 6 6"/><circle cx="17" cy="9" r="2.5"/><path d="M16 14.2c2.8.3 5 2.6 5 5.8"/>']];
+    var plans=[['Encontrar roomies','Medio mes de alquiler','una sola vez por habitación, al firmar',['Fotos, anuncio y visitas','Roomies verificados y compatibles','Contrato y depósito en el MIVIOT'],false,'Publicar mi apartamento'],['Gestión completa','10 % del alquiler','cada mes, solo si está alquilado',['Todo lo de «Encontrar roomies»','Cobro y seguimiento mensual','Conserjería incluida'],true,'Publicar mi apartamento'],['Solo conserjería','Desde $49 al mes','por apartamento, sin permanencia',['Inspección mensual con fotos','Aires cada 3 meses y fumigación','Pagos y trámites del PH'],false,'Quiero la conserjería']];
+    var fq=[['¿Cuánto tarda en alquilarse?','Nuestro objetivo es firmar en 14 días. Le decimos cada semana cuántas personas vieron y pidieron su apartamento.'],['¿Y si el inquilino deja de pagar?','En Gestión completa hacemos el seguimiento desde el primer día de retraso y le explicamos sus opciones.'],['¿Por qué alquilar por habitaciones?','Si un roomie se va, los demás siguen pagando mientras buscamos a otro: el apartamento casi nunca queda vacío del todo. Usted firma un contrato por habitación.'],['¿Qué incluye la conserjería?','Una inspección al mes con fotos, la limpieza de los aires acondicionados cada 3 meses, fumigación cada 6 meses y los pagos y trámites del PH. Reparaciones y repuestos se cobran aparte, siempre con su aprobación antes.'],['Vivo fuera de Panamá. ¿Pueden encargarse?','Sí, es para eso. Un solo contacto, todo en la app y un informe con fotos cada mes.'],['¿Quién es Nido?','Una conserjería digital de alquileres en Ciudad de Panamá. Intermediamos a través de un corredor con licencia JTBR.']];
     return header()+'<main><section class="bluehero ownhero"><div class="in">'+crumb(['<button type="button" data-go="inicio">Inicio</button>','<span>Propietarios</span>'])+
-      '<div class="grid"><div><h1>Su apartamento alquilado, <em>sin perder meses.</em></h1><p class="lead">Nos ocupamos de todo: fotos, anuncio, visitas, inquilinos verificados, contrato y depósito registrado en el MIVIOT. Usted no paga nada hasta la firma.</p>'+
-      '<div class="trust"><span>'+I.checkc+'Corredor con licencia JTBR</span><span>'+I.checkc+'Depósito en el MIVIOT</span><span>'+I.checkc+tw+' personas esperan hoy</span></div></div>'+
+      '<div class="grid"><div><h1>¿Tiene un apartamento? Publíquelo y <em>nosotros hacemos el resto.</em></h1><p class="lead">Lo llenamos de roomies verificados y compatibles, y lo cuidamos cada mes como una verdadera conserjería: del aire acondicionado a la cuota del PH. Usted no paga nada hasta la firma.</p>'+
+      '<div class="trust"><span>'+I.checkc+'Corredor con licencia JTBR</span><span>'+I.checkc+'Conserjería incluida</span><span>'+I.checkc+tw+' roomies esperan hoy</span></div></div>'+
       '<div id="oform">'+ownerForm()+'</div></div></div></section>'+
       '<section class="sec"><div class="in"><div class="head"><div><h2>Ya hay gente <em>esperando</em> en su PH</h2></div></div><ul class="waitlist">'+wait.map(function(p){return '<li><button type="button" data-go="ph" data-id="'+p.id+'"><b>'+esc(p.name)+'</b><span>'+esc(bById[p.b].name)+'</span><em>'+p.wait+(p.wait>1?' personas':' persona')+'</em></button></li>';}).join('')+'</ul><p class="cap" style="margin-top:12px">Datos de ejemplo. Personas que crearon una alerta «Avísame» en ese PH.</p></div></section>'+
       '<section class="sec"><div class="in"><div class="dblock"><div><h2>Su apartamento vacío <em>le cuesta</em> cada mes.</h2><p class="sub">Mueva el número de meses que suele quedar vacío y vea lo que pierde al año.</p></div>'+calcHTML()+'</div></div></section>'+
-      '<section class="sec"><div class="in"><div class="head"><div><h2>Lo que hacemos <em>por usted</em></h2></div></div><ul class="serv">'+serv.map(function(v){return '<li><span class="ai"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">'+v[2]+'</svg></span><b>'+v[0]+'</b><p>'+v[1]+'</p></li>';}).join('')+'</ul></div></section>'+
-      '<section class="sec"><div class="in"><div class="head"><div><h2>Dos formas de <em>trabajar juntos</em></h2></div></div><div class="plans">'+plans.map(function(p){return '<div class="plan'+(p[4]?' rec':'')+'">'+(p[4]?'<span class="topb inl">Recomendado</span>':'')+'<h3>'+p[0]+'</h3><p class="pp"><b>'+p[1]+'</b><span>'+p[2]+'</span></p><ul>'+p[3].map(function(x){return '<li>'+I.check+esc(x)+'</li>';}).join('')+'</ul><a class="btn '+(p[4]?'primary':'soft')+'" href="#oform" data-act="toform">Pedir que me llamen</a></div>';}).join('')+'</div><p class="cap" style="margin-top:12px">Precios de ejemplo, sin ITBMS.</p></div></section>'+
+      '<section class="sec"><div class="in"><div class="head"><div><h2>Lo que hacemos <em>por usted</em></h2></div></div><ul class="serv">'+serv.map(function(v){return '<li><span class="ai"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">'+v[2]+'</svg></span><b>'+v[0]+'</b><p>'+v[1]+'</p></li>';}).join('')+'</ul></div></section>'+conHTML()+
+      '<section class="sec"><div class="in"><div class="head"><div><h2>Tres formas de <em>trabajar juntos</em></h2></div></div><div class="plans">'+plans.map(function(p){return '<div class="plan'+(p[4]?' rec':'')+'">'+(p[4]?'<span class="topb inl">Recomendado</span>':'')+'<h3>'+p[0]+'</h3><p class="pp"><b>'+p[1]+'</b><span>'+p[2]+'</span></p><ul>'+p[3].map(function(x){return '<li>'+I.check+esc(x)+'</li>';}).join('')+'</ul><a class="btn '+(p[4]?'primary':'soft')+'" href="#oform" data-act="toform">'+p[5]+'</a></div>';}).join('')+'</div><p class="cap" style="margin-top:12px">Precios de ejemplo, sin ITBMS.</p></div></section>'+
       '<section class="sec"><div class="in faq"><h2 class="h2">Preguntas de propietarios</h2><div class="qs">'+fq.map(function(q,i){return '<details'+(i===0?' open':'')+'><summary>'+q[0]+I.plus+'</summary><p>'+q[1]+'</p></details>';}).join('')+'</div></div></section>'+
       '<section class="sec"><div class="in"><p class="wa">¿Prefiere escribirnos? <button type="button" class="btn text sm" data-act="soon" data-what="WhatsApp">WhatsApp +507 6000 0000</button></p></div></section></main>'+footer();
   }
@@ -1761,7 +1792,6 @@ body.placing #placeBtn{background:var(--plum);color:#fff}
     resetMaps();
     site.classList.toggle('mapmode',S.mapmode&&S.route==='buscar');
     if(S.route==='inicio')put(site,pageInicio());
-    else if(S.route==='apartamentos')put(site,pageAptos());
     else if(S.route==='propietarios')put(site,pageOwners());
     else if(S.route==='buscar'){put(site,pageBuscar());renderList();renderMapBuscar();}
     else if(S.route==='ph'){put(site,pagePH(S.arg));initMap('phmap',{phs:[phById[S.arg]],rooms:roomsOf(S.arg),static:true,sel:S.arg,pad:150});}
