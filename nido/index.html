@@ -948,6 +948,28 @@ dl.kv.cost>div.tot.in{border-top:2px solid var(--ink);margin-top:-1px}
 .incl p{margin:0;font-size:15px;line-height:22px;color:var(--ink-2)}
 .phone .s2 .dlab{margin-top:6px}
 @container site (max-width:520px){.cbox .ctit{font-size:18px;line-height:24px}.cbox .clev{font-size:12px;letter-spacing:.3px}}
+
+/* ===== v15: bloque propietarios en claro (pedido de Milan) ===== */
+.dblock{background:var(--brand-soft);color:var(--ink)}
+.dblock h2 em{color:var(--brand)}
+.dblock .sub{color:var(--ink-2)}
+.dblock .btn.text{color:var(--brand)}
+.dblock .btn.white{background:var(--surface);color:var(--ink);box-shadow:inset 0 0 0 1px var(--line)}
+.calc{background:var(--surface);box-shadow:0 1px 2px rgba(61,26,77,.06),0 18px 40px -20px rgba(61,26,77,.28)}
+.calc .row,.calc .line span:first-child{color:var(--muted)}
+.calc .line{color:var(--ink)}
+.calc hr{background:var(--line)}
+.segd{background:var(--surface-2);box-shadow:inset 0 0 0 1px var(--line-soft)}
+.segd button{color:var(--ink-2)}
+.segd button:hover{background:var(--surface-3)}
+.segd button[aria-checked="true"]{background:var(--plum);color:#fff}
+.tiles>div{background:var(--surface-2)}
+.tiles small{color:var(--muted)}
+.tiles b{color:var(--ink)}
+.tiles .acc{color:var(--brand)}
+.calc .fine{color:var(--muted)}
+.calc .line span:last-child{white-space:nowrap}
+:root[data-theme="dark"] .segd button[aria-checked="true"]{background:var(--brand);color:#1F1A17}
 /* ===== v12: portada. Un teléfono de verdad en un escenario con arco, techo y burbujas ===== */
 .demo{max-width:520px;gap:18px}
 .stage{position:relative;width:100%;max-width:500px;aspect-ratio:500/700;isolation:isolate}
@@ -1006,7 +1028,7 @@ dl.kv.cost>div.tot.in{border-top:2px solid var(--ink);margin-top:-1px}
 
 
 <div class="review" role="region" aria-label="Revisión del prototipo">
-  <div class="t"><b>Nido</b> · diseño del sitio · v14 · conserjería sin inspección mensual</div>
+  <div class="t"><b>Nido</b> · diseño del sitio · v15 · bloque propietarios en claro</div>
   <div class="ctl">
     <div class="seg devsel" role="group" aria-label="Tamaño de pantalla">
       <button type="button" data-dev="desktop" aria-pressed="true">Ordenador</button>
@@ -1023,7 +1045,11 @@ dl.kv.cost>div.tot.in{border-top:2px solid var(--ink);margin-top:-1px}
 </div>
 <aside class="notes" id="notes" hidden aria-label="Notes de design">
   <button type="button" class="icon-btn x" id="notesX" aria-label="Fermer les notes"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
-  <h2>v14 : une conciergerie qui n'entre pas chez les gens</h2>
+  <h2>v15 : bloc propriétaires en clair</h2>
+  <ul>
+    <li>Le bloc « ¿Es propietario? » et son calculateur passent du violet foncé à un fond pêche clair, avec une carte blanche pour le calculateur. Le mois choisi reste en violet, et le montant de Nido en framboise.</li>
+  </ul>
+  <h2 style="margin-top:32px">v14 : une conciergerie qui n'entre pas chez les gens</h2>
   <ul>
     <li>Plus d'inspection mensuelle. Le rythme devient : état des lieux à chaque changement de roomie, aires tous les 6 mois (créneau choisi par les roomies, prévenus 7 jours avant), fumigation selon le calendrier du PH, et un rapport mensuel envoyé au propriétaire sans visite.</li>
     <li>Phrase ajoutée : « solo entramos cuando hay un motivo, con cita, y nunca a una habitación ocupada sin permiso ». Formules, encadré « incluye » et FAQ mis à jour.</li>
