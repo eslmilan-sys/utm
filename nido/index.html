@@ -824,17 +824,21 @@ a,.btn.text{text-underline-offset:3px}
 .mperks{display:flex;flex-wrap:wrap;gap:6px}
 .mperks span{display:inline-flex;align-items:center;gap:5px;background:var(--brand-soft);color:var(--ink);font-size:13px;font-weight:700;padding:6px 10px 6px 7px;border-radius:999px}
 .mperks svg{width:16px;height:16px;color:var(--brand)}
+
+/* v9: modo "Placer les PH" */
+body.placing .mbm .pin{cursor:grab;outline:2px dashed var(--plum);outline-offset:3px}
+body.placing #placeBtn{background:var(--plum);color:#fff}
 </style>
 
 
 <div class="review" role="region" aria-label="Revisión del prototipo">
-  <div class="t"><b>Nido</b> · diseño del sitio · v8 · logo Nido y mapa Mapbox</div>
+  <div class="t"><b>Nido</b> · diseño del sitio · v9 · mapa inclinado</div>
   <div class="ctl">
     <div class="seg devsel" role="group" aria-label="Tamaño de pantalla">
       <button type="button" data-dev="desktop" aria-pressed="true">Ordenador</button>
       <button type="button" data-dev="mobile" aria-pressed="false">Móvil</button>
     </div>
-    <button type="button" class="btn soft sm" id="notesBtn" aria-expanded="false">Notes de design</button>
+    <button type="button" class="btn soft sm" id="placeBtn" aria-pressed="false">Placer les PH</button><button type="button" class="btn soft sm" id="notesBtn" aria-expanded="false">Notes de design</button>
   </div>
 </div>
 <div class="devwrap" id="devwrap">
@@ -845,7 +849,14 @@ a,.btn.text{text-underline-offset:3px}
 </div>
 <aside class="notes" id="notes" hidden aria-label="Notes de design">
   <button type="button" class="icon-btn x" id="notesX" aria-label="Fermer les notes"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
-  <h2>v8 : ton logo</h2>
+  <h2>v9 : carte inclinée et vrais emplacements</h2>
+  <ul>
+    <li>Buscar s'ouvre incliné à 45° : on voit les immeubles en relief, les prix restent à plat sur la carte.</li>
+    <li>PH San Francisco Gardens tombait dans Multiplaza : il est déplacé dans les rues résidentielles de San Francisco, au nord de la Vía Israel.</li>
+    <li>Les autres PH d'exemple sont placés à ~300 m près. Bouton « Placer les PH » en haut : sur la vraie carte, glisse chaque prix à sa place, puis « Copier les positions » et colle le texte dans le fil. Je les fixe dans le design.</li>
+    <li>Carte : tout réglage fait dans Mapbox Studio (couleurs, police, lumière) apparaît ici dès que tu cliques sur Publish, sans toucher au code.</li>
+  </ul>
+  <h2 style="margin-top:32px">v8 : ton logo</h2>
   <ul>
     <li>Ton logo remplace l'ancien dans l'en-tête et le pied de page.</li>
     <li>Le violet du toit (#3D1A4D) devient la couleur des boutons principaux, des numéros d'étapes et du bloc propriétaires ; le corail (#FE6463) reste dans le dégradé.</li>
@@ -981,7 +992,7 @@ a,.btn.text{text-underline-offset:3px}
     {id:'calle50-plaza',name:'PH Calle 50 Plaza',b:'obarrio',street:'Calle 50',x:628,y:480,floors:40,am:['Piscina','Gimnasio','Seguridad 24 h'],wait:6},
     {id:'torre-obarrio',name:'PH Torre Obarrio',b:'obarrio',street:'Calle 53 Este',x:676,y:400,floors:26,am:['Gimnasio','Seguridad 24 h'],wait:0},
     {id:'porras-view',name:'PH Porras View',b:'sanfrancisco',street:'Vía Porras',x:826,y:330,floors:20,am:['Piscina','Seguridad 24 h','Área social'],wait:2},
-    {id:'sf-gardens',name:'PH San Francisco Gardens',b:'sanfrancisco',street:'Calle 72',x:784,y:470,floors:16,am:['Jardín','Seguridad 24 h'],wait:1},
+    {id:'sf-gardens',name:'PH San Francisco Gardens',b:'sanfrancisco',street:'Calle 72',ll:[-79.50980,8.98824],x:784,y:470,floors:16,am:['Jardín','Seguridad 24 h'],wait:1},
     {id:'parque-omar',name:'PH Parque Omar Residences',b:'sanfrancisco',street:'Vía Porras',x:918,y:282,floors:25,am:['Piscina','Gimnasio','Seguridad 24 h'],wait:3},
     {id:'calle-74',name:'PH Calle 74',b:'sanfrancisco',street:'Calle 74',x:880,y:508,floors:14,am:['Seguridad 24 h'],wait:0},
     {id:'yacht-club',name:'PH Yacht Club',b:'sanfrancisco',street:'Calle 76 Este',x:960,y:440,floors:45,am:['Seguridad 24 h','Piscina','Vista al mar','Gimnasio','Coworking','Planta eléctrica','Área social'],wait:7}
@@ -1219,7 +1230,7 @@ a,.btn.text{text-underline-offset:3px}
   function toLL(x,y){return [GEO.o[0]+GEO.o[1]*x+GEO.o[2]*y,GEO.a[0]+GEO.a[1]*x+GEO.a[2]*y];}
   function fromLL(lng,lat){var a1=GEO.o[1],b1=GEO.o[2],c1=lng-GEO.o[0],a2=GEO.a[1],b2=GEO.a[2],c2=lat-GEO.a[0],d=a1*b2-b1*a2;return {x:(c1*b2-b1*c2)/d,y:(a1*c2-c1*a2)/d};}
   function mbBounds(v){var c=toLL(v.x+v.w/2,v.y+v.h/2),hw=v.w*Math.abs(GEO.o[1])/2,hh=v.h*Math.abs(GEO.a[2])/2;return [[c[0]-hw,c[1]-hh],[c[0]+hw,c[1]+hh]];}
-  function viewFromMap(map){var b=map.getBounds(),c=b.getCenter(),w=(b.getEast()-b.getWest())/Math.abs(GEO.o[1]),h=(b.getNorth()-b.getSouth())/Math.abs(GEO.a[2]),p=fromLL(c.lng,c.lat);return {x:p.x-w/2,y:p.y-h/2,w:w,h:h};}
+  function viewFromMap(map){var c=map.getCenter(),z=map.getZoom(),cv=map.getCanvas(),k=360/(512*Math.pow(2,z)),w=cv.clientWidth*k/Math.abs(GEO.o[1]),h=cv.clientHeight*k*Math.cos(c.lat*Math.PI/180)/Math.abs(GEO.a[2]),p=fromLL(c.lng,c.lat);return {x:p.x-w/2,y:p.y-h/2,w:w,h:h};} // extensión sin inclinación: la zona útil, no el horizonte
   function still(){try{return matchMedia('(prefers-reduced-motion: reduce)').matches;}catch(e){return false;}}
   function mbLoad(cb){
     if(MB.st===2)return cb(true);if(MB.st===3)return cb(false);
@@ -1257,6 +1268,7 @@ a,.btn.text{text-underline-offset:3px}
         clearTimeout(t);
         if(!m.el.isConnected||MAPS[m.el.id]!==m){map.remove();return;}
         m.mb=map;m.fitted=JSON.stringify(m.view);m.el.classList.add('mbon');
+        if(!m.static&&Math.abs(map.getPitch()-45)>1)map.jumpTo({pitch:45,zoom:map.getZoom()+0.3});
         try{map.touchZoomRotate.disableRotation();}catch(e){}
         if(!m.static){try{map.setConfigProperty('basemap','showPointOfInterestLabels',false);}catch(e){}}
         var cv=map.getCanvas();cv.setAttribute('aria-label',m.static?'Mapa en 3D del edificio':'Mapa de los PH con habitaciones libres');
@@ -1292,9 +1304,26 @@ a,.btn.text{text-underline-offset:3px}
   }
   function mbFit(m){
     if(!m.mb||m.static)return;var k=JSON.stringify(m.view);if(k===m.fitted)return;m.fitted=k;
-    m.mb.fitBounds(mbBounds(m.view),{padding:0,duration:still()?0:500});
+    var cam=m.mb.cameraForBounds(mbBounds(m.view),{padding:0,pitch:0,bearing:0});if(cam)m.mb.easeTo({center:cam.center,zoom:cam.zoom+0.3,pitch:45,bearing:0,duration:still()?0:500});
   }
   function mbNote(why){document.querySelectorAll('.map .mnote').forEach(function(n){n.textContent='Mapa ilustrativo · Mapbox no cargó: '+why;});}
+  var PLL_KEY='nido-ph-ll';
+  function applyLL(){
+    var saved={};try{saved=JSON.parse(localStorage.getItem(PLL_KEY)||'{}')||{};}catch(e){}
+    PH.forEach(function(p){var ll=saved[p.id]||p.ll;if(ll){p.ll=ll;var q=fromLL(ll[0],ll[1]);p.x=q.x;p.y=q.y;}});
+  }
+  applyLL();
+  var PLACE={on:false};
+  function placeSave(p,ll){
+    p.ll=[+ll.lng.toFixed(6),+ll.lat.toFixed(6)];var q=fromLL(p.ll[0],p.ll[1]);p.x=q.x;p.y=q.y;
+    var saved={};try{saved=JSON.parse(localStorage.getItem(PLL_KEY)||'{}')||{};}catch(e){}
+    saved[p.id]=p.ll;try{localStorage.setItem(PLL_KEY,JSON.stringify(saved));}catch(e){}
+    toast(p.name+' : position enregistrée');
+  }
+  function placeExport(){
+    var out={};PH.forEach(function(p){out[p.id]=p.ll||toLL(p.x,p.y).map(function(v){return +v.toFixed(6);});});
+    return JSON.stringify(out);
+  }
   function resetMaps(){Object.keys(MAPS).forEach(function(k){var m=MAPS[k];if(m.mb){try{m.mb.remove();}catch(e){}}});MAPS={};}
   function fitView(el,phs,pad){
     var xs=phs.map(function(p){return p.x;}),ys=phs.map(function(p){return p.y;});
@@ -1318,18 +1347,20 @@ a,.btn.text{text-underline-offset:3px}
     m.phs.forEach(function(p){
       var rs=m.rooms.filter(function(r){return r.ph===p.id;});
       var sel=(S.phSel===p.id||m.sel===p.id),hlp=S.hover===p.id;
-      if(!rs.length){its.push([p.x,p.y,'center','<button type="button" class="pin empty'+(sel?' sel':'')+'" data-pin="'+p.id+'" style="%POS%" aria-label="'+esc(p.name)+': sin habitaciones libres"></button>',sel]);return;}
+      if(!rs.length){its.push([p.x,p.y,'center','<button type="button" class="pin empty'+(sel?' sel':'')+'" data-pin="'+p.id+'" style="%POS%" aria-label="'+esc(p.name)+': sin habitaciones libres"></button>',sel,p]);return;}
       var min=Math.min.apply(null,rs.map(function(r){return r.price;}));
       var best=S.profile?Math.max.apply(null,rs.map(function(r){return compat(r).s;})):null;
       var dr=m.fresh?' drop" style="animation-delay:'+(nPin++*45)+'ms;':'" style="';
-      its.push([p.x,p.y,'bottom','<button type="button" class="pin'+(sel?' sel':'')+(hlp?' hl':'')+dr+'%POS%" data-pin="'+p.id+'" aria-label="'+esc(p.name)+': '+rs.length+' habitaciones desde '+money(min)+'">'+(sel&&m.static?esc(p.name):money(min))+(best?'<span class="cmp">'+best+'%</span>':'')+'</button>',sel]);
+      its.push([p.x,p.y,'bottom','<button type="button" class="pin'+(sel?' sel':'')+(hlp?' hl':'')+dr+'%POS%" data-pin="'+p.id+'" aria-label="'+esc(p.name)+': '+rs.length+' habitaciones desde '+money(min)+'">'+(sel&&m.static?esc(p.name):money(min))+(best?'<span class="cmp">'+best+'%</span>':'')+'</button>',sel,p]);
     });
     if(mb){
       mbData(m);
       (m.mk||[]).forEach(function(k){k.remove();});m.mk=[];
       its.forEach(function(it){
         var w=document.createElement('div');w.className='mbm'+(it[4]?' on':'');put(w,it[3].replace('%POS%',''));
-        m.mk.push(new mapboxgl.Marker({element:w,anchor:it[2],offset:it[2]==='bottom'?[0,-6]:[0,0]}).setLngLat(toLL(it[0],it[1])).addTo(mb));
+        var mk=new mapboxgl.Marker({element:w,anchor:it[2],offset:it[2]==='bottom'?[0,-6]:[0,0],draggable:PLACE.on&&!!it[5]}).setLngLat(toLL(it[0],it[1])).addTo(mb);
+        if(PLACE.on&&it[5]){var ph=it[5];mk.on('dragend',function(){placeSave(ph,mk.getLngLat());});}
+        m.mk.push(mk);
         ['role','tabindex','aria-label'].forEach(function(k){w.removeAttribute(k);}); // el botón interior ya es el control
       });
     } else {
@@ -1681,7 +1712,7 @@ a,.btn.text{text-underline-offset:3px}
     var t=e.target;
     var opt=t.closest('[role="option"]');if(opt){pick(opt.getAttribute('data-k'),opt.getAttribute('data-id'));return;}
     var pk=t.closest('[data-pick]');if(pk){pick(pk.getAttribute('data-pick'),pk.getAttribute('data-id'));return;}
-    var pin=t.closest('[data-pin]');if(pin){var id=pin.getAttribute('data-pin');var m=pin.closest('[data-map]');if(m&&MAPS[m.id]&&MAPS[m.id].static)return;S.phSel=S.phSel===id?null:id;refresh();return;}
+    var pin=t.closest('[data-pin]');if(pin){if(PLACE.on)return;var id=pin.getAttribute('data-pin');var m=pin.closest('[data-map]');if(m&&MAPS[m.id]&&MAPS[m.id].static)return;S.phSel=S.phSel===id?null:id;refresh();return;}
     var z=t.closest('[data-zoom]');if(z){var mm=MAPS[z.closest('[data-map]').id];zoom(mm,+z.getAttribute('data-zoom'));return;}
     var rm=t.closest('[data-rm]');if(rm){var k=rm.getAttribute('data-rm');if(k==='max')S.f.max=DEF_F.max;else if(k==='when')S.f.when='any';else S.f[k]=false;refresh();return;}
     var cb=t.closest('[data-calc]');if(cb){var old=S.calc;S.calc=+cb.getAttribute('data-calc');site.querySelectorAll('[data-calc]').forEach(function(x){x.setAttribute('aria-checked',String(x===cb));});var cm=document.getElementById('calc-m');if(cm)cm.textContent='× '+S.calc;var cl=document.getElementById('calc-loss');if(cl)countTo(cl,old*500,S.calc*500);return;}
@@ -1748,6 +1779,16 @@ a,.btn.text{text-underline-offset:3px}
   var nb=document.getElementById('notesBtn'),notes=document.getElementById('notes');
   function setNotes(o){notes.hidden=!o;nb.setAttribute('aria-expanded',String(o));}
   nb.addEventListener('click',function(){setNotes(notes.hidden);});
+  var pb=document.getElementById('placeBtn');
+  pb.addEventListener('click',function(){
+    PLACE.on=!PLACE.on;pb.setAttribute('aria-pressed',String(PLACE.on));pb.textContent=PLACE.on?'Copier les positions':'Placer les PH';
+    document.body.classList.toggle('placing',PLACE.on);
+    if(PLACE.on){if(S.route!=='buscar'){S.phSel=null;go('buscar');}else{render();}toast('Glisse chaque prix à sa vraie place sur la carte Mapbox');return;}
+    var txt=placeExport();
+    try{navigator.clipboard.writeText(txt).then(function(){toast('Positions copiées : colle-les dans le fil Nido');},function(){showExport(txt);});}catch(e){showExport(txt);}
+    render();
+  });
+  function showExport(txt){setNotes(true);var pre=document.getElementById('llout');if(!pre){pre=document.createElement('textarea');pre.id='llout';pre.readOnly=true;pre.rows=8;pre.style.cssText='width:100%;font:12px/1.4 ui-monospace,monospace;margin-top:16px;border:1px solid var(--line);border-radius:12px;padding:10px';pre.setAttribute('aria-label','Positions des PH');notes.insertBefore(pre,notes.children[1]);}pre.value=txt;pre.focus();pre.select();toast('Copie le texte des notes et colle-le dans le fil Nido');}
   document.getElementById('notesX').addEventListener('click',function(){setNotes(false);});
   if(window.ResizeObserver){new ResizeObserver(setVp).observe(vp);}
   try{if(localStorage.getItem('nido-dev')==='m'&&window.innerWidth>520){devwrap.classList.add('mobile');document.querySelector('[data-dev="mobile"]').setAttribute('aria-pressed','true');document.querySelector('[data-dev="desktop"]').setAttribute('aria-pressed','false');}}catch(e){}
