@@ -216,7 +216,7 @@ svg{flex:none}
 .bcards{display:grid;grid-auto-flow:column;grid-auto-columns:280px;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;margin-inline:-20px;padding-inline:20px;scrollbar-width:none}
 .bcards::-webkit-scrollbar{display:none}
 @container site (min-width:760px){.bcards{margin-inline:-32px;padding-inline:32px}}
-@container site (min-width:900px){.bcards{grid-auto-flow:row;grid-template-columns:repeat(3,minmax(0,1fr));overflow:visible;margin:0;padding:0;gap:24px}}
+@container site (min-width:900px){.bcards{grid-auto-flow:row;grid-template-columns:repeat(4,minmax(0,1fr));overflow:visible;margin:0;padding:0;gap:24px}}
 .bcard{position:relative;display:block;height:340px;border-radius:var(--r-lg);overflow:hidden;color:#fff;border:0;padding:0;cursor:pointer;text-align:left;scroll-snap-align:start;background:var(--brand)}
 @container site (min-width:900px){.bcard{height:400px}}
 .bcard svg.sky{position:absolute;inset:0;width:100%;height:100%;transition:transform .6s var(--ease)}
@@ -828,11 +828,73 @@ a,.btn.text{text-underline-offset:3px}
 /* v9: modo "Placer les PH" */
 body.placing .mbm .pin{cursor:grab;outline:2px dashed var(--plum);outline-offset:3px}
 body.placing #placeBtn{background:var(--plum);color:#fff}
+
+/* ===== v10: TOP, apartamentos, propietarios ===== */
+:root{--top:#FFD23F;--top-ink:#3A2A00}
+.topb{position:absolute;left:10px;top:10px;z-index:2;background:var(--top);color:var(--top-ink);font-size:12px;font-weight:800;letter-spacing:.08em;padding:5px 9px;border-radius:8px;box-shadow:0 2px 8px rgba(58,42,0,.18)}
+.topb.inl{position:static;display:inline-block;margin-top:12px;box-shadow:none}
+.photo:has(.topb) .ptag{left:62px}
+.rcard.top{box-shadow:0 0 0 2px var(--top)}
+.pin.top{background:var(--top);color:var(--top-ink)}
+.pin.top.sel{background:var(--brand);color:#fff}
+.pin .tp{display:inline-block;margin-right:6px;font-size:10px;font-weight:800;letter-spacing:.06em;background:var(--top-ink);color:var(--top);border-radius:5px;padding:2px 5px;vertical-align:1px}
+.rlives .hs{width:22px;height:22px;color:var(--brand);flex:none}
+.kseg{display:inline-flex;flex:none;background:var(--surface-2);border-radius:999px;padding:3px;gap:2px}
+.kseg button{min-height:38px;padding:0 14px;border:0;border-radius:999px;background:none;font-weight:600;font-size:15px;color:var(--ink-2);cursor:pointer;white-space:nowrap}
+.kseg button[aria-pressed="true"]{background:var(--plum);color:#fff}
+.aptoshow{position:relative;border-radius:var(--r-xl);overflow:hidden;aspect-ratio:4/5;max-height:520px;align-self:stretch;box-shadow:var(--shadow)}
+.aptoshow img{width:100%;height:100%;object-fit:cover;display:block}
+.aptoshow .topb{left:16px;top:16px}
+.aptoshow .mini{position:absolute;left:16px;right:16px;bottom:16px;background:rgba(255,255,255,.95);border-radius:18px;padding:14px 16px;display:grid;gap:2px}
+.aptoshow .mini b{font-size:17px}.aptoshow .mini span{color:var(--muted);font-size:14px}
+@container site (min-width:600px){.grid3.g3{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@container site (min-width:1000px){.grid3.g3{grid-template-columns:repeat(3,minmax(0,1fr))}}
+.vlist{list-style:none;margin:0;padding:0;display:grid;gap:12px;grid-template-columns:minmax(0,1fr)}
+@container site (min-width:760px){.vlist{grid-template-columns:repeat(2,minmax(0,1fr));gap:16px 32px}}
+.vlist li{display:flex;gap:14px;align-items:flex-start;padding:20px 0;border-top:1px solid var(--line)}
+.vlist svg{width:26px;height:26px;flex:none;color:var(--brand);margin-top:2px}
+.vlist b{font-size:19px}.vlist p{color:var(--ink-2);font-size:16px;line-height:24px;margin-top:4px}
+.cta2{background:var(--brand-soft);border-radius:var(--r-lg);padding:28px;display:flex;flex-wrap:wrap;gap:16px;align-items:center;justify-content:space-between}
+.cta2 h2{font-size:clamp(22px,2.6cqi,30px);line-height:1.15}.cta2 p{color:var(--ink-2);margin-top:6px}
+.ownhero .grid{align-items:start}
+.oform{background:#fff;border-radius:var(--r-lg);box-shadow:var(--shadow);padding:24px;display:grid;gap:14px;color:var(--ink)}
+.oform h2{font-size:22px;line-height:1.2;letter-spacing:-.01em}
+.oform .field{min-width:0}
+.oform .q{border:0;padding:0;margin:0;display:grid;gap:8px}
+.oform legend{font-size:14px;font-weight:600;margin-bottom:8px}
+.oform .err{color:#B42318;font-size:14px;font-weight:600}
+.oform .fine{color:var(--muted);font-size:14px;margin:0}
+.oform.done{gap:10px}
+.waitlist{list-style:none;margin:0;padding:0;display:grid;gap:10px;grid-template-columns:minmax(0,1fr)}
+@container site (min-width:760px){.waitlist{grid-template-columns:repeat(3,minmax(0,1fr))}}
+.waitlist button{width:100%;display:grid;grid-template-columns:1fr auto;grid-template-areas:"n w" "b w";gap:2px 12px;align-items:center;text-align:left;background:var(--surface-2);border:0;border-radius:18px;padding:16px 18px;min-height:72px;cursor:pointer;color:var(--ink)}
+.waitlist b{grid-area:n;font-size:17px}.waitlist span{grid-area:b;color:var(--muted);font-size:14px}
+.waitlist em{grid-area:w;font-style:normal;font-weight:700;color:var(--plum);background:#fff;border-radius:999px;padding:6px 12px;font-size:14px;white-space:nowrap}
+.waitlist button:hover{background:var(--brand-soft)}
+.serv{list-style:none;margin:0;padding:0;display:grid;gap:12px;grid-template-columns:minmax(0,1fr)}
+@container site (min-width:600px){.serv{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@container site (min-width:1000px){.serv{grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}}
+.serv li{background:var(--surface-2);border-radius:var(--r-lg);padding:24px;display:grid;gap:8px;align-content:start}
+.serv .ai{width:48px;height:48px;border-radius:14px;background:#fff;color:var(--brand);display:grid;place-items:center;margin-bottom:6px}
+.serv .ai svg{width:26px;height:26px}.serv b{font-size:19px}.serv p{color:var(--ink-2);font-size:16px;line-height:24px}
+.plans{display:grid;gap:16px;grid-template-columns:minmax(0,1fr)}
+@container site (min-width:760px){.plans{grid-template-columns:repeat(2,minmax(0,1fr));gap:24px}}
+.plan{border:1px solid var(--line);border-radius:var(--r-lg);padding:28px;display:grid;gap:14px;align-content:start;background:#fff}
+.plan.rec{border:2px solid var(--plum)}
+.plan .topb.inl{margin:0;justify-self:start}
+.plan h3{font-size:24px}
+.plan .pp{display:grid;gap:2px}.plan .pp b{font-size:32px;letter-spacing:-.02em;color:var(--plum)}.plan .pp span{color:var(--muted);font-size:15px}
+.plan ul{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+.plan li{display:flex;gap:8px;align-items:center;font-size:16px}.plan li svg{width:18px;height:18px;color:var(--green);flex:none}
+.plan .btn{justify-self:start;text-decoration:none}
+.wa{color:var(--muted);font-size:15px;display:flex;align-items:center;gap:4px;flex-wrap:wrap}
+.foot .lk button{background:none;border:0;padding:0;font:inherit;color:inherit;cursor:pointer;text-align:left}
+.foot .lk button:hover{color:var(--brand)}
 </style>
 
 
 <div class="review" role="region" aria-label="Revisión del prototipo">
-  <div class="t"><b>Nido</b> · diseño del sitio · v9 · mapa inclinado</div>
+  <div class="t"><b>Nido</b> · diseño del sitio · v10 · Balboa, TOP, apartamentos y propietarios</div>
   <div class="ctl">
     <div class="seg devsel" role="group" aria-label="Tamaño de pantalla">
       <button type="button" data-dev="desktop" aria-pressed="true">Ordenador</button>
@@ -849,7 +911,16 @@ body.placing #placeBtn{background:var(--plum);color:#fff}
 </div>
 <aside class="notes" id="notes" hidden aria-label="Notes de design">
   <button type="button" class="icon-btn x" id="notesX" aria-label="Fermer les notes"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
-  <h2>v9 : carte inclinée et vrais emplacements</h2>
+  <h2>v10 : Avenida Balboa, TOP, Apartamentos et Propietarios</h2>
+  <ul>
+    <li>Nouveau quartier Bella Vista, avec 3 PH sur l'Avenida Balboa : Yacht Club, Bahía Balboa et Mirador de la Bahía.</li>
+    <li>6 apartamentos entiers s'ajoutent aux chambres. Dans Buscar, un sélecteur Todo / Habitaciones / Apartamentos ; « Habitaciones » dans le menu n'affiche que les chambres.</li>
+    <li>TOP : badge jaune sur la photo, contour jaune de la carte, prix jaune sur la carte avec « TOP ». Les TOP passent en premier.</li>
+    <li>Page Apartamentos : recherche, par quartier, les apartamentos (TOP d'abord), ce que « vérifié » veut dire, lien vers les chambres.</li>
+    <li>Page Propietarios : formulaire court « Pedir que me llamen » (rappel en moins de 24 h ouvrées, date exacte affichée), les PH où des gens attendent, le calculateur, nos 6 services, 2 formules, FAQ, WhatsApp discret.</li>
+    <li>À valider par toi : les prix des formules sont des exemples : un demi-mois de loyer une seule fois (comme le calculateur, 250 $ pour une chambre à 500 $), ou 10 % du loyer chaque mois en gestion complète.</li>
+  </ul>
+  <h2 style="margin-top:32px">v9 : carte inclinée et vrais emplacements</h2>
   <ul>
     <li>Buscar s'ouvre incliné à 45° : on voit les immeubles en relief, les prix restent à plat sur la carte.</li>
     <li>PH San Francisco Gardens tombait dans Multiplaza : il est déplacé dans les rues résidentielles de San Francisco, au nord de la Vía Israel.</li>
@@ -980,7 +1051,8 @@ body.placing #placeBtn{background:var(--plum);color:#fff}
   var BARRIOS=[
     {id:'cangrejo',name:'El Cangrejo',box:[120,90,450,370],c:[290,240]},
     {id:'obarrio',name:'Obarrio',box:[440,300,720,540],c:[580,430]},
-    {id:'sanfrancisco',name:'San Francisco',box:[730,200,980,560],c:[850,380]}
+    {id:'sanfrancisco',name:'San Francisco',box:[730,200,980,560],c:[850,380]},
+    {id:'bellavista',name:'Bella Vista',box:[430,560,760,700],c:[600,630]}
   ];
   var PH=[
     {id:'vista-cangrejo',name:'PH Vista Cangrejo',b:'cangrejo',street:'Vía Argentina',x:296,y:236,floors:28,am:['Piscina','Gimnasio','Seguridad 24 h','Planta eléctrica'],wait:4},
@@ -995,7 +1067,9 @@ body.placing #placeBtn{background:var(--plum);color:#fff}
     {id:'sf-gardens',name:'PH San Francisco Gardens',b:'sanfrancisco',street:'Calle 72',ll:[-79.50980,8.98824],x:784,y:470,floors:16,am:['Jardín','Seguridad 24 h'],wait:1},
     {id:'parque-omar',name:'PH Parque Omar Residences',b:'sanfrancisco',street:'Vía Porras',x:918,y:282,floors:25,am:['Piscina','Gimnasio','Seguridad 24 h'],wait:3},
     {id:'calle-74',name:'PH Calle 74',b:'sanfrancisco',street:'Calle 74',x:880,y:508,floors:14,am:['Seguridad 24 h'],wait:0},
-    {id:'yacht-club',name:'PH Yacht Club',b:'sanfrancisco',street:'Calle 76 Este',x:960,y:440,floors:45,am:['Seguridad 24 h','Piscina','Vista al mar','Gimnasio','Coworking','Planta eléctrica','Área social'],wait:7}
+    {id:'yacht-club',name:'PH Yacht Club',b:'bellavista',street:'Av. Balboa',ll:[-79.5216,8.9763],x:580,y:652,floors:45,am:['Seguridad 24 h','Piscina','Vista al mar','Gimnasio','Coworking','Planta eléctrica','Área social'],wait:7},
+    {id:'bahia-balboa',name:'PH Bahía Balboa',b:'bellavista',street:'Av. Balboa',ll:[-79.5262,8.9745],x:464,y:656,floors:52,am:['Seguridad 24 h','Piscina','Vista al mar','Gimnasio','Área social'],wait:3},
+    {id:'mirador-bahia',name:'PH Mirador de la Bahía',b:'bellavista',street:'Av. Balboa',ll:[-79.5162,8.9788],x:714,y:640,floors:38,am:['Piscina','Gimnasio','Vista al mar','Coworking','Seguridad 24 h','Planta eléctrica'],wait:2}
   ];
   var LUGARES=[
     {id:'m-via-argentina',name:'Metro Vía Argentina',t:'metro',sub:'Línea 1',x:300,y:398},
@@ -1015,7 +1089,14 @@ body.placing #placeBtn{background:var(--plum);color:#fff}
   var ARR='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg>';
   // casa: horario 0=temprano 1=normal 2=tarde; orden 0=muy 1=ordenada 2=relajada; visitas 0=casi nunca 1=a veces 2=seguido; pet = alguien tiene mascota; petsOk
   var ROOMS=[
-    {id:'r15',ph:'yacht-club',price:690,bath:'privado',furn:true,av:'2026-10-05',min:6,people:[['Gabriela',28,'abogada','Nada en la piscina antes del trabajo.'],['Marco',30,'ingeniero naval','Sale a navegar los domingos.']],h:{ho:0,or:0,vi:1,pet:false,petsOk:false},inc:'Luz, agua, internet, limpieza'},
+    {id:'r17',ph:'bahia-balboa',top:true,price:620,bath:'privado',furn:true,av:'2026-10-15',min:6,people:[['Lucía',27,'arquitecta','Corre por la Cinta Costera al amanecer.']],h:{ho:0,or:1,vi:1,pet:false,petsOk:true},inc:'Luz, agua, internet'},
+    {id:'a1',ph:'bahia-balboa',top:true,apto:{rec:2,m2:95,ban:2},price:1650,bath:'privado',furn:true,av:'2026-10-20',min:12,people:[],h:{ho:1,or:1,vi:1,pet:false,petsOk:true},inc:'Agua, gas y mantenimiento del PH'},
+    {id:'a2',ph:'mirador-bahia',apto:{rec:1,m2:62,ban:1},price:1150,bath:'privado',furn:true,av:'2026-10-05',min:6,people:[],h:{ho:1,or:1,vi:1,pet:false,petsOk:true},inc:'Agua, internet'},
+    {id:'a3',ph:'mirador-bahia',top:true,apto:{rec:3,m2:140,ban:3},price:2300,bath:'privado',furn:false,av:'2026-11-15',min:12,people:[],h:{ho:1,or:1,vi:1,pet:false,petsOk:true},inc:'Agua y mantenimiento del PH'},
+    {id:'a4',ph:'vista-cangrejo',apto:{rec:1,m2:55,ban:1},price:950,bath:'privado',furn:true,av:'2026-10-05',min:6,people:[],h:{ho:1,or:1,vi:1,pet:false,petsOk:true},inc:'Agua, internet'},
+    {id:'a5',ph:'samuel-lewis',apto:{rec:2,m2:88,ban:2},price:1350,bath:'privado',furn:true,av:'2026-11-01',min:12,people:[],h:{ho:1,or:1,vi:1,pet:false,petsOk:true},inc:'Agua y mantenimiento del PH'},
+    {id:'a6',ph:'parque-omar',apto:{rec:2,m2:90,ban:2},price:1200,bath:'privado',furn:false,av:'2026-12-01',min:12,people:[],h:{ho:1,or:1,vi:1,pet:false,petsOk:true},inc:'Agua'},
+    {id:'r15',ph:'yacht-club',top:true,price:690,bath:'privado',furn:true,av:'2026-10-05',min:6,people:[['Gabriela',28,'abogada','Nada en la piscina antes del trabajo.'],['Marco',30,'ingeniero naval','Sale a navegar los domingos.']],h:{ho:0,or:0,vi:1,pet:false,petsOk:false},inc:'Luz, agua, internet, limpieza'},
     {id:'r16',ph:'yacht-club',price:580,bath:'compartido',furn:true,av:'2026-11-01',min:6,people:[['Gabriela',28,'abogada','Nada en la piscina antes del trabajo.'],['Marco',30,'ingeniero naval','Sale a navegar los domingos.']],h:{ho:0,or:0,vi:1,pet:false,petsOk:false},inc:'Agua, internet'},
     {id:'r1',ph:'vista-cangrejo',price:480,bath:'privado',furn:true,av:'2026-11-01',min:6,people:[['Ana',29,'contadora','Madruga y trabaja en oficina.'],['Luis',31,'desarrollador','Trabaja desde casa 3 días; cocina mucho.']],h:{ho:0,or:1,vi:1,pet:false,petsOk:false},inc:'Luz, agua, internet'},
     {id:'r2',ph:'vista-cangrejo',price:430,bath:'compartido',furn:true,av:'2026-10-20',min:6,people:[['Ana',29,'contadora','Madruga y trabaja en oficina.'],['Luis',31,'desarrollador','Trabaja desde casa 3 días.']],h:{ho:0,or:1,vi:1,pet:false,petsOk:false},inc:'Agua, internet'},
@@ -1037,13 +1118,13 @@ body.placing #placeBtn{background:var(--plum);color:#fff}
   function roomsOf(phid){return ROOMS.filter(function(r){return r.ph===phid;});}
 
   // ---------- estado ----------
-  var DEF_F={max:800,bath:false,furn:false,pets:false,pool:false,gym:false,when:'any'};
+  var DEF_F={kind:'all',max:800,bath:false,furn:false,pets:false,pool:false,gym:false,when:'any'};
   var S={route:'inicio',arg:null,q:'',place:null,phSel:null,area:null,f:JSON.parse(JSON.stringify(DEF_F)),sort:'rec',profile:null,mapmode:false,view:null,saved:{},alert:null,hover:null,calc:2};
   try{var pr=localStorage.getItem('nido-perfil');if(pr)S.profile=JSON.parse(pr);}catch(e){}
 
   // ---------- compatibilidad ----------
   function compat(r){
-    var u=S.profile;if(!u)return null;var h=r.h,sc=100,why=[],no=[];
+    if(r.apto)return null;var u=S.profile;if(!u)return null;var h=r.h,sc=100,why=[],no=[];
     var dh=Math.abs(u.ho-h.ho);sc-=dh*10;(dh===0?why:dh===2?no:[]).push(dh===0?'Mismo horario':'Horarios distintos');
     var dor=Math.abs(u.or-h.or);sc-=dor*9;(dor===0?why:dor===2?no:[]).push(dor===0?'Mismo nivel de orden':'Distinto nivel de orden');
     var dv=Math.abs(u.vi-h.vi);sc-=dv*8;(dv===0?why:dv===2?no:[]).push(dv===0?'Mismas ganas de recibir visitas':'Visitas: no piensan igual');
@@ -1065,7 +1146,9 @@ body.placing #placeBtn{background:var(--plum);color:#fff}
   }
   function passFilters(r,skip){
     var f=S.f;
-    if(skip!=='max'&&r.price>f.max)return false;
+    if(skip!=='kind'&&f.kind==='hab'&&r.apto)return false;
+    if(skip!=='kind'&&f.kind==='apto'&&!r.apto)return false;
+    if(skip!=='max'&&f.max<DEF_F.max&&r.price>f.max)return false;
     if(skip!=='bath'&&f.bath&&r.bath!=='privado')return false;
     if(skip!=='furn'&&f.furn&&!r.furn)return false;
     if(skip!=='pets'&&f.pets&&!r.h.petsOk)return false;
@@ -1083,15 +1166,19 @@ body.placing #placeBtn{background:var(--plum);color:#fff}
     var tm=textMatches();if(tm&&tm.indexOf(r.ph)<0)return false;
     return true;
   }
+  function cs(r){var c=compat(r);return c?c.s:0;}
+  function lbl(rs){var a=rs.filter(function(r){return r.apto;}).length,h=rs.length-a,p=[];if(h)p.push(h+(h>1?' habitaciones':' habitación'));if(a)p.push(a+(a>1?' apartamentos':' apartamento'));return p.join(' y ')||'Ningún anuncio';}
+  function hasTop(rs){return rs.some(function(r){return r.top;});}
   function results(skip){
     var list=ROOMS.filter(function(r){return inScope(r)&&passFilters(r,skip);});
     var lo=placeObj();
     list.sort(function(a,b){
       if(S.sort==='price')return a.price-b.price;
       if(S.sort==='date')return a.av<b.av?-1:a.av>b.av?1:0;
-      if(S.sort==='compat'&&S.profile)return compat(b).s-compat(a).s;
+      if(S.sort==='compat'&&S.profile)return cs(b)-cs(a);
       if(S.place&&S.place.kind==='lugar')return dist(phById[a.ph],lo)-dist(phById[b.ph],lo);
-      if(S.profile)return compat(b).s-compat(a).s;
+      if(!!a.top!==!!b.top)return a.top?-1:1; // los TOP primero
+      if(S.profile)return cs(b)-cs(a);
       return a.av<b.av?-1:1;
     });
     return list;
@@ -1103,7 +1190,7 @@ body.placing #placeBtn{background:var(--plum);color:#fff}
     if(S.place)return placeObj().name;
     if(S.q)return '«'+S.q+'»';
     if(S.area)return 'esta zona del mapa';
-    return 'El Cangrejo, Obarrio y San Francisco';
+    return 'El Cangrejo, Obarrio, San Francisco y Bella Vista';
   }
 
   // ---------- sugerencias ----------
@@ -1156,12 +1243,12 @@ body.placing #placeBtn{background:var(--plum);color:#fff}
     var cur=S.route,blue=(cur==='inicio'||cur==='ph');
     return '<header class="hdr'+(blue?' blue':'')+'"><div class="in"><button type="button" class="logo" data-go="inicio" aria-label="Nido, ir al inicio"><img class="wm" src="img/nido-logo.png" alt="" width="81" height="31"></button>'+
       (cur!=='inicio'?'<div class="hsearch">'+sbox('q-top','compact','Busca un PH, una calle o un barrio')+'</div>':'')+
-      '<nav aria-label="Principal"><button type="button" data-go="buscar"'+(cur==='buscar'?' aria-current="page"':'')+'>Habitaciones</button><button type="button" data-act="soon" data-what="Apartamentos">Apartamentos</button><button type="button" data-act="soon" data-what="Propietarios">Propietarios</button><button type="button" data-act="soon" data-what="Cómo funciona">Cómo funciona</button></nav>'+
+      '<nav aria-label="Principal"><button type="button" data-go="buscar" data-kind="hab"'+(cur==='buscar'?' aria-current="page"':'')+'>Habitaciones</button><button type="button" data-go="apartamentos"'+(cur==='apartamentos'?' aria-current="page"':'')+'>Apartamentos</button><button type="button" data-go="propietarios"'+(cur==='propietarios'?' aria-current="page"':'')+'>Propietarios</button><button type="button" data-act="soon" data-what="Cómo funciona">Cómo funciona</button></nav>'+
       '<div class="right"><button type="button" class="cta" data-act="profile">'+(S.profile?'Mi compatibilidad':'Unirme')+'</button><button type="button" class="icon-btn menu" aria-label="Abrir el menú" data-act="soon" data-what="Menú">'+I.menu+'</button></div></div></header>';
   }
   function footer(){
     return '<footer class="foot"><div class="in"><div class="fcols"><div class="about"><span class="logo" style="cursor:default"><img class="wm" src="img/nido-logo.png" alt="Nido" width="81" height="31"></span><p>Conserjería digital de alquileres en Ciudad de Panamá: habitaciones con roomies compatibles, apartamentos verificados y gestión completa para propietarios. Intermediación a través de corredor con licencia JTBR. Precios sin ITBMS.</p></div>'+
-      '<nav class="lk" aria-label="Para vivir"><b>Para vivir</b><span>Habitaciones</span><span>Apartamentos</span><span>Cómo funciona</span><span>Preguntas</span></nav><nav class="lk" aria-label="Propietarios"><b>Propietarios</b><span>Alquilar mi apartamento</span><span>Conserjería</span><span>Guías</span></nav><nav class="lk" aria-label="Nido"><b>Nido</b><span>Quiénes somos</span><span>hola@nido.com.pa</span><span>Términos</span><span>Privacidad</span></nav></div>'+
+      '<nav class="lk" aria-label="Para vivir"><b>Para vivir</b><span>Habitaciones</span><button type="button" data-go="apartamentos">Apartamentos</button><span>Cómo funciona</span><span>Preguntas</span></nav><nav class="lk" aria-label="Propietarios"><b>Propietarios</b><button type="button" data-go="propietarios">Alquilar mi apartamento</button><span>Conserjería</span><span>Guías</span></nav><nav class="lk" aria-label="Nido"><b>Nido</b><span>Quiénes somos</span><span>hola@nido.com.pa</span><span>Términos</span><span>Privacidad</span></nav></div>'+
       '<p class="base">© 2026 Nido · Hecho en Panamá</p></div></footer>';
   }
   function ring(p,sz){return '<span class="ring" style="--s:'+(sz||56)+'px" role="img" aria-label="'+p+' % de compatibilidad"><svg viewBox="0 0 36 36" aria-hidden="true"><circle class="rt" cx="18" cy="18" r="15.9"/><circle class="rv" cx="18" cy="18" r="15.9" pathLength="100" stroke-dasharray="'+p+' 100"/></svg><b>'+p+'%</b></span>';}
@@ -1189,17 +1276,18 @@ body.placing #placeBtn{background:var(--plum);color:#fff}
   function amTop(p){return amSort(p.am).filter(function(a){return AM_TOP[a];});}
   function amenBig(p,dark){return '<ul class="amenbig'+(dark?' dk':'')+'" aria-label="Equipamientos del edificio">'+amSort(p.am).map(function(a){return '<li class="ab'+(AM_TOP[a]?' top':'')+'"><span class="ai">'+amIcon(a)+'</span><b>'+esc(a)+'</b></li>';}).join('')+'</ul>';}
   function perks(p,n){var t=amTop(p).slice(0,n||2);return t.length?'<span class="perks">'+t.map(function(a){return '<span>'+amIcon(a)+esc(a)+'</span>';}).join('')+'</span>':'';}
+  var HOUSE='<svg class="hs" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 11 12 4.5l8 6.5v8.5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1z"/><path d="M10 20.5v-5h4v5"/></svg>';
   function rcard(r,opt){
     opt=opt||{};var p=phById[r.ph],c=compat(r),lo=S.place&&S.place.kind==='lugar'?placeObj():null;
     var seed=parseInt(r.id.slice(1),10);
-    return '<article class="rcard" data-room="'+r.id+'" data-ph="'+r.ph+'" tabindex="0" aria-label="Habitación en '+esc(p.name)+', '+money(r.price)+' al mes">'+
+    return '<article class="rcard'+(r.top?' top':'')+'" data-room="'+r.id+'" data-ph="'+r.ph+'" tabindex="0" aria-label="'+(r.top?'Destacado. ':'')+(r.apto?'Apartamento de '+r.apto.rec+(r.apto.rec>1?' recámaras':' recámara'):'Habitación')+' en '+esc(p.name)+', '+money(r.price)+' al mes">'+
       '<button type="button" class="save" data-act="save" data-id="'+r.id+'" aria-pressed="'+(S.saved[r.id]?'true':'false')+'" aria-label="Guardar la habitación en '+esc(p.name)+'">'+I.heart+'</button>'+
-      photo(seed,r.bath==='privado'?'Baño privado':null,'1/8').replace(/<\/div>$/,perks(p,2)+'</div>')+
+      photo(seed,r.apto?'Apartamento entero':(r.bath==='privado'?'Baño privado':null),'1/8').replace(/<\/div>$/,(r.top?'<span class="topb">TOP</span>':'')+perks(p,2)+'</div>')+
       '<div class="rbody"><div class="rtop"><span class="price">'+money(r.price)+' <small>/ mes</small></span>'+(c?'<span class="compat'+(c.s<70?' mid':'')+'">'+c.s+' % contigo</span>':'')+'</div>'+
       '<div class="rwhere">'+esc(p.name)+' · '+esc(bById[p.b].name)+'</div>'+
-      '<div class="rmeta">'+(r.furn?'Amoblada':'Sin amoblar')+' · '+(fdate(r.av)==='ya'?'Disponible ya':'Disponible el '+fdate(r.av))+' · mín. '+r.min+' meses</div>'+
+      '<div class="rmeta">'+(r.apto?r.apto.rec+(r.apto.rec>1?' recámaras':' recámara')+' · '+r.apto.m2+' m² · ':'')+(r.furn?(r.apto?'Amoblado':'Amoblada'):(r.apto?'Sin amoblar':'Sin amoblar'))+' · '+(fdate(r.av)==='ya'?'Disponible ya':'Disponible el '+fdate(r.av))+' · mín. '+r.min+' meses</div>'+
       (lo?'<div class="walk">'+I.walk+'a '+walkMin(p,lo)+' min a pie de '+esc(lo.name)+'</div>':'')+
-      '<div class="rlives">'+avs(r.people)+'<span>Vive con '+esc(names(r.people))+'</span></div></div></article>';
+      (r.apto?'<div class="rlives">'+HOUSE+'<span>Solo para ti: sin roomies</span></div>':'<div class="rlives">'+avs(r.people)+'<span>Vive con '+esc(names(r.people))+'</span></div>')+'</div></article>';
   }
 
   // ---------- mapa ----------
@@ -1213,7 +1301,6 @@ body.placing #placeBtn{background:var(--plum);color:#fff}
     (function(){var R=[['M-200 470 L180 420 L420 380 L700 320 L1100 230',14,'Vía España',560,342],['M-200 600 L200 560 L520 500 L760 455 L1100 400',12,'Calle 50',300,548],['M300 60 L300 420',9,'Vía Argentina',308,340],['M430 360 L440 700',9,'Av. Federico Boyd',448,600],['M540 330 L560 520',7,'Av. Samuel Lewis',568,470],['M830 150 L830 620',9,'Vía Porras',838,560],['M690 160 L705 640',8,'Vía Brasil',713,250],['M-200 680 L300 640 L560 680',11,'Av. Balboa',80,650],['M120 300 L460 270',6,'Calle Eusebio A. Morales',150,292],['M760 470 L980 440',6,'Calle 72',900,438]];
       var c='',r='',l='';R.forEach(function(x){c+='<path class="casing" d="'+x[0]+'" stroke-width="'+(x[1]+3)+'"/>';r+='<path class="road" d="'+x[0]+'" stroke-width="'+x[1]+'"/>';l+='<text class="rlab" x="'+x[3]+'" y="'+x[4]+'">'+x[2]+'</text>';});return c+r+'<path class="metro" d="M-200 478 L180 428 L420 388 L700 328 L1100 238"/>'+l;})()+
     BARRIOS.map(function(b){return '<text class="zlab" x="'+b.c[0]+'" y="'+(b.box[1]+34)+'" text-anchor="middle">'+b.name.toUpperCase()+'</text>';}).join('')+
-    '<text class="zlab soon" x="250" y="590" text-anchor="middle">BELLA VISTA · PRONTO</text>'+
     '</g></svg>';
   function mapHTML(id,opts){
     opts=opts||{};
@@ -1349,9 +1436,9 @@ body.placing #placeBtn{background:var(--plum);color:#fff}
       var sel=(S.phSel===p.id||m.sel===p.id),hlp=S.hover===p.id;
       if(!rs.length){its.push([p.x,p.y,'center','<button type="button" class="pin empty'+(sel?' sel':'')+'" data-pin="'+p.id+'" style="%POS%" aria-label="'+esc(p.name)+': sin habitaciones libres"></button>',sel,p]);return;}
       var min=Math.min.apply(null,rs.map(function(r){return r.price;}));
-      var best=S.profile?Math.max.apply(null,rs.map(function(r){return compat(r).s;})):null;
+      var best=S.profile?Math.max.apply(null,rs.map(function(r){return cs(r);}))||null:null;
       var dr=m.fresh?' drop" style="animation-delay:'+(nPin++*45)+'ms;':'" style="';
-      its.push([p.x,p.y,'bottom','<button type="button" class="pin'+(sel?' sel':'')+(hlp?' hl':'')+dr+'%POS%" data-pin="'+p.id+'" aria-label="'+esc(p.name)+': '+rs.length+' habitaciones desde '+money(min)+'">'+(sel&&m.static?esc(p.name):money(min))+(best?'<span class="cmp">'+best+'%</span>':'')+'</button>',sel,p]);
+      its.push([p.x,p.y,'bottom','<button type="button" class="pin'+(sel?' sel':'')+(hlp?' hl':'')+(hasTop(rs)?' top':'')+dr+'%POS%" data-pin="'+p.id+'" aria-label="'+esc(p.name)+': '+lbl(rs)+' desde '+money(min)+(hasTop(rs)?', destacado':'')+'">'+(hasTop(rs)?'<span class="tp">TOP</span>':'')+(sel&&m.static?esc(p.name):money(min))+(best?'<span class="cmp">'+best+'%</span>':'')+'</button>',sel,p]);
     });
     if(mb){
       mbData(m);
@@ -1377,7 +1464,7 @@ body.placing #placeBtn{background:var(--plum);color:#fff}
     if(mc){
       if(sp){var p=phById[sp],rs=roomsOf(sp);
         put(mc,'<div class="mcard" role="dialog" aria-label="'+esc(p.name)+'"><div class="t"><div><h3>'+esc(p.name)+'</h3><div class="s">'+esc(p.street)+' · '+esc(bById[p.b].name)+'</div></div><button type="button" class="icon-btn" data-act="unsel" aria-label="Cerrar">'+I.x+'</button></div>'+
-          '<div class="s">'+(rs.length?rs.length+(rs.length>1?' habitaciones libres, desde ':' habitación libre, ')+money(Math.min.apply(null,rs.map(function(r){return r.price;})))+' / mes':'Sin habitaciones libres. '+(p.wait?p.wait+' personas esperan una aquí.':''))+'</div>'+
+          '<div class="s">'+(rs.length?lbl(rs)+(rs.length>1?' libres, desde ':' libre, ')+money(Math.min.apply(null,rs.map(function(r){return r.price;})))+' / mes':'Sin habitaciones libres. '+(p.wait?p.wait+' personas esperan una aquí.':''))+'</div>'+
           (amTop(p).length?'<div class="mperks">'+amTop(p).slice(0,3).map(function(a){return '<span>'+amIcon(a)+esc(a)+'</span>';}).join('')+'</div>':'')+'<div class="acts"><button type="button" class="btn primary sm" data-go="ph" data-id="'+p.id+'">Ver el PH</button></div></div>');
       } else put(mc,'');
     }
@@ -1487,7 +1574,7 @@ body.placing #placeBtn{background:var(--plum);color:#fff}
   document.addEventListener('visibilitychange',function(){DM.visible=!document.hidden;if(document.getElementById('demo'))demoShow(DM.i);});
   function bcard(b,i){
     var rs=ROOMS.filter(function(r){return phById[r.ph].b===b.id;}),min=Math.min.apply(null,rs.map(function(r){return r.price;}));
-    return '<button type="button" class="bcard" data-pick="barrio" data-id="'+b.id+'">'+pimg(['balcones','torres','edificio'][i%3])+'<span class="t"><span class="h">'+esc(b.name)+'</span><span class="s">'+rs.length+' habitaciones · desde '+money(min)+'</span></span><span class="arr">'+ARR+'</span></button>';
+    return '<button type="button" class="bcard" data-pick="barrio" data-id="'+b.id+'">'+pimg(['balcones','torres','edificio'][i%3])+'<span class="t"><span class="h">'+esc(b.name)+'</span><span class="s">'+lbl(rs)+' · desde '+money(min)+'</span></span><span class="arr">'+ARR+'</span></button>';
   }
   function calcHTML(){
     var m=S.calc;
@@ -1502,7 +1589,7 @@ body.placing #placeBtn{background:var(--plum);color:#fff}
     var t0=performance.now();(function f(t){var k=Math.min(1,(t-t0)/550),v=Math.round(from+(to-from)*(1-Math.pow(1-k,3)));el.textContent=money(v);if(k<1)requestAnimationFrame(f);})(t0);
   }
   function pageInicio(){
-    var recent=ROOMS.slice().sort(function(a,b){return a.av<b.av?-1:1;}).slice(0,3);
+    var recent=ROOMS.slice().sort(function(a,b){if(!!a.top!==!!b.top)return a.top?-1:1;return a.av<b.av?-1:1;}).slice(0,3);
     var faq=[['¿Cuánto cuesta buscar?','Nada. Buscar, ver tu compatibilidad y pedir conocer una casa es gratis.'],['¿Cómo sé que es seguro?','Verificamos la identidad de cada roomie y de cada propietario, y te acompañamos a la visita.'],['¿Qué pasa con mi depósito?','Queda registrado en el MIVIOT, como pide la ley, y el contrato lo firman todos juntos.'],['¿Y si la casa no me responde?','Tienen 48 h. Si no responden, la solicitud se cancela sola y puedes pedir otra.']];
     return header()+'<main>'+
     '<section class="hero"><div class="in grid"><div class="copy">'+
@@ -1512,7 +1599,7 @@ body.placing #placeBtn{background:var(--plum);color:#fff}
     '<div class="quick" aria-label="Búsquedas rápidas">'+BARRIOS.map(function(b){return '<button type="button" class="chip" data-pick="barrio" data-id="'+b.id+'">'+I.area+esc(b.name)+'</button>';}).join('')+'<button type="button" class="chip" data-pick="lugar" data-id="m-via-argentina">'+I.metro+'Cerca del Metro</button></div>'+
     '<div class="trust"><span>'+I.checkc+'Identidad verificada</span><span>'+I.checkc+'Visitas acompañadas</span><span>'+I.checkc+'Depósito registrado en el MIVIOT</span></div></div>'+
     '<div class="stagecol">'+heroStage()+'</div></div></section>'+
-    '<section class="sec"><div class="in"><div class="head"><div><h2>¿Qué estás <em>buscando</em>?</h2></div></div><div class="aud">'+[['buscar',null,'habitacion','Roomies','Busco una habitación','Vive con personas compatibles. Desde $380 al mes.'],[null,'Apartamentos','cocina','Alquileres','Busco un apartamento','Apartamentos completos, verificados y con visita acompañada.'],[null,'Propietarios','sala','Propietarios','Tengo un apartamento','Lo alquilamos por usted: fotos, visitas, contrato y depósito.']].map(function(c){return '<button type="button" class="acard reveal" '+(c[0]?'data-go="'+c[0]+'"':'data-act="soon" data-what="'+c[1]+'"')+'>'+pimg(c[2])+'<span class="tag">'+c[3]+'</span><span class="t"><span class="h">'+c[4]+'</span><span class="s">'+c[5]+'</span></span><span class="arr">'+ARR+'</span></button>';}).join('')+'</div></div></section>'+
+    '<section class="sec"><div class="in"><div class="head"><div><h2>¿Qué estás <em>buscando</em>?</h2></div></div><div class="aud">'+[['buscar',null,'habitacion','Roomies','Busco una habitación','Vive con personas compatibles. Desde $380 al mes.'],['apartamentos',null,'cocina','Alquileres','Busco un apartamento','Apartamentos completos, verificados y con visita acompañada.'],['propietarios',null,'sala','Propietarios','Tengo un apartamento','Lo alquilamos por usted: fotos, visitas, contrato y depósito.']].map(function(c){return '<button type="button" class="acard reveal" '+(c[0]?'data-go="'+c[0]+'"':'data-act="soon" data-what="'+c[1]+'"')+'>'+pimg(c[2])+'<span class="tag">'+c[3]+'</span><span class="t"><span class="h">'+c[4]+'</span><span class="s">'+c[5]+'</span></span><span class="arr">'+ARR+'</span></button>';}).join('')+'</div></div></section>'+
     
     '<section class="sec"><div class="in"><div class="head"><div><h2>¿En qué barrio quieres <em>vivir</em>?</h2></div><button type="button" class="btn text" data-go="buscar">Ver el mapa'+I.chev+'</button></div>'+
     '<div class="bcards">'+BARRIOS.map(bcard).join('')+'</div>'+
@@ -1520,7 +1607,7 @@ body.placing #placeBtn{background:var(--plum);color:#fff}
     '<section class="sec"><div class="in"><div class="head"><div><h2>Recién verificadas, <em>para visitar pronto</em></h2></div><button type="button" class="btn text" data-go="buscar">Ver las '+ROOMS.length+' en el mapa'+I.chev+'</button></div><div class="rail">'+recent.map(function(r){return rcard(r);}).join('')+'</div><p class="cap" style="margin-top:12px">Habitaciones de ejemplo.</p></div></section>'+
     '<section class="sec"><div class="in"><div class="head"><div><h2>Primero las personas, <em>después la habitación.</em></h2></div></div><div class="how">'+
     [[1,I.howq,'Cuéntanos cómo vives','4 preguntas para ver tu compatibilidad; el perfil completo toma 3 minutos.'],[2,I.howc,'Conoce a tus matches','Si los dos aceptan, se abre un chat dentro de Nido, sin compartir tu número.'],[3,I.howh,'Visiten y firmen juntos','Te acompañamos a la visita y registramos el depósito en el MIVIOT.']].map(function(h){return '<div class="hcard reveal"><div class="top"><span class="n">'+h[0]+'</span><span class="ic">'+h[1]+'</span></div><h3>'+h[2]+'</h3><p>'+h[3]+'</p></div>';}).join('')+'</div></div></section>'+
-    '<section class="sec"><div class="in"><div class="dblock"><div><h2>¿Es propietario? Su apartamento vacío <em>le cuesta</em> cada mes.</h2><p class="sub">Nos ocupamos de todo: fotos, anuncio, visitas, inquilinos verificados, contrato y depósito registrado. Usted no paga nada hasta la firma.</p><button type="button" class="btn text" data-act="soon" data-what="Propietarios">Ver cómo funciona para propietarios'+I.chev+'</button></div>'+calcHTML()+'</div></div></section>'+
+    '<section class="sec"><div class="in"><div class="dblock"><div><h2>¿Es propietario? Su apartamento vacío <em>le cuesta</em> cada mes.</h2><p class="sub">Nos ocupamos de todo: fotos, anuncio, visitas, inquilinos verificados, contrato y depósito registrado. Usted no paga nada hasta la firma.</p><button type="button" class="btn text" data-go="propietarios">Ver cómo funciona para propietarios'+I.chev+'</button></div>'+calcHTML()+'</div></div></section>'+
     '<section class="sec"><div class="in faq"><h2 class="h2">Preguntas frecuentes</h2><div class="qs">'+faq.map(function(q,i){return '<details'+(i===0?' open':'')+'><summary>'+q[0]+I.plus+'</summary><p>'+q[1]+'</p></details>';}).join('')+'</div></div></section>'+
     '<section class="sec"><div class="in"><div class="ctablock"><h2>¿Buscamos tu <em>nido</em>?</h2><p>Empieza por un PH, una calle o una estación de Metro.</p>'+sbox('q-cta','big','Busca un PH, una calle o un barrio')+'</div></div></section>'+
     '</main>'+footer();
@@ -1529,6 +1616,7 @@ body.placing #placeBtn{background:var(--plum);color:#fff}
     var f=S.f,n=activeCount();
     function b(k,label,on){return '<button type="button" class="fchip desk" data-tog="'+k+'" aria-pressed="'+(on?'true':'false')+'">'+label+'</button>';}
     return '<div class="fbar"><div class="in" role="toolbar" aria-label="Filtros">'+
+      '<div class="kseg" role="group" aria-label="Tipo de anuncio">'+[['all','Todo'],['hab','Habitaciones'],['apto','Apartamentos']].map(function(k){return '<button type="button" data-kind="'+k[0]+'" aria-pressed="'+(f.kind===k[0])+'">'+k[1]+'</button>';}).join('')+'</div>'+
       '<button type="button" class="fchip mob'+(n?' on':'')+'" data-act="filters">'+I.sliders+'Filtros'+(n?' ('+n+')':'')+'</button>'+
       '<button type="button" class="fchip desk'+(f.max<DEF_F.max?' on':'')+'" data-act="pop-price" aria-haspopup="dialog">'+(f.max<DEF_F.max?'Hasta '+money(f.max):'Precio')+I.chevdown+'</button>'+
       b('pool','Piscina',f.pool)+b('gym','Gimnasio',f.gym)+b('bath','Baño privado',f.bath)+b('furn','Amoblada',f.furn)+b('pets','Acepta mascotas',f.pets)+
@@ -1553,7 +1641,7 @@ body.placing #placeBtn{background:var(--plum);color:#fff}
     if(S.place)chips+='<button type="button" data-act="unplace">'+esc(placeObj().name)+I.x+'<span class="sr">Quitar</span></button>';
     if(S.q)chips+='<button type="button" data-act="clearq">«'+esc(S.q)+'»'+I.x+'<span class="sr">Quitar</span></button>';
     if(S.area)chips+='<button type="button" data-act="unarea">Zona del mapa'+I.x+'<span class="sr">Quitar</span></button>';
-    var html='<div class="lhead"><h1>'+(unknown?'Sin resultados':rs.length+(rs.length===1?' habitación':' habitaciones'))+'</h1><span class="c">'+(unknown?'':'en '+Object.keys(withRooms).length+' PH · ')+esc(scopeLabel())+'</span></div>'+(chips?'<div class="active">'+chips+'</div>':'');
+    var html='<div class="lhead"><h1>'+(unknown?'Sin resultados':lbl(rs))+'</h1><span class="c">'+(unknown?'':'en '+Object.keys(withRooms).length+' PH · ')+esc(scopeLabel())+'</span></div>'+(chips?'<div class="active">'+chips+'</div>':'');
     if(unknown){
       html+='<div class="zero">'+I.zero.replace('<svg','<svg class="zic"')+'<h2>Todavía no tenemos «'+esc(S.q)+'»</h2><p style="color:var(--muted)">Si es un PH, déjanos tu WhatsApp: lo agregamos y te avisamos cuando haya una habitación ahí.</p>'+alertForm('ph-'+norm(S.q))+'<div class="opts"><button type="button" class="chip" data-act="clearq">Ver todas las habitaciones</button></div></div>';
       put(col,html);return;
@@ -1592,33 +1680,78 @@ body.placing #placeBtn{background:var(--plum);color:#fff}
     var min=rs.length?Math.min.apply(null,rs.map(function(r){return r.price;})):null;
     var amIc={'Piscina':I.pool,'Gimnasio':I.shield,'Seguridad 24 h':I.shield,'Planta eléctrica':I.shield,'Lavandería':I.shield,'Coworking':I.users,'Área social':I.users,'Jardín':I.park};
     return header()+'<main><section class="bluehero"><div class="in">'+crumb(['<button type="button" data-go="inicio">Inicio</button>','<button type="button" data-pick="barrio" data-id="'+p.b+'">'+esc(b.name)+'</button>','<span>'+esc(p.name)+'</span>'])+
-    '<div class="grid"><div><span class="ex">Ejemplo</span><h1 style="margin-top:12px">'+esc(p.name)+'</h1><p class="lead">'+esc(p.street)+', '+esc(b.name)+' · '+p.floors+' pisos. '+(rs.length?rs.length+(rs.length>1?' habitaciones libres':' habitación libre')+' desde '+money(min)+' al mes.':'Ahora no hay habitaciones libres.')+'</p>'+
+    '<div class="grid"><div><span class="ex">Ejemplo</span><h1 style="margin-top:12px">'+esc(p.name)+'</h1><p class="lead">'+esc(p.street)+', '+esc(b.name)+' · '+p.floors+' pisos. '+(rs.length?lbl(rs)+(rs.length>1?' libres':' libre')+' desde '+money(min)+' al mes.':'Ahora no hay habitaciones libres.')+'</p>'+
     amenBig(p)+
     (p.wait?'<div class="wait">'+I.users+p.wait+(p.wait>1?' personas esperan':' persona espera')+' una habitación en este PH</div>':'')+'</div>'+
     '<div class="phside"><div class="phphoto">'+pimg(['torres','edificio','balcones'][PH.indexOf(p)%3],'Foto de ejemplo del edificio')+'</div><dl class="kv"><div><dt>Habitaciones libres</dt><dd>'+rs.length+'</dd></div><div><dt>Desde</dt><dd>'+(min?money(min)+' / mes':'Sin habitaciones')+'</dd></div><div><dt>'+esc(metro.name)+'</dt><dd>a '+walkMin(p,metro)+' min a pie</dd></div><div><dt>Esperan aquí</dt><dd>'+p.wait+(p.wait===1?' persona':' personas')+'</dd></div></dl></div></div></div></section>'+
-    '<div class="in cols"><div class="main"><section aria-labelledby="hab-t"><h2 id="hab-t" class="h3" style="margin-bottom:24px">'+(rs.length?rs.length+(rs.length>1?' habitaciones libres':' habitación libre')+' en este PH':'No hay habitaciones libres ahora')+'</h2>'+
+    '<div class="in cols"><div class="main"><section aria-labelledby="hab-t"><h2 id="hab-t" class="h3" style="margin-bottom:24px">'+(rs.length?lbl(rs)+(rs.length>1?' libres':' libre')+' en este PH':'No hay habitaciones libres ahora')+'</h2>'+
     (rs.length?'<div class="grid3">'+rs.map(function(r){return rcard(r);}).join('')+'</div>':'<div class="zero">'+I.zero.replace('<svg','<svg class="zic"')+'<h3>Ninguna habitación libre en el '+esc(p.name)+'</h3><p style="color:var(--muted)">Crea una alerta y te escribimos en cuanto se publique una.</p></div>')+'</section>'+
     '<section><h2 class="h3" style="margin-bottom:24px">Ubicación</h2><div class="minimap">'+mapHTML('phmap',{static:true})+'</div><p class="cap" style="margin-top:8px">Ubicación del edificio. La dirección del apartamento se comparte cuando la visita está aceptada.</p></section></div>'+
     '<aside class="side"><div class="graycard reveal"><h2>'+I.bell+(rs.length?'¿Ninguna te convence?':'Avísame cuando haya una')+'</h2><p>Te escribimos por WhatsApp en cuanto se publique una habitación en el '+esc(p.name)+'.</p>'+alertForm('ph-'+id)+'</div>'+
     '<nav class="navlist" aria-label="Otros PH cerca"><span>Otros PH cerca</span>'+near.map(function(x){var n=roomsOf(x.id).length;return '<button type="button" data-go="ph" data-id="'+x.id+'"><span>'+esc(x.name)+'<small>'+esc(bById[x.b].name)+' · a '+walkMin(x,p)+' min a pie</small></span><span class="go">'+(n?n+(n>1?' libres':' libre'):'Avísame')+I.chev+'</span></button>';}).join('')+'</nav></aside></div>'+
-    '<section class="sec"><div class="in"><div class="dblock"><div><h2>¿Tiene un apartamento en el '+esc(p.name)+'?</h2><p class="sub">'+(p.wait?p.wait+(p.wait>1?' roomies ya esperan':' roomie ya espera')+' una habitación en este PH. ':'')+'Usted no paga nada hasta la firma.</p></div><div><button type="button" class="btn white" data-act="soon" data-what="Propietarios">Ver cómo funciona para propietarios</button></div></div></div></section></main>'+footer();
+    '<section class="sec"><div class="in"><div class="dblock"><div><h2>¿Tiene un apartamento en el '+esc(p.name)+'?</h2><p class="sub">'+(p.wait?p.wait+(p.wait>1?' roomies ya esperan':' roomie ya espera')+' una habitación en este PH. ':'')+'Usted no paga nada hasta la firma.</p></div><div><button type="button" class="btn white" data-go="propietarios">Ver cómo funciona para propietarios</button></div></div></div></section></main>'+footer();
   }
   function pageRoom(id){
     var r=ROOMS.filter(function(x){return x.id===id;})[0],p=phById[r.ph],b=bById[p.b],c=compat(r),seed=parseInt(id.slice(1),10);
-    var nm=names(r.people);
-    var cta='<button type="button" class="btn primary block" data-act="request" data-id="'+r.id+'">Pedir conocer a '+esc(nm)+'</button>';
-    var fine='<p class="fine">Creas tu perfil en 3 minutos. '+esc(nm)+(r.people.length>1?' tienen':' tiene')+' 48 h para responder; si no, la solicitud se cancela sola y no pierdes nada.</p>';
+    var nm=names(r.people),ap=r.apto;
+    var cta=ap?'<button type="button" class="btn primary block" data-act="visit" data-id="'+r.id+'">Pedir una visita</button>':'<button type="button" class="btn primary block" data-act="request" data-id="'+r.id+'">Pedir conocer a '+esc(nm)+'</button>';
+    var fine=ap?'<p class="fine">Eliges el día; te confirmamos la visita en menos de 24 h hábiles y te acompañamos. Sin costo hasta la firma.</p>':'<p class="fine">Creas tu perfil en 3 minutos. '+esc(nm)+(r.people.length>1?' tienen':' tiene')+' 48 h para responder; si no, la solicitud se cancela sola y no pierdes nada.</p>';
     return header()+'<main><div class="in">'+crumb(['<button type="button" data-go="buscar">Buscar</button>','<button type="button" data-pick="barrio" data-id="'+p.b+'">'+esc(b.name)+'</button>','<button type="button" data-go="ph" data-id="'+p.id+'">'+esc(p.name)+'</button>'])+
     '<div class="gal"><div class="big">'+photo(seed,null,'1/8',roomImg(seed),'Foto de ejemplo: '+PLAB[roomImg(seed)])+'</div><div class="side">'+photo(seed,PLAB[roomImg(seed,1)],null,roomImg(seed,1),'Foto de ejemplo: '+PLAB[roomImg(seed,1)])+'</div><div class="side">'+photo(seed,PLAB[roomImg(seed,2)],null,roomImg(seed,2),'Foto de ejemplo: '+PLAB[roomImg(seed,2)])+'</div></div>'+
-    '<div class="roomg"><div><span class="ex">Ejemplo</span><h1 class="title">Habitación '+(r.bath==='privado'?'con baño privado':'con baño compartido')+' en el '+esc(p.name)+'</h1>'+
-    '<dl class="kv flat" style="margin-top:24px"><div><dt>Precio</dt><dd>'+money(r.price)+' / mes</dd></div><div><dt>Disponible</dt><dd>'+(fdate(r.av)==='ya'?'Ya':fdate(r.av))+'</dd></div><div><dt>Mínimo</dt><dd>'+r.min+' meses</dd></div><div><dt>Amoblada</dt><dd>'+(r.furn?'Sí':'No')+'</dd></div><div><dt>Incluye</dt><dd>'+esc(r.inc)+'</dd></div><div><dt>Depósito</dt><dd>'+money(r.price)+', en el MIVIOT</dd></div></dl>'+
-    '<div class="rblk"><h2>¿Quién vive aquí?</h2>'+r.people.map(function(x,i){return '<div class="person"><span class="av" style="background:'+AVC[(x[0].charCodeAt(0)+i)%AVC.length]+'">'+x[0][0]+'</span><div><b>'+esc(x[0])+', '+x[1]+' · '+esc(x[2])+'</b><p>'+esc(x[3])+'</p><p class="vf">'+I.checkc+'Identidad verificada</p></div></div>';}).join('')+
+    '<div class="roomg"><div><span class="ex">Ejemplo</span><h1 class="title">'+(ap?'Apartamento de '+ap.rec+(ap.rec>1?' recámaras':' recámara')+' en el '+esc(p.name):'Habitación '+(r.bath==='privado'?'con baño privado':'con baño compartido')+' en el '+esc(p.name))+'</h1>'+(r.top?'<span class="topb inl">TOP</span>':'')+
+    '<dl class="kv flat" style="margin-top:24px"><div><dt>Precio</dt><dd>'+money(r.price)+' / mes</dd></div><div><dt>Disponible</dt><dd>'+(fdate(r.av)==='ya'?'Ya':fdate(r.av))+'</dd></div><div><dt>Mínimo</dt><dd>'+r.min+' meses</dd></div>'+(ap?'<div><dt>Tamaño</dt><dd>'+ap.m2+' m² · '+ap.ban+(ap.ban>1?' baños':' baño')+'</dd></div>':'')+'<div><dt>'+(ap?'Amoblado':'Amoblada')+'</dt><dd>'+(r.furn?'Sí':'No')+'</dd></div><div><dt>Incluye</dt><dd>'+esc(r.inc)+'</dd></div><div><dt>Depósito</dt><dd>'+money(r.price)+', en el MIVIOT</dd></div></dl>'+
+    (ap?'<div class="rblk"><h2>Todo el apartamento para ti</h2><p class="cap" style="font-size:17px;line-height:26px;color:var(--ink-2)">Sin roomies. Lo visitamos y lo fotografiamos nosotros: lo que ves es lo que hay. El contrato y el depósito quedan registrados en el MIVIOT.</p></div>':'<div class="rblk"><h2>¿Quién vive aquí?</h2>'+r.people.map(function(x,i){return '<div class="person"><span class="av" style="background:'+AVC[(x[0].charCodeAt(0)+i)%AVC.length]+'">'+x[0][0]+'</span><div><b>'+esc(x[0])+', '+x[1]+' · '+esc(x[2])+'</b><p>'+esc(x[3])+'</p><p class="vf">'+I.checkc+'Identidad verificada</p></div></div>';}).join('')+
     (c?'<div class="cbox">'+ring(c.s,64)+'<div><b>Tu compatibilidad con esta casa</b><ul>'+c.why.map(function(w){return '<li>'+I.check+esc(w)+'</li>';}).join('')+c.no.map(function(w){return '<li class="no">'+I.tilde+esc(w)+'</li>';}).join('')+'</ul></div></div><p class="cap">Orientativa: la decides tú. <button type="button" class="btn text sm" data-act="profile">Cambiar mis respuestas</button></p>':
-      '<div class="cbox lock"><b>¿Qué tan compatible eres con '+esc(nm)+'?</b><p style="color:var(--muted);font-size:15px">Responde 4 preguntas y te mostramos tu puntaje con esta casa, y por qué.</p><div><button type="button" class="btn soft" data-act="profile">Ver mi compatibilidad</button></div></div>')+'</div>'+
+      '<div class="cbox lock"><b>¿Qué tan compatible eres con '+esc(nm)+'?</b><p style="color:var(--muted);font-size:15px">Responde 4 preguntas y te mostramos tu puntaje con esta casa, y por qué.</p><div><button type="button" class="btn soft" data-act="profile">Ver mi compatibilidad</button></div></div>')+'</div>')+
     '<div class="rblk"><h2>En el '+esc(phById[r.ph].name)+'</h2>'+amenBig(phById[r.ph])+'</div>'+'<div class="rblk"><h2>Reglas de la casa</h2><div class="amen" style="margin-top:0"><span>'+I.tilde+'Sin fumar dentro</span><span>'+I.clock+'Visitas hasta las 22 h entre semana</span><span>'+I.heart+(r.h.petsOk?'Mascotas bienvenidas':'Sin mascotas')+'</span></div></div>'+
     '<div class="rblk"><h2>Ubicación</h2><div class="minimap">'+mapHTML('roommap',{static:true})+'</div><p class="cap">'+esc(p.street)+', '+esc(b.name)+'. La dirección exacta se comparte cuando la visita está aceptada.</p></div></div>'+
     '<div class="asidecol"><div class="aside"><div class="rtop"><span class="price" style="font-size:28px">'+money(r.price)+' <small>/ mes</small></span>'+(c?'<span class="compat'+(c.s<70?' mid':'')+'">'+c.s+' % contigo</span>':'')+'</div><span class="rmeta">'+(fdate(r.av)==='ya'?'Disponible ya':'Disponible el '+fdate(r.av))+' · mínimo '+r.min+' meses</span>'+cta+fine+'<button type="button" class="btn text sm" data-act="save" data-id="'+r.id+'" aria-pressed="'+(S.saved[r.id]?'true':'false')+'">'+(S.saved[r.id]?'Guardada':'Guardar esta habitación')+'</button></div></div></div></div></main>'+
-    footer()+'<div class="mbar"><div><span class="price" style="font-size:20px">'+money(r.price)+'</span> <small style="color:var(--muted)">/ mes</small></div><button type="button" class="btn primary" data-act="request" data-id="'+r.id+'">Pedir conocer</button></div>';
+    footer()+'<div class="mbar"><div><span class="price" style="font-size:20px">'+money(r.price)+'</span> <small style="color:var(--muted)">/ mes</small></div><button type="button" class="btn primary" data-act="'+(ap?'visit':'request')+'" data-id="'+r.id+'">'+(ap?'Pedir una visita':'Pedir conocer')+'</button></div>';
+  }
+
+
+  // ---------- página: Apartamentos ----------
+  function pageAptos(){
+    var ap=ROOMS.filter(function(r){return r.apto;}).sort(function(a,b){if(!!a.top!==!!b.top)return a.top?-1:1;return a.price-b.price;});
+    var min=Math.min.apply(null,ap.map(function(r){return r.price;}));
+    var bar=BARRIOS.map(function(b){var n=ap.filter(function(r){return phById[r.ph].b===b.id;}).length;return n?'<button type="button" class="chip" data-pick="barrio" data-id="'+b.id+'" data-kind="apto">'+I.area+esc(b.name)+' · '+n+'</button>':'';}).join('');
+    var ver=[[I.checkc,'Lo visitamos antes que tú','Medimos, probamos el agua, la luz y el aire. Si algo no está, no se publica.'],[I.checkc,'Fotos nuestras, sin filtros','Lo que ves es lo que hay. Fotos tomadas por Nido en la visita.'],[I.checkc,'Propietario verificado','Identidad y título de propiedad revisados antes de publicar.'],[I.checkc,'Depósito en el MIVIOT','El contrato y el depósito quedan registrados. Te lo devuelven como dice la ley.']];
+    return header()+'<main><section class="bluehero aptohero"><div class="in">'+crumb(['<button type="button" data-go="inicio">Inicio</button>','<span>Apartamentos</span>'])+
+      '<div class="grid"><div><h1>Apartamentos en alquiler, <em>verificados</em> uno por uno.</h1><p class="lead">'+ap.length+' apartamentos enteros en El Cangrejo, Obarrio, San Francisco y la Avenida Balboa, desde '+money(min)+' al mes. Visita acompañada, contrato y depósito registrados.</p>'+
+      sbox('q-apto','big','Busca un PH, una calle o un barrio')+'<div class="quick" aria-label="Apartamentos por barrio">'+bar+'</div></div>'+
+      '<div class="aptoshow">'+pimg('torres','Torres frente a la Bahía de Panamá, foto de ejemplo')+'<span class="topb">TOP</span><div class="kv mini"><b>'+esc(phById['mirador-bahia'].name)+'</b><span>3 recámaras · 140 m² · vista al mar</span></div></div></div></div></section>'+
+      '<section class="sec"><div class="in"><div class="head"><div><h2>Destacados <em>esta semana</em></h2></div><button type="button" class="btn text" data-go="buscar" data-kind="apto">Ver los '+ap.length+' en el mapa'+I.chev+'</button></div>'+
+      '<div class="grid3 g3">'+ap.map(function(r){return rcard(r);}).join('')+'</div><p class="cap" style="margin-top:12px">Apartamentos de ejemplo.</p></div></section>'+
+      '<section class="sec"><div class="in"><div class="head"><div><h2>¿Qué quiere decir <em>verificado</em>?</h2></div></div><ul class="vlist">'+ver.map(function(v){return '<li>'+v[0]+'<div><b>'+v[1]+'</b><p>'+v[2]+'</p></div></li>';}).join('')+'</ul></div></section>'+
+      '<section class="sec"><div class="in"><div class="cta2"><div><h2>¿Prefieres compartir y pagar menos?</h2><p>Habitaciones con roomies compatibles desde $380 al mes.</p></div><button type="button" class="btn primary" data-go="buscar" data-kind="hab">Ver habitaciones</button></div></div></section></main>'+footer();
+  }
+
+  // ---------- página: Propietarios ----------
+  function nextBiz(){var d=new Date();d.setDate(d.getDate()+1);while(d.getDay()===0||d.getDay()===6)d.setDate(d.getDate()+1);var D=['domingo','lunes','martes','miércoles','jueves','viernes','sábado'],M=['enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre'];return D[d.getDay()]+' '+d.getDate()+' de '+M[d.getMonth()];}
+  function ownerForm(){
+    if(S.owner)return '<div class="oform done"><div class="ok" role="status">'+I.checkc+'<div><b>Listo, '+esc(S.owner.nm)+'.</b><br>Le llamamos al '+esc(S.owner.wa)+' antes del '+nextBiz()+' a las 6 p. m. Si prefiere otra hora, respóndanos por WhatsApp.</div></div><button type="button" class="btn text sm" data-act="ownerreset">Cambiar mis datos</button></div>';
+    return '<form class="oform" data-owner novalidate><h2>Le llamamos en menos de 24 h hábiles</h2>'+
+      '<label class="field">Su nombre<input name="nm" autocomplete="given-name" required></label>'+
+      '<label class="field">WhatsApp<input name="wa" inputmode="tel" autocomplete="tel-national" placeholder="6123 4567" required><span class="err" role="alert" hidden></span></label>'+
+      '<label class="field">PH o dirección del apartamento<input name="ph" placeholder="Ej.: PH Yacht Club, Av. Balboa"></label>'+
+      '<fieldset class="q"><legend>¿Cómo lo quiere alquilar?</legend><div class="opts2"><button type="button" class="opt" data-otipo="entero" aria-pressed="'+(S.otipo!=='hab')+'">Entero</button><button type="button" class="opt" data-otipo="hab" aria-pressed="'+(S.otipo==='hab')+'">Por habitaciones</button></div></fieldset>'+
+      '<button type="submit" class="btn primary block">Pedir que me llamen</button><p class="fine">Sin compromiso. Usted no paga nada hasta la firma del contrato.</p></form>';
+  }
+  function pageOwners(){
+    var wait=PH.slice().sort(function(a,b){return b.wait-a.wait;}).filter(function(p){return p.wait;}).slice(0,6),tw=PH.reduce(function(s,p){return s+p.wait;},0);
+    var serv=[['Fotos y anuncio','Fotos profesionales y un anuncio claro, publicado en Nido.','<path d="M4 8h3l2-3h6l2 3h3v11H4z"/><circle cx="12" cy="13" r="3.5"/>'],['Inquilinos verificados','Identidad, ingresos y referencias revisados antes de cada visita.','<path d="M12 3 5 6v5c0 4.5 3 8.3 7 10 4-1.7 7-5.5 7-10V6z"/><path d="m9 12 2 2 4-4"/>'],['Visitas por nosotros','Abrimos, enseñamos y le contamos quién vino. Usted no se mueve.','<path d="M4 11 12 4.5l8 6.5v9H4z"/><path d="M10 20.5v-5h4v5"/>'],['Contrato y depósito','Contrato revisado y depósito registrado en el MIVIOT, como dice la ley.','<rect x="5" y="3" width="14" height="18" rx="2"/><path d="M9 8h6M9 12h6M9 16h3"/>'],['Cobro cada mes','Recibe el alquiler a tiempo; nosotros hacemos el seguimiento.','<rect x="3" y="6" width="18" height="12" rx="2"/><circle cx="12" cy="12" r="2.5"/>'],['Conserjería','Mantenimiento, llaves, limpieza y entregas con un solo contacto.','<path d="M14.7 6.3a4 4 0 0 0-5.4 5.4L4 17v3h3l5.3-5.3a4 4 0 0 0 5.4-5.4l-2.5 2.5-2.4-.6-.6-2.4z"/>']];
+    var plans=[['Encontrar inquilino','Medio mes de alquiler','una sola vez, al firmar',['Fotos, anuncio y visitas','Inquilino verificado','Contrato y depósito en el MIVIOT'],false],['Gestión completa','10 % del alquiler','cada mes, solo si está alquilado',['Todo lo anterior','Cobro y seguimiento mensual','Conserjería y mantenimiento'],true]];
+    var fq=[['¿Cuánto tarda en alquilarse?','Nuestro objetivo es firmar en 14 días. Le decimos cada semana cuántas personas vieron y pidieron su apartamento.'],['¿Y si el inquilino deja de pagar?','En Gestión completa hacemos el seguimiento desde el primer día de retraso y le explicamos sus opciones.'],['¿Puedo alquilar por habitaciones?','Sí. Buscamos roomies compatibles para cada habitación y usted firma un solo contrato con Nido o uno por habitación.'],['¿Quién es Nido?','Una conserjería digital de alquileres en Ciudad de Panamá. Intermediamos a través de un corredor con licencia JTBR.']];
+    return header()+'<main><section class="bluehero ownhero"><div class="in">'+crumb(['<button type="button" data-go="inicio">Inicio</button>','<span>Propietarios</span>'])+
+      '<div class="grid"><div><h1>Su apartamento alquilado, <em>sin perder meses.</em></h1><p class="lead">Nos ocupamos de todo: fotos, anuncio, visitas, inquilinos verificados, contrato y depósito registrado en el MIVIOT. Usted no paga nada hasta la firma.</p>'+
+      '<div class="trust"><span>'+I.checkc+'Corredor con licencia JTBR</span><span>'+I.checkc+'Depósito en el MIVIOT</span><span>'+I.checkc+tw+' personas esperan hoy</span></div></div>'+
+      '<div id="oform">'+ownerForm()+'</div></div></div></section>'+
+      '<section class="sec"><div class="in"><div class="head"><div><h2>Ya hay gente <em>esperando</em> en su PH</h2></div></div><ul class="waitlist">'+wait.map(function(p){return '<li><button type="button" data-go="ph" data-id="'+p.id+'"><b>'+esc(p.name)+'</b><span>'+esc(bById[p.b].name)+'</span><em>'+p.wait+(p.wait>1?' personas':' persona')+'</em></button></li>';}).join('')+'</ul><p class="cap" style="margin-top:12px">Datos de ejemplo. Personas que crearon una alerta «Avísame» en ese PH.</p></div></section>'+
+      '<section class="sec"><div class="in"><div class="dblock"><div><h2>Su apartamento vacío <em>le cuesta</em> cada mes.</h2><p class="sub">Mueva el número de meses que suele quedar vacío y vea lo que pierde al año.</p></div>'+calcHTML()+'</div></div></section>'+
+      '<section class="sec"><div class="in"><div class="head"><div><h2>Lo que hacemos <em>por usted</em></h2></div></div><ul class="serv">'+serv.map(function(v){return '<li><span class="ai"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">'+v[2]+'</svg></span><b>'+v[0]+'</b><p>'+v[1]+'</p></li>';}).join('')+'</ul></div></section>'+
+      '<section class="sec"><div class="in"><div class="head"><div><h2>Dos formas de <em>trabajar juntos</em></h2></div></div><div class="plans">'+plans.map(function(p){return '<div class="plan'+(p[4]?' rec':'')+'">'+(p[4]?'<span class="topb inl">Recomendado</span>':'')+'<h3>'+p[0]+'</h3><p class="pp"><b>'+p[1]+'</b><span>'+p[2]+'</span></p><ul>'+p[3].map(function(x){return '<li>'+I.check+esc(x)+'</li>';}).join('')+'</ul><a class="btn '+(p[4]?'primary':'soft')+'" href="#oform" data-act="toform">Pedir que me llamen</a></div>';}).join('')+'</div><p class="cap" style="margin-top:12px">Precios de ejemplo, sin ITBMS.</p></div></section>'+
+      '<section class="sec"><div class="in faq"><h2 class="h2">Preguntas de propietarios</h2><div class="qs">'+fq.map(function(q,i){return '<details'+(i===0?' open':'')+'><summary>'+q[0]+I.plus+'</summary><p>'+q[1]+'</p></details>';}).join('')+'</div></div></section>'+
+      '<section class="sec"><div class="in"><p class="wa">¿Prefiere escribirnos? <button type="button" class="btn text sm" data-act="soon" data-what="WhatsApp">WhatsApp +507 6000 0000</button></p></div></section></main>'+footer();
   }
 
   // ---------- render / navegación ----------
@@ -1628,6 +1761,8 @@ body.placing #placeBtn{background:var(--plum);color:#fff}
     resetMaps();
     site.classList.toggle('mapmode',S.mapmode&&S.route==='buscar');
     if(S.route==='inicio')put(site,pageInicio());
+    else if(S.route==='apartamentos')put(site,pageAptos());
+    else if(S.route==='propietarios')put(site,pageOwners());
     else if(S.route==='buscar'){put(site,pageBuscar());renderList();renderMapBuscar();}
     else if(S.route==='ph'){put(site,pagePH(S.arg));initMap('phmap',{phs:[phById[S.arg]],rooms:roomsOf(S.arg),static:true,sel:S.arg,pad:150});}
     else if(S.route==='room'){var r=ROOMS.filter(function(x){return x.id===S.arg;})[0];put(site,pageRoom(S.arg));initMap('roommap',{phs:[phById[r.ph]],rooms:[r],static:true,sel:r.ph,pad:150});}
@@ -1680,7 +1815,7 @@ body.placing #placeBtn{background:var(--plum);color:#fff}
       var so=e.target.closest('[data-sort]');if(so){S.sort=so.getAttribute('data-sort');sc.querySelectorAll('[data-sort]').forEach(function(b){b.setAttribute('aria-pressed',String(b===so));});refresh();}
     });
   }
-  function updGo(){var b=document.getElementById('fs-go');if(b){var n=results().length;b.textContent=n?'Ver '+n+(n===1?' habitación':' habitaciones'):'Ninguna habitación: quita un filtro';}}
+  function updGo(){var b=document.getElementById('fs-go');if(b){var n=results().length;b.textContent=n?'Ver '+lbl(results()):'Ningún anuncio: quita un filtro';}}
   function tog(k,l,s,on){return '<div class="tog"><span>'+l+'<small>'+s+'</small></span><button type="button" class="sw" role="switch" data-tg="'+k+'" aria-checked="'+on+'" aria-label="'+l+'"></button></div>';}
   function priceBlock(id){
     var all=ROOMS.filter(function(r){return inScope(r)&&passFilters(r,'max');}).map(function(r){return r.price;});
@@ -1734,10 +1869,15 @@ body.placing #placeBtn{background:var(--plum);color:#fff}
       if(act==='pop-price'){openPop('price',a);return;}
       if(act==='pop-when'){openPop('when',a);return;}
       if(act==='profile'){openProfile();return;}
+      if(act==='ownerreset'){S.owner=null;var w0=document.getElementById('oform');if(w0)put(w0,ownerForm());return;}
+      if(act==='toform'){e.preventDefault();var fo=document.getElementById('oform');if(fo){fo.scrollIntoView({behavior:'smooth',block:'center'});var i0=fo.querySelector('input');if(i0)setTimeout(function(){i0.focus({preventScroll:true});},400);}return;}
+      if(act==='visit'){toast('Demo: aquí eliges el día y la hora de la visita.',true);return;}
       if(act==='request'){if(!S.profile){openProfile();return;}toast('Demo: aquí empieza el perfil completo (3 min).',true);return;}
       if(act==='demoplay'){demoPause(!DM.paused);return;}
       if(act==='soon'){toast('«'+a.getAttribute('data-what')+'»: página de la siguiente etapa.',true);return;}
     }
+    var ot=t.closest('[data-otipo]');if(ot){S.otipo=ot.getAttribute('data-otipo');ot.parentNode.querySelectorAll('[data-otipo]').forEach(function(b){b.setAttribute('aria-pressed',String(b===ot));});return;}
+    var kd=t.closest('[data-kind]');if(kd){S.f.kind=kd.getAttribute('data-kind');if(!kd.hasAttribute('data-go')){S.view=null;S.phSel=null;refresh();return;}}
     var g=t.closest('[data-go]');if(g){go(g.getAttribute('data-go'),g.getAttribute('data-id'));return;}
     var card=t.closest('[data-room]');if(card&&!t.closest('button')){go('room',card.getAttribute('data-room'));return;}
   });
@@ -1761,6 +1901,12 @@ body.placing #placeBtn{background:var(--plum);color:#fff}
   document.addEventListener('pointerdown',function(e){site.querySelectorAll('[data-sbox]').forEach(function(b){if(!b.contains(e.target))closeSugg(b);});var p=layer.querySelector('.pop');if(p&&!p.contains(e.target)&&!e.target.closest('[data-act^="pop-"]'))closePop();});
   site.addEventListener('change',function(e){if(e.target.id==='sort'){S.sort=e.target.value;renderList();}});
   site.addEventListener('submit',function(e){
+    var of=e.target.closest('[data-owner]');
+    if(of){e.preventDefault();var nm=of.querySelector('[name=nm]'),wa=of.querySelector('[name=wa]'),err=of.querySelector('.err'),d=wa.value.replace(/\D/g,'');
+      if(!nm.value.trim()){nm.setAttribute('aria-invalid','true');nm.focus();toast('Escriba su nombre, por favor.',true);return;}
+      if(d.length!==8){err.hidden=false;err.textContent='Escriba 8 dígitos, por ejemplo 6123 4567.';wa.focus();return;}
+      var btn=of.querySelector('[type=submit]');btn.disabled=true;put(btn,I.spinner+'Enviando…');
+      setTimeout(function(){S.owner={nm:nm.value.trim().split(' ')[0],wa:d.slice(0,4)+' '+d.slice(4)};var w=document.getElementById('oform');if(w){put(w,ownerForm());var ok=w.querySelector('.ok');if(ok){ok.setAttribute('tabindex','-1');ok.focus();}}},500);return;}
     var f=e.target.closest('[data-alert]');if(!f)return;e.preventDefault();
     var inp=f.querySelector('input'),err=f.querySelector('.err'),d=inp.value.replace(/\D/g,'');
     if(d.length!==8){err.hidden=false;err.textContent=d.length?'Faltan '+(8-d.length>0?8-d.length+' dígitos':'')+'. Escribe 8 dígitos, por ejemplo 6123 4567.':'Escribe tu WhatsApp para poder avisarte.';if(d.length>8)err.textContent='Son 8 dígitos, sin el +507.';inp.focus();return;}

@@ -23,7 +23,7 @@
      "Planta eléctrica",
      "Seguridad 24 h"
     ],
-    "libres": 2,
+    "libres": 3,
     "desde": 430,
     "esperan": 4
    }
@@ -128,7 +128,7 @@
      "Planta eléctrica",
      "Seguridad 24 h"
     ],
-    "libres": 1,
+    "libres": 2,
     "desde": 650,
     "esperan": 1
    }
@@ -241,8 +241,8 @@
    "geometry": {
     "type": "Point",
     "coordinates": [
-     -79.51065642175006,
-     8.986796023277908
+     -79.5098,
+     8.98824
     ]
    },
    "properties": {
@@ -281,7 +281,7 @@
      "Gimnasio",
      "Seguridad 24 h"
     ],
-    "libres": 1,
+    "libres": 2,
     "desde": 610,
     "esperan": 3
    }
@@ -316,15 +316,15 @@
    "geometry": {
     "type": "Point",
     "coordinates": [
-     -79.50329880318804,
-     8.990588484603304
+     -79.5216,
+     8.9763
     ]
    },
    "properties": {
     "ph": "yacht-club",
     "nombre": "PH Yacht Club",
-    "barrio": "San Francisco",
-    "calle": "Calle 76 Este",
+    "barrio": "Bella Vista",
+    "calle": "Av. Balboa",
     "pisos": 45,
     "amenidades": [
      "Piscina",
@@ -338,6 +338,63 @@
     "libres": 2,
     "desde": 580,
     "esperan": 7
+   }
+  },
+  {
+   "type": "Feature",
+   "id": 14,
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -79.5262,
+     8.9745
+    ]
+   },
+   "properties": {
+    "ph": "bahia-balboa",
+    "nombre": "PH Bahía Balboa",
+    "barrio": "Bella Vista",
+    "calle": "Av. Balboa",
+    "pisos": 52,
+    "amenidades": [
+     "Piscina",
+     "Gimnasio",
+     "Vista al mar",
+     "Área social",
+     "Seguridad 24 h"
+    ],
+    "libres": 2,
+    "desde": 620,
+    "esperan": 3
+   }
+  },
+  {
+   "type": "Feature",
+   "id": 15,
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -79.5162,
+     8.9788
+    ]
+   },
+   "properties": {
+    "ph": "mirador-bahia",
+    "nombre": "PH Mirador de la Bahía",
+    "barrio": "Bella Vista",
+    "calle": "Av. Balboa",
+    "pisos": 38,
+    "amenidades": [
+     "Piscina",
+     "Gimnasio",
+     "Vista al mar",
+     "Coworking",
+     "Planta eléctrica",
+     "Seguridad 24 h"
+    ],
+    "libres": 2,
+    "desde": 1150,
+    "esperan": 2
    }
   }
  ]
