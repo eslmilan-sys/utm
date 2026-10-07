@@ -917,6 +917,37 @@ body.placing #placeBtn{background:var(--plum);color:#fff}
 svg .air{stroke-dasharray:3 3;animation:airflow 1.4s linear infinite}
 @keyframes airflow{to{stroke-dashoffset:-12}}
 
+
+/* ===== v13: dinero claro, acuerdos de casa, compatibilidad orientativa ===== */
+.cbox.why{display:block}
+.cbox .chd{display:flex;justify-content:space-between;align-items:flex-start;gap:16px}
+.cbox .clev{display:block;font-size:13px;font-weight:600;letter-spacing:.4px;text-transform:uppercase;color:var(--muted)}
+.cbox .ctit{display:block;font-size:20px;line-height:26px;margin-top:4px}
+.cbox .cl{display:block;font-size:14px;font-weight:600;color:var(--ink-2);margin-top:16px}
+.cbox .cl+ul{margin-top:8px}
+dl.kv.cost{background:var(--surface-2)}
+dl.kv.cost dd{max-width:60%}
+dl.kv.cost dd small{display:block;font-size:13px;line-height:18px;font-weight:400;color:var(--muted);margin-top:2px}
+dl.kv.cost dd .var{font-weight:500;color:var(--ink-2)}
+dl.kv.cost>div{padding:12px 0}
+dl.kv.cost>div.tot dt{color:var(--ink);font-weight:600;white-space:nowrap}
+dl.kv.cost dt{font-size:16px}
+dl.kv.cost>div.tot dd{font-size:20px}
+dl.kv.cost>div.tot.in{border-top:2px solid var(--ink);margin-top:-1px}
+.pact{list-style:none;margin:0;padding:0;display:grid;gap:12px}
+@container site (min-width:700px){.pact{grid-template-columns:1fr 1fr}}
+.pact li{display:flex;gap:14px;align-items:flex-start;background:var(--surface-2);border-radius:var(--r-lg);padding:16px 18px}
+.pact .ai{flex:none;width:40px;height:40px;border-radius:12px;background:#fff;display:grid;place-items:center;color:var(--plum)}
+.pact .ai svg{width:22px;height:22px}
+.pact b{display:block;font-size:15px;margin-bottom:2px}
+.pact li>span:last-child{font-size:15px;line-height:21px;color:var(--ink-2)}
+.incl{display:grid;gap:12px;margin-top:20px}
+@container site (min-width:700px){.incl{grid-template-columns:1fr 1fr}}
+.incl>div{border:1px solid var(--line-soft);border-radius:var(--r-lg);padding:20px}
+.incl b{display:block;font-size:16px;margin-bottom:6px}
+.incl p{margin:0;font-size:15px;line-height:22px;color:var(--ink-2)}
+.phone .s2 .dlab{margin-top:6px}
+@container site (max-width:520px){.cbox .ctit{font-size:18px;line-height:24px}.cbox .clev{font-size:12px;letter-spacing:.3px}}
 /* ===== v12: portada. Un teléfono de verdad en un escenario con arco, techo y burbujas ===== */
 .demo{max-width:520px;gap:18px}
 .stage{position:relative;width:100%;max-width:500px;aspect-ratio:500/700;isolation:isolate}
@@ -975,7 +1006,7 @@ svg .air{stroke-dasharray:3 3;animation:airflow 1.4s linear infinite}
 
 
 <div class="review" role="region" aria-label="Revisión del prototipo">
-  <div class="t"><b>Nido</b> · diseño del sitio · v12 · nueva animación de portada</div>
+  <div class="t"><b>Nido</b> · diseño del sitio · v13 · costos claros y compatibilidad orientativa</div>
   <div class="ctl">
     <div class="seg devsel" role="group" aria-label="Tamaño de pantalla">
       <button type="button" data-dev="desktop" aria-pressed="true">Ordenador</button>
@@ -992,7 +1023,14 @@ svg .air{stroke-dasharray:3 3;animation:airflow 1.4s linear infinite}
 </div>
 <aside class="notes" id="notes" hidden aria-label="Notes de design">
   <button type="button" class="icon-btn x" id="notesX" aria-label="Fermer les notes"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
-  <h2>v12 : nouvelle animation de l'accueil</h2>
+  <h2>v13 : les meilleures idées de l'autre IA (« L'essentiel »)</h2>
+  <ul>
+    <li>Fiche chambre : nouveau bloc « Lo que pagarías » (loyer, services inclus et à part, autres frais, total fixe, dépôt, montant pour entrer) et « Acuerdos para compartir » (visites, ménage, animaux, espaces communs, bruit, règles du PH) à la place des 3 règles.</li>
+    <li>Compatibilité présentée comme indicative : les raisons d'abord (« Coinciden en » / « Conviene conversar sobre »), un niveau en mots, le % à côté, et l'avertissement « no garantiza la convivencia ni reemplaza la visita ». Les badges disent « 92 % afinidad ».</li>
+    <li>Propriétaires : la recherche de roomies est facturée à part, les 10 % portent sur les loyers réellement encaissés, et un encadré dit ce que la conciergerie inclut et ce qui se paie à part (main-d'œuvre, matériel, factures), avec autorisation.</li>
+    <li>Promesses adoucies : plus de « 14 jours », plus de « N roomies esperan hoy » dans la bannière, « verificados » remplacé par ce qui est vraiment vérifié (identité et références).</li>
+  </ul>
+  <h2 style="margin-top:32px">v12 : nouvelle animation de l'accueil</h2>
   <ul>
     <li>Les écrans sont dans un vrai téléphone (barre d'état, encoche) et s'enchaînent comme dans une app : le suivant arrive par la droite, le précédent recule.</li>
     <li>Décor : une arche avec la photo des tours de Panamá dans un dégradé corail → rose → prune, et le toit du logo Nido dessiné au-dessus.</li>
@@ -1336,7 +1374,7 @@ svg .air{stroke-dasharray:3 3;animation:airflow 1.4s linear infinite}
       '<div class="right"><button type="button" class="cta" data-act="profile">'+(S.profile?'Mi compatibilidad':'Unirme')+'</button><button type="button" class="icon-btn menu" aria-label="Abrir el menú" data-act="soon" data-what="Menú">'+I.menu+'</button></div></div></header>';
   }
   function footer(){
-    return '<footer class="foot"><div class="in"><div class="fcols"><div class="about"><span class="logo" style="cursor:default"><img class="wm" src="img/nido-logo.png" alt="Nido" width="81" height="31"></span><p>Conserjería digital de alquileres en Ciudad de Panamá: habitaciones con roomies compatibles, apartamentos verificados y gestión completa para propietarios. Intermediación a través de corredor con licencia JTBR. Precios sin ITBMS.</p></div>'+
+    return '<footer class="foot"><div class="in"><div class="fcols"><div class="about"><span class="logo" style="cursor:default"><img class="wm" src="img/nido-logo.png" alt="Nido" width="81" height="31"></span><p>Conserjería digital de alquileres en Ciudad de Panamá: habitaciones con roomies compatibles, y gestión y conserjería para propietarios. Intermediación a través de corredor con licencia JTBR. Precios sin ITBMS.</p></div>'+
       '<nav class="lk" aria-label="Para vivir"><b>Para vivir</b><span>Habitaciones</span><span>Cómo funciona</span><span>Preguntas</span></nav><nav class="lk" aria-label="Propietarios"><b>Propietarios</b><button type="button" data-go="propietarios">Publicar mi apartamento</button><button type="button" data-go="propietarios">Conserjería</button><span>Guías</span></nav><nav class="lk" aria-label="Nido"><b>Nido</b><span>Quiénes somos</span><span>hola@nido.com.pa</span><span>Términos</span><span>Privacidad</span></nav></div>'+
       '<p class="base">© 2026 Nido · Hecho en Panamá</p></div></footer>';
   }
@@ -1372,7 +1410,7 @@ svg .air{stroke-dasharray:3 3;animation:airflow 1.4s linear infinite}
     return '<article class="rcard'+(r.top?' top':'')+'" data-room="'+r.id+'" data-ph="'+r.ph+'" tabindex="0" aria-label="'+(r.top?'Destacado. ':'')+(r.apto?'Apartamento de '+r.apto.rec+(r.apto.rec>1?' recámaras':' recámara'):'Habitación')+' en '+esc(p.name)+', '+money(r.price)+' al mes">'+
       '<button type="button" class="save" data-act="save" data-id="'+r.id+'" aria-pressed="'+(S.saved[r.id]?'true':'false')+'" aria-label="Guardar la habitación en '+esc(p.name)+'">'+I.heart+'</button>'+
       photo(seed,r.apto?'Apartamento entero':(r.bath==='privado'?'Baño privado':null),'1/8').replace(/<\/div>$/,(r.top?'<span class="topb">TOP</span>':'')+perks(p,2)+'</div>')+
-      '<div class="rbody"><div class="rtop"><span class="price">'+money(r.price)+' <small>/ mes</small></span>'+(c?'<span class="compat'+(c.s<70?' mid':'')+'">'+c.s+' % contigo</span>':'')+'</div>'+
+      '<div class="rbody"><div class="rtop"><span class="price">'+money(r.price)+' <small>/ mes</small></span>'+(c?'<span class="compat'+(c.s<70?' mid':'')+'">'+c.s+' % afinidad</span>':'')+'</div>'+
       '<div class="rwhere">'+esc(p.name)+' · '+esc(bById[p.b].name)+'</div>'+
       '<div class="rmeta">'+(r.apto?r.apto.rec+(r.apto.rec>1?' recámaras':' recámara')+' · '+r.apto.m2+' m² · ':'')+(r.furn?(r.apto?'Amoblado':'Amoblada'):(r.apto?'Sin amoblar':'Sin amoblar'))+' · '+(fdate(r.av)==='ya'?'Disponible ya':'Disponible el '+fdate(r.av))+' · mín. '+r.min+' meses</div>'+
       (lo?'<div class="walk">'+I.walk+'a '+walkMin(p,lo)+' min a pie de '+esc(lo.name)+'</div>':'')+
@@ -1595,7 +1633,7 @@ svg .air{stroke-dasharray:3 3;animation:airflow 1.4s linear infinite}
   function dav(n,c){return '<span class="dav" style="background:'+c+'">'+n+'</span>';}
   var FCH=[[I.area,'El Cangrejo','6 habitaciones libres'],
     ['<span class="fav">'+dav('A','#C72C55')+dav('L','#0F766E')+'</span>','Ana y Luis','viven aquí'],
-    ['<span class="fring">92</span>','92 % compatibles','madrugan los tres'],
+    ['<span class="fring">92</span>','92 % de afinidad','madrugan los tres'],
     ['<span class="fcal"><small>SÁB</small>11</span>','Sábado, 11:30','te acompaña Marta'],
     [I.checkc,'¡Visita confirmada!','te escribimos por el chat']];
   function heroStage(){
@@ -1603,7 +1641,7 @@ svg .air{stroke-dasharray:3 3;animation:airflow 1.4s linear infinite}
     var s0='<div class="scr s0" data-i="0">'+
       '<div class="sq">'+I.search+'<span>El Cangrejo · Habitación</span></div>'+
       '<div class="sres"><b>6 habitaciones</b><span>Las más compatibles primero</span></div>'+
-      '<div class="lc lc1"><span class="tap ta"></span><div class="lph">'+pimg('habitacion')+'<span class="lcm">92 % contigo</span></div><div class="lbd"><b>$480 <small>/ mes</small></b><span>PH Vista Cangrejo · baño privado</span><span class="lvw">'+dav('A','#C72C55')+dav('L','#0F766E')+'Vive con Ana y Luis</span></div></div>'+
+      '<div class="lc lc1"><span class="tap ta"></span><div class="lph">'+pimg('habitacion')+'<span class="lcm">92 % afinidad</span></div><div class="lbd"><b>$480 <small>/ mes</small></b><span>PH Vista Cangrejo · baño privado</span><span class="lvw">'+dav('A','#C72C55')+dav('L','#0F766E')+'Vive con Ana y Luis</span></div></div>'+
       '<div class="lc lc2"><div class="lph">'+pimg('sala')+'</div><div class="lbd"><b>$430 <small>/ mes</small></b><span>PH Vista Cangrejo · baño compartido</span></div></div>'+
       '<div class="lc lc2"><div class="lph">'+pimg('cocina')+'</div><div class="lbd"><b>$520 <small>/ mes</small></b><span>PH Alto del Carmen · baño privado</span></div></div></div>';
     var s1='<div class="scr s1" data-i="1">'+
@@ -1615,8 +1653,8 @@ svg .air{stroke-dasharray:3 3;animation:airflow 1.4s linear infinite}
       '<span class="dlab">En el edificio</span><div class="dfacts"><span>Piscina</span><span>Gimnasio</span><span>A/A en la habitación</span></div>'+
       '<span class="dbtn kb"><span class="tap ta"></span>Ver mi compatibilidad</span></div></div>';
     var s2='<div class="scr s2" data-i="2">'+hd('Compatibilidad')+
-      '<div class="cwrap">'+ring(92,148)+'<span class="cwith">con Ana y Luis</span></div>'+
-      '<ul class="cwhy"><li>'+I.check+'Los tres madrugan</li><li>'+I.check+'Casa ordenada, sin ser estricta</li><li>'+I.check+'Visitas a veces, no cada semana</li><li class="no">'+I.tilde+'No aceptan mascotas</li></ul>'+
+      '<div class="cwrap">'+ring(92,128)+'<span class="cwith">Alta afinidad con Ana y Luis · orientativa</span></div>'+
+      '<span class="dlab">Coinciden en</span><ul class="cwhy"><li>'+I.check+'Los tres madrugan</li><li>'+I.check+'Casa ordenada, sin ser estricta</li><li class="no">'+I.tilde+'Para conversar: no aceptan mascotas</li></ul>'+
       '<span class="dbtn kb"><span class="tap ta"></span>Pedir una visita</span></div>';
     var s3='<div class="scr s3" data-i="3">'+hd('Pedir una visita')+
       '<div class="vsum">'+pimg('habitacion')+'<span><b>Habitación con baño privado</b>PH Vista Cangrejo · $480 / mes</span></div>'+
@@ -1683,7 +1721,7 @@ svg .air{stroke-dasharray:3 3;animation:airflow 1.4s linear infinite}
     return '<div class="calc" id="calc"><div class="row"><span id="calc-l">¿Cuántos meses al año queda vacío?</span><div class="segd" role="radiogroup" aria-labelledby="calc-l">'+[1,2,3,4].map(function(k){return '<button type="button" role="radio" data-calc="'+k+'" aria-checked="'+(k===m)+'" aria-label="'+k+(k>1?' meses':' mes')+'">'+k+'</button>';}).join('')+'</div></div>'+
       '<div class="line"><span>Alquiler de una habitación</span><span>$500 / mes</span></div><div class="line"><span>Meses sin inquilino</span><span id="calc-m">× '+m+'</span></div><hr>'+
       '<div class="tiles"><div><small>Pierde al año</small><b id="calc-loss">'+money(m*500)+'</b></div><div><small>Nido cobra, una vez</small><b class="acc">$250</b></div></div>'+
-      '<p class="fine">El 50 % de un mes de alquiler, solo cuando se firma el contrato. Nuestro objetivo: un inquilino en 14 días.</p></div>';
+      '<p class="fine">El 50 % de un mes de alquiler por habitación, solo cuando se firma el contrato. Cálculo de ejemplo con una habitación de $500.</p></div>';
   }
   function countTo(el,from,to){
     var still=false;try{still=matchMedia('(prefers-reduced-motion: reduce)').matches;}catch(e){}
@@ -1701,7 +1739,7 @@ svg .air{stroke-dasharray:3 3;animation:airflow 1.4s linear infinite}
     '<div class="quick" aria-label="Búsquedas rápidas">'+BARRIOS.map(function(b){return '<button type="button" class="chip" data-pick="barrio" data-id="'+b.id+'">'+I.area+esc(b.name)+'</button>';}).join('')+'<button type="button" class="chip" data-pick="lugar" data-id="m-via-argentina">'+I.metro+'Cerca del Metro</button></div>'+
     '<div class="trust"><span>'+I.checkc+'Identidad verificada</span><span>'+I.checkc+'Visitas acompañadas</span><span>'+I.checkc+'Depósito registrado en el MIVIOT</span></div></div>'+
     '<div class="stagecol">'+heroStage()+'</div></div></section>'+
-    '<section class="sec"><div class="in"><div class="head"><div><h2>¿Qué estás <em>buscando</em>?</h2></div></div><div class="aud">'+[['buscar',null,'habitacion','Roomies','Busco una habitación','Vive con personas compatibles. Desde $380 al mes.'],['propietarios',null,'sala','Propietarios','Tengo un apartamento','Publíquelo: lo llenamos de roomies verificados y lo cuidamos cada mes.']].map(function(c){return '<button type="button" class="acard reveal" '+(c[0]?'data-go="'+c[0]+'"':'data-act="soon" data-what="'+c[1]+'"')+'>'+pimg(c[2])+'<span class="tag">'+c[3]+'</span><span class="t"><span class="h">'+c[4]+'</span><span class="s">'+c[5]+'</span></span><span class="arr">'+ARR+'</span></button>';}).join('')+'</div></div></section>'+
+    '<section class="sec"><div class="in"><div class="head"><div><h2>¿Qué estás <em>buscando</em>?</h2></div></div><div class="aud">'+[['buscar',null,'habitacion','Roomies','Busco una habitación','Vive con personas compatibles. Desde $380 al mes.'],['propietarios',null,'sala','Propietarios','Tengo un apartamento','Publíquelo: buscamos roomies compatibles y lo cuidamos cada mes.']].map(function(c){return '<button type="button" class="acard reveal" '+(c[0]?'data-go="'+c[0]+'"':'data-act="soon" data-what="'+c[1]+'"')+'>'+pimg(c[2])+'<span class="tag">'+c[3]+'</span><span class="t"><span class="h">'+c[4]+'</span><span class="s">'+c[5]+'</span></span><span class="arr">'+ARR+'</span></button>';}).join('')+'</div></div></section>'+
     
     '<section class="sec"><div class="in"><div class="head"><div><h2>¿En qué barrio quieres <em>vivir</em>?</h2></div><button type="button" class="btn text" data-go="buscar">Ver el mapa'+I.chev+'</button></div>'+
     '<div class="bcards">'+BARRIOS.map(bcard).join('')+'</div>'+
@@ -1709,7 +1747,7 @@ svg .air{stroke-dasharray:3 3;animation:airflow 1.4s linear infinite}
     '<section class="sec"><div class="in"><div class="head"><div><h2>Recién verificadas, <em>para visitar pronto</em></h2></div><button type="button" class="btn text" data-go="buscar">Ver las '+ROOMS.length+' en el mapa'+I.chev+'</button></div><div class="rail">'+recent.map(function(r){return rcard(r);}).join('')+'</div><p class="cap" style="margin-top:12px">Habitaciones de ejemplo.</p></div></section>'+
     '<section class="sec"><div class="in"><div class="head"><div><h2>Primero las personas, <em>después la habitación.</em></h2></div></div><div class="how">'+
     [[1,I.howq,'Cuéntanos cómo vives','4 preguntas para ver tu compatibilidad; el perfil completo toma 3 minutos.'],[2,I.howc,'Conoce a tus matches','Si los dos aceptan, se abre un chat dentro de Nido, sin compartir tu número.'],[3,I.howh,'Visiten y firmen juntos','Te acompañamos a la visita y registramos el depósito en el MIVIOT.']].map(function(h){return '<div class="hcard reveal"><div class="top"><span class="n">'+h[0]+'</span><span class="ic">'+h[1]+'</span></div><h3>'+h[2]+'</h3><p>'+h[3]+'</p></div>';}).join('')+'</div></div></section>'+
-    '<section class="sec"><div class="in"><div class="dblock"><div><h2>¿Es propietario? Su apartamento vacío <em>le cuesta</em> cada mes.</h2><p class="sub">Publíquelo en Nido: lo llenamos de roomies verificados y lo cuidamos cada mes, del aire acondicionado a la cuota del PH. Usted no paga nada hasta la firma.</p><button type="button" class="btn text" data-go="propietarios">Publicar mi apartamento'+I.chev+'</button></div>'+calcHTML()+'</div></div></section>'+
+    '<section class="sec"><div class="in"><div class="dblock"><div><h2>¿Es propietario? Su apartamento vacío <em>le cuesta</em> cada mes.</h2><p class="sub">Publíquelo en Nido: buscamos roomies revisados y compatibles, y lo cuidamos cada mes, del aire acondicionado a la cuota del PH. La búsqueda no se paga hasta la firma.</p><button type="button" class="btn text" data-go="propietarios">Publicar mi apartamento'+I.chev+'</button></div>'+calcHTML()+'</div></div></section>'+
     '<section class="sec"><div class="in faq"><h2 class="h2">Preguntas frecuentes</h2><div class="qs">'+faq.map(function(q,i){return '<details'+(i===0?' open':'')+'><summary>'+q[0]+I.plus+'</summary><p>'+q[1]+'</p></details>';}).join('')+'</div></div></section>'+
     '<section class="sec"><div class="in"><div class="ctablock"><h2>¿Buscamos tu <em>nido</em>?</h2><p>Empieza por un PH, una calle o una estación de Metro.</p>'+sbox('q-cta','big','Busca un PH, una calle o un barrio')+'</div></div></section>'+
     '</main>'+footer();
@@ -1792,6 +1830,36 @@ svg .air{stroke-dasharray:3 3;animation:airflow 1.4s linear infinite}
     '<nav class="navlist" aria-label="Otros PH cerca"><span>Otros PH cerca</span>'+near.map(function(x){var n=roomsOf(x.id).length;return '<button type="button" data-go="ph" data-id="'+x.id+'"><span>'+esc(x.name)+'<small>'+esc(bById[x.b].name)+' · a '+walkMin(x,p)+' min a pie</small></span><span class="go">'+(n?n+(n>1?' libres':' libre'):'Avísame')+I.chev+'</span></button>';}).join('')+'</nav></aside></div>'+
     '<section class="sec"><div class="in"><div class="dblock"><div><h2>¿Tiene un apartamento en el '+esc(p.name)+'?</h2><p class="sub">'+(p.wait?p.wait+(p.wait>1?' roomies ya esperan':' roomie ya espera')+' una habitación en este PH. ':'')+'Usted no paga nada hasta la firma.</p></div><div><button type="button" class="btn white" data-go="propietarios">Ver cómo funciona para propietarios</button></div></div></div></section></main>'+footer();
   }
+  // nivel de afinidad en palabras: primero las razones, el número después
+  var DISC='Este resultado compara hábitos declarados. No garantiza la convivencia ni reemplaza la visita.';
+  function clevel(s){return s>=80?'Alta afinidad de hábitos':s>=62?'Algunas diferencias para conversar':'Varias diferencias para conversar';}
+  // lo que pagarías: todo el dinero antes de pedir la visita
+  function costHTML(r){
+    var inc=r.inc,all=inc==='Todo incluido',hasL=all||/Luz/.test(inc),hasI=all||/internet/.test(inc);
+    var apart=[];if(!hasL)apart.push('luz, entre $25 y $55 según el aire');if(!hasI)apart.push('internet, unos $15');
+    var row=function(k,v,cl){return '<div'+(cl?' class="'+cl+'"':'')+'><dt>'+k+'</dt><dd>'+v+'</dd></div>';};
+    return '<div class="rblk"><h2>Lo que pagarías</h2><dl class="kv cost">'+
+      row('Alquiler mensual',money(r.price))+
+      row('Servicios incluidos',esc(all?'Luz, agua, internet y limpieza':inc))+
+      row('Servicios aparte',apart.length?'<span class="var">'+esc(apart.join(' · '))+'</span>':'Ninguno')+
+      row('Otros cargos','Ninguno<small>Nido no cobra comisión a los roomies</small>')+
+      row('Total mensual fijo',money(r.price),'tot')+
+      row('Depósito de garantía',money(r.price)+'<small>En el MIVIOT; vuelve al salir si no hay daños ni deudas</small>')+
+      row('Para entrar',money(r.price*2)+'<small>Primer mes + depósito, al firmar</small>','tot in')+
+      '</dl><p class="cap">Montos de ejemplo. Te los confirmamos por escrito antes de firmar; no hay cargos sorpresa.</p></div>';
+  }
+  // acuerdos para compartir: cómo se vive en esta casa
+  function pactHTML(r){
+    var h=r.h,lim=/limpieza/.test(r.inc)||r.inc==='Todo incluido';
+    var ic=function(p){return '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">'+p+'</svg>';};
+    var P=[['Visitas',['Pocas, y avisando antes','A veces; si alguien se queda a dormir, se avisa','Seguido, hasta las 22 h entre semana'][h.vi],'<circle cx="9" cy="8" r="3.5"/><path d="M3 20c0-3.3 2.7-6 6-6s6 2.7 6 6"/><path d="M17 8v6M14 11h6"/>'],
+      ['Orden y limpieza',lim?'Limpieza semanal incluida; cada uno lava lo suyo':['Turnos semanales; la cocina queda limpia cada noche','Turnos de limpieza cada semana','Relajado, con turnos cada dos semanas'][h.or],'<path d="M10 6h10M10 12h10M10 18h10"/><path d="m3.5 6 1.5 1.5L7.5 5M3.5 12l1.5 1.5 2.5-2.5M3.5 18l1.5 1.5 2.5-2.5"/>'],
+      ['Mascotas',h.pet?'Ya vive una mascota en casa'+(h.petsOk?'; la tuya, hablándolo':''):(h.petsOk?'Bienvenidas, hablándolo antes':'Sin mascotas'),'<circle cx="7" cy="9" r="1.6"/><circle cx="11" cy="6" r="1.6"/><circle cx="15" cy="6.5" r="1.6"/><circle cx="18" cy="10" r="1.6"/><path d="M8 17c0-2.6 2-5 4.5-5S17 14.4 17 17c0 1.7-1.6 2.5-4.5 2.5S8 18.7 8 17z"/>'],
+      ['Espacios comunes','Cocina y sala compartidas; sin fumar dentro','<path d="M4 11 12 4.5l8 6.5v9H4z"/><path d="M10 20.5v-5h4v5"/>'],
+      ['Ruido y descanso',h.ho===0?'Silencio desde las 22 h: aquí se madruga':'Silencio desde las 23 h entre semana','<path d="M20 14.5A8 8 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5z"/>'],
+      ['Reglas del PH','Mudanzas con aviso a la administración; piscina y gym con horario','<path d="M5 21V4h10v17M15 9h4v12M3 21h18M8 8h4M8 12h4M8 16h4"/>']];
+    return '<div class="rblk"><h2>Acuerdos para compartir</h2><ul class="pact">'+P.map(function(p){return '<li><span class="ai">'+ic(p[2])+'</span><span><b>'+p[0]+'</b>'+esc(p[1])+'</span></li>';}).join('')+'</ul><p class="cap">Los acuerdos se conversan en la visita y quedan escritos en el contrato.</p></div>';
+  }
   function pageRoom(id){
     var r=ROOMS.filter(function(x){return x.id===id;})[0],p=phById[r.ph],b=bById[p.b],c=compat(r),seed=parseInt(id.slice(1),10);
     var nm=names(r.people),ap=r.apto;
@@ -1800,13 +1868,13 @@ svg .air{stroke-dasharray:3 3;animation:airflow 1.4s linear infinite}
     return header()+'<main><div class="in">'+crumb(['<button type="button" data-go="buscar">Buscar</button>','<button type="button" data-pick="barrio" data-id="'+p.b+'">'+esc(b.name)+'</button>','<button type="button" data-go="ph" data-id="'+p.id+'">'+esc(p.name)+'</button>'])+
     '<div class="gal"><div class="big">'+photo(seed,null,'1/8',roomImg(seed),'Foto de ejemplo: '+PLAB[roomImg(seed)])+'</div><div class="side">'+photo(seed,PLAB[roomImg(seed,1)],null,roomImg(seed,1),'Foto de ejemplo: '+PLAB[roomImg(seed,1)])+'</div><div class="side">'+photo(seed,PLAB[roomImg(seed,2)],null,roomImg(seed,2),'Foto de ejemplo: '+PLAB[roomImg(seed,2)])+'</div></div>'+
     '<div class="roomg"><div><span class="ex">Ejemplo</span><h1 class="title">'+(ap?'Apartamento de '+ap.rec+(ap.rec>1?' recámaras':' recámara')+' en el '+esc(p.name):'Habitación '+(r.bath==='privado'?'con baño privado':'con baño compartido')+' en el '+esc(p.name))+'</h1>'+(r.top?'<span class="topb inl">TOP</span>':'')+
-    '<dl class="kv flat" style="margin-top:24px"><div><dt>Precio</dt><dd>'+money(r.price)+' / mes</dd></div><div><dt>Disponible</dt><dd>'+(fdate(r.av)==='ya'?'Ya':fdate(r.av))+'</dd></div><div><dt>Mínimo</dt><dd>'+r.min+' meses</dd></div>'+(ap?'<div><dt>Tamaño</dt><dd>'+ap.m2+' m² · '+ap.ban+(ap.ban>1?' baños':' baño')+'</dd></div>':'')+'<div><dt>'+(ap?'Amoblado':'Amoblada')+'</dt><dd>'+(r.furn?'Sí':'No')+'</dd></div><div><dt>Incluye</dt><dd>'+esc(r.inc)+'</dd></div><div><dt>Depósito</dt><dd>'+money(r.price)+', en el MIVIOT</dd></div></dl>'+
+    '<dl class="kv flat" style="margin-top:24px"><div><dt>Precio</dt><dd>'+money(r.price)+' / mes</dd></div><div><dt>Disponible</dt><dd>'+(fdate(r.av)==='ya'?'Ya':fdate(r.av))+'</dd></div><div><dt>Mínimo</dt><dd>'+r.min+' meses</dd></div>'+(ap?'<div><dt>Tamaño</dt><dd>'+ap.m2+' m² · '+ap.ban+(ap.ban>1?' baños':' baño')+'</dd></div>':'')+'<div><dt>'+(ap?'Amoblado':'Amoblada')+'</dt><dd>'+(r.furn?'Sí':'No')+'</dd></div><div><dt>Incluye</dt><dd>'+esc(r.inc)+'</dd></div><div><dt>Depósito</dt><dd>'+money(r.price)+' (un mes)</dd></div></dl>'+
     (ap?'<div class="rblk"><h2>Todo el apartamento para ti</h2><p class="cap" style="font-size:17px;line-height:26px;color:var(--ink-2)">Sin roomies. Lo visitamos y lo fotografiamos nosotros: lo que ves es lo que hay. El contrato y el depósito quedan registrados en el MIVIOT.</p></div>':'<div class="rblk"><h2>¿Quién vive aquí?</h2>'+r.people.map(function(x,i){return '<div class="person"><span class="av" style="background:'+AVC[(x[0].charCodeAt(0)+i)%AVC.length]+'">'+x[0][0]+'</span><div><b>'+esc(x[0])+', '+x[1]+' · '+esc(x[2])+'</b><p>'+esc(x[3])+'</p><p class="vf">'+I.checkc+'Identidad verificada</p></div></div>';}).join('')+
-    (c?'<div class="cbox">'+ring(c.s,64)+'<div><b>Tu compatibilidad con esta casa</b><ul>'+c.why.map(function(w){return '<li>'+I.check+esc(w)+'</li>';}).join('')+c.no.map(function(w){return '<li class="no">'+I.tilde+esc(w)+'</li>';}).join('')+'</ul></div></div><p class="cap">Orientativa: la decides tú. <button type="button" class="btn text sm" data-act="profile">Cambiar mis respuestas</button></p>':
+    (c?'<div class="cbox why"><div class="chd"><div><span class="clev">Compatibilidad orientativa</span><b class="ctit">'+clevel(c.s)+'</b></div>'+ring(c.s,64)+'</div><div>'+(c.why.length?'<span class="cl">Coinciden en</span><ul>'+c.why.map(function(w){return '<li>'+I.check+esc(w)+'</li>';}).join('')+'</ul>':'')+(c.no.length?'<span class="cl">Conviene conversar sobre</span><ul>'+c.no.map(function(w){return '<li class="no">'+I.tilde+esc(w)+'</li>';}).join('')+'</ul>':'')+'</div></div><p class="cap">'+DISC+' <button type="button" class="btn text sm" data-act="profile">Cambiar mis respuestas</button></p>':
       '<div class="cbox lock"><b>¿Qué tan compatible eres con '+esc(nm)+'?</b><p style="color:var(--muted);font-size:15px">Responde 4 preguntas y te mostramos tu puntaje con esta casa, y por qué.</p><div><button type="button" class="btn soft" data-act="profile">Ver mi compatibilidad</button></div></div>')+'</div>')+
-    '<div class="rblk"><h2>En el '+esc(phById[r.ph].name)+'</h2>'+amenBig(phById[r.ph])+'</div>'+'<div class="rblk"><h2>Reglas de la casa</h2><div class="amen" style="margin-top:0"><span>'+I.tilde+'Sin fumar dentro</span><span>'+I.clock+'Visitas hasta las 22 h entre semana</span><span>'+I.heart+(r.h.petsOk?'Mascotas bienvenidas':'Sin mascotas')+'</span></div></div>'+
+    '<div class="rblk"><h2>En el '+esc(phById[r.ph].name)+'</h2>'+amenBig(phById[r.ph])+'</div>'+costHTML(r)+pactHTML(r)+
     '<div class="rblk"><h2>Ubicación</h2><div class="minimap">'+mapHTML('roommap',{static:true})+'</div><p class="cap">'+esc(p.street)+', '+esc(b.name)+'. La dirección exacta se comparte cuando la visita está aceptada.</p></div></div>'+
-    '<div class="asidecol"><div class="aside"><div class="rtop"><span class="price" style="font-size:28px">'+money(r.price)+' <small>/ mes</small></span>'+(c?'<span class="compat'+(c.s<70?' mid':'')+'">'+c.s+' % contigo</span>':'')+'</div><span class="rmeta">'+(fdate(r.av)==='ya'?'Disponible ya':'Disponible el '+fdate(r.av))+' · mínimo '+r.min+' meses</span>'+cta+fine+'<button type="button" class="btn text sm" data-act="save" data-id="'+r.id+'" aria-pressed="'+(S.saved[r.id]?'true':'false')+'">'+(S.saved[r.id]?'Guardada':'Guardar esta habitación')+'</button></div></div></div></div></main>'+
+    '<div class="asidecol"><div class="aside"><div class="rtop"><span class="price" style="font-size:28px">'+money(r.price)+' <small>/ mes</small></span>'+(c?'<span class="compat'+(c.s<70?' mid':'')+'">'+c.s+' % afinidad</span>':'')+'</div><span class="rmeta">'+(fdate(r.av)==='ya'?'Disponible ya':'Disponible el '+fdate(r.av))+' · mínimo '+r.min+' meses</span>'+cta+fine+'<button type="button" class="btn text sm" data-act="save" data-id="'+r.id+'" aria-pressed="'+(S.saved[r.id]?'true':'false')+'">'+(S.saved[r.id]?'Guardada':'Guardar esta habitación')+'</button></div></div></div></div></main>'+
     footer()+'<div class="mbar"><div><span class="price" style="font-size:20px">'+money(r.price)+'</span> <small style="color:var(--muted)">/ mes</small></div><button type="button" class="btn primary" data-act="'+(ap?'visit':'request')+'" data-id="'+r.id+'">'+(ap?'Pedir una visita':'Pedir conocer')+'</button></div>';
   }
 
@@ -1817,7 +1885,7 @@ svg .air{stroke-dasharray:3 3;animation:airflow 1.4s linear infinite}
   function conHTML(){
     var ic=function(p){return '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">'+p+'</svg>';};
     var cad=[['Cada mes','Inspección con fotos','Humedad, moho, filtraciones y electrodomésticos. Lo vemos antes de que sea caro.','<circle cx="11" cy="11" r="6"/><path d="m20 20-4.5-4.5"/>'],
-      ['Cada 3 meses','Aires acondicionados','Filtros, serpentín y desagüe limpios: menos luz, sin olor a humedad.',CAIR],
+      ['Cada 3 meses','Aires acondicionados','Coordinamos al técnico: filtros, serpentín y desagüe limpios. Menos luz, sin olor a humedad.',CAIR],
       ['Cada 6 meses','Fumigación','Todo el apartamento, coordinada con la administración del PH.','<path d="M9 3h4v4H9z"/><path d="M8 7h6l1 4v10H7V11z"/><path d="M17 4h1M19 6h1M17 8h1"/>'],
       ['Entre roomies','Limpieza y entrega','Limpieza profunda, retoques de pintura e inventario con fotos.','<path d="M12 3v4M12 17v4M3 12h4M17 12h4M6 6l2.5 2.5M15.5 15.5 18 18M6 18l2.5-2.5M15.5 8.5 18 6"/>']];
     var dem=[['Plomería y electricidad','<path d="M13 2 4 14h7l-1 8 9-12h-7z"/>'],['Cerrajería y copias de llaves','<circle cx="8" cy="15" r="4"/><path d="m10.8 12.2 8.2-8.2M16 7l2 2M18 5l2 2"/>'],['Cuota del PH, luz, agua e internet al día','<rect x="3" y="6" width="18" height="12" rx="2"/><path d="M3 10h18"/>'],['Trámites con la administración del PH','<path d="M5 21V4h10v17M15 9h4v12M8 8h2M8 12h2M8 16h2"/>'],['Recibir técnicos, compras y entregas','<path d="M3 7l9-4 9 4v10l-9 4-9-4z"/><path d="M3 7l9 4 9-4M12 11v10"/>'],['Reparaciones de electrodomésticos','<rect x="5" y="3" width="14" height="18" rx="2"/><path d="M5 9h14M9 6h1"/>']];
@@ -1839,21 +1907,21 @@ svg .air{stroke-dasharray:3 3;animation:airflow 1.4s linear infinite}
       '<label class="field">WhatsApp<input name="wa" inputmode="tel" autocomplete="tel-national" placeholder="6123 4567" required><span class="err" role="alert" hidden></span></label>'+
       '<label class="field">PH o dirección del apartamento<input name="ph" placeholder="Ej.: PH Yacht Club, Av. Balboa"></label>'+
       '<fieldset class="q"><legend>¿Cómo lo quiere alquilar?</legend><div class="opts2"><button type="button" class="opt" data-otipo="hab" aria-pressed="'+(S.otipo!=='entero')+'">Por habitaciones</button><button type="button" class="opt" data-otipo="entero" aria-pressed="'+(S.otipo==='entero')+'">Entero</button></div></fieldset>'+
-      '<button type="submit" class="btn primary block">Publicar mi apartamento</button><p class="fine">Sin compromiso. Usted no paga nada hasta la firma del contrato.</p></form>';
+      '<button type="submit" class="btn primary block">Publicar mi apartamento</button><p class="fine">Sin compromiso. La búsqueda no se paga hasta la firma del contrato.</p></form>';
   }
   function pageOwners(){
     var wait=PH.slice().sort(function(a,b){return b.wait-a.wait;}).filter(function(p){return p.wait;}).slice(0,6),tw=PH.reduce(function(s,p){return s+p.wait;},0);
-    var serv=[['Fotos y anuncio','Fotos profesionales y un anuncio claro, publicado en Nido.','<path d="M4 8h3l2-3h6l2 3h3v11H4z"/><circle cx="12" cy="13" r="3.5"/>'],['Inquilinos verificados','Identidad, ingresos y referencias revisados antes de cada visita.','<path d="M12 3 5 6v5c0 4.5 3 8.3 7 10 4-1.7 7-5.5 7-10V6z"/><path d="m9 12 2 2 4-4"/>'],['Visitas por nosotros','Abrimos, enseñamos y le contamos quién vino. Usted no se mueve.','<path d="M4 11 12 4.5l8 6.5v9H4z"/><path d="M10 20.5v-5h4v5"/>'],['Contrato y depósito','Contrato revisado y depósito registrado en el MIVIOT, como dice la ley.','<rect x="5" y="3" width="14" height="18" rx="2"/><path d="M9 8h6M9 12h6M9 16h3"/>'],['Cobro cada mes','Recibe el alquiler a tiempo; nosotros hacemos el seguimiento.','<rect x="3" y="6" width="18" height="12" rx="2"/><circle cx="12" cy="12" r="2.5"/>'],['Roomies compatibles','Elegimos a cada roomie por horarios, orden y estilo de vida, para que la casa funcione.','<circle cx="9" cy="8" r="3.5"/><path d="M3 20c0-3.3 2.7-6 6-6s6 2.7 6 6"/><circle cx="17" cy="9" r="2.5"/><path d="M16 14.2c2.8.3 5 2.6 5 5.8"/>']];
-    var plans=[['Encontrar roomies','Medio mes de alquiler','una sola vez por habitación, al firmar',['Fotos, anuncio y visitas','Roomies verificados y compatibles','Contrato y depósito en el MIVIOT'],false,'Publicar mi apartamento'],['Gestión completa','10 % del alquiler','cada mes, solo si está alquilado',['Todo lo de «Encontrar roomies»','Cobro y seguimiento mensual','Conserjería incluida'],true,'Publicar mi apartamento'],['Solo conserjería','Desde $49 al mes','por apartamento, sin permanencia',['Inspección mensual con fotos','Aires cada 3 meses y fumigación','Pagos y trámites del PH'],false,'Quiero la conserjería']];
-    var fq=[['¿Cuánto tarda en alquilarse?','Nuestro objetivo es firmar en 14 días. Le decimos cada semana cuántas personas vieron y pidieron su apartamento.'],['¿Y si el inquilino deja de pagar?','En Gestión completa hacemos el seguimiento desde el primer día de retraso y le explicamos sus opciones.'],['¿Por qué alquilar por habitaciones?','Si un roomie se va, los demás siguen pagando mientras buscamos a otro: el apartamento casi nunca queda vacío del todo. Usted firma un contrato por habitación.'],['¿Qué incluye la conserjería?','Una inspección al mes con fotos, la limpieza de los aires acondicionados cada 3 meses, fumigación cada 6 meses y los pagos y trámites del PH. Reparaciones y repuestos se cobran aparte, siempre con su aprobación antes.'],['Vivo fuera de Panamá. ¿Pueden encargarse?','Sí, es para eso. Un solo contacto, todo en la app y un informe con fotos cada mes.'],['¿Quién es Nido?','Una conserjería digital de alquileres en Ciudad de Panamá. Intermediamos a través de un corredor con licencia JTBR.']];
+    var serv=[['Fotos y anuncio','Fotos profesionales y un anuncio claro, publicado en Nido.','<path d="M4 8h3l2-3h6l2 3h3v11H4z"/><circle cx="12" cy="13" r="3.5"/>'],['Roomies revisados','Identidad, ingresos y referencias revisados antes de cada visita.','<path d="M12 3 5 6v5c0 4.5 3 8.3 7 10 4-1.7 7-5.5 7-10V6z"/><path d="m9 12 2 2 4-4"/>'],['Visitas por nosotros','Abrimos, enseñamos y le contamos quién vino. Usted no se mueve.','<path d="M4 11 12 4.5l8 6.5v9H4z"/><path d="M10 20.5v-5h4v5"/>'],['Contrato y depósito','Un contrato por habitación y el depósito registrado en el MIVIOT, como pide la ley.','<rect x="5" y="3" width="14" height="18" rx="2"/><path d="M9 8h6M9 12h6M9 16h3"/>'],['Cobro cada mes','Recibe el alquiler a tiempo; nosotros hacemos el seguimiento.','<rect x="3" y="6" width="18" height="12" rx="2"/><circle cx="12" cy="12" r="2.5"/>'],['Roomies compatibles','Elegimos a cada roomie por horarios, orden y estilo de vida, para que la casa funcione.','<circle cx="9" cy="8" r="3.5"/><path d="M3 20c0-3.3 2.7-6 6-6s6 2.7 6 6"/><circle cx="17" cy="9" r="2.5"/><path d="M16 14.2c2.8.3 5 2.6 5 5.8"/>']];
+    var plans=[['Encontrar roomies','Medio mes de alquiler','por habitación, una sola vez, al firmar el contrato',['Fotos, anuncio y visitas','Roomies con identidad y referencias revisadas','Contrato y registro del depósito'],false,'Publicar mi apartamento'],['Gestión completa','10 % al mes','de los alquileres efectivamente cobrados',['Cobro y seguimiento de cada roomie','Conserjería incluida: inspección, coordinación e informe','La búsqueda de cada roomie se cobra aparte'],true,'Publicar mi apartamento'],['Solo conserjería','Desde $49 al mes','hasta 3 recámaras, sin permanencia',['Inspección mensual e informe con fotos','Coordinación de aires y fumigación','Pagos y trámites del PH'],false,'Quiero la conserjería']];
+    var fq=[['¿Cuánto tarda en alquilarse?','Depende del precio, la zona y el estado del apartamento. Cada semana le decimos cuántas personas lo vieron y lo pidieron, y qué ajustar si tarda.'],['¿Y si el inquilino deja de pagar?','En Gestión completa hacemos el seguimiento desde el primer día de retraso y le explicamos sus opciones.'],['¿Por qué alquilar por habitaciones?','Si un roomie se va, los demás siguen pagando mientras buscamos a otro: el apartamento casi nunca queda vacío del todo. Usted firma un contrato por habitación.'],['¿Qué incluye la conserjería?','Una inspección al mes con fotos, la limpieza de los aires acondicionados cada 3 meses, fumigación cada 6 meses y los pagos y trámites del PH. La limpieza de los aires y la fumigación las hacen técnicos asociados; su costo, como reparaciones y repuestos, se cobra aparte y siempre con su aprobación antes.'],['Vivo fuera de Panamá. ¿Pueden encargarse?','Sí, es para eso. Un solo contacto, todo en la app y un informe con fotos cada mes.'],['¿Quién es Nido?','Una conserjería digital de alquileres en Ciudad de Panamá. Intermediamos a través de un corredor con licencia JTBR.']];
     return header()+'<main><section class="bluehero ownhero"><div class="in">'+crumb(['<button type="button" data-go="inicio">Inicio</button>','<span>Propietarios</span>'])+
-      '<div class="grid"><div><h1>¿Tiene un apartamento? Publíquelo y <em>nosotros hacemos el resto.</em></h1><p class="lead">Lo llenamos de roomies verificados y compatibles, y lo cuidamos cada mes como una verdadera conserjería: del aire acondicionado a la cuota del PH. Usted no paga nada hasta la firma.</p>'+
-      '<div class="trust"><span>'+I.checkc+'Corredor con licencia JTBR</span><span>'+I.checkc+'Conserjería incluida</span><span>'+I.checkc+tw+' roomies esperan hoy</span></div></div>'+
+      '<div class="grid"><div><h1>¿Tiene un apartamento? Publíquelo y <em>nosotros hacemos el resto.</em></h1><p class="lead">Buscamos roomies con identidad y referencias revisadas, elegidos por hábitos compatibles, y lo cuidamos cada mes como una verdadera conserjería: del aire acondicionado a la cuota del PH. La búsqueda no se paga hasta la firma.</p>'+
+      '<div class="trust"><span>'+I.checkc+'Corredor con licencia JTBR</span><span>'+I.checkc+'Conserjería incluida</span><span>'+I.checkc+'Informe con fotos cada mes</span></div></div>'+
       '<div id="oform">'+ownerForm()+'</div></div></div></section>'+
       '<section class="sec"><div class="in"><div class="head"><div><h2>Ya hay gente <em>esperando</em> en su PH</h2></div></div><ul class="waitlist">'+wait.map(function(p){return '<li><button type="button" data-go="ph" data-id="'+p.id+'"><b>'+esc(p.name)+'</b><span>'+esc(bById[p.b].name)+'</span><em>'+p.wait+(p.wait>1?' personas':' persona')+'</em></button></li>';}).join('')+'</ul><p class="cap" style="margin-top:12px">Datos de ejemplo. Personas que crearon una alerta «Avísame» en ese PH.</p></div></section>'+
       '<section class="sec"><div class="in"><div class="dblock"><div><h2>Su apartamento vacío <em>le cuesta</em> cada mes.</h2><p class="sub">Mueva el número de meses que suele quedar vacío y vea lo que pierde al año.</p></div>'+calcHTML()+'</div></div></section>'+
       '<section class="sec"><div class="in"><div class="head"><div><h2>Lo que hacemos <em>por usted</em></h2></div></div><ul class="serv">'+serv.map(function(v){return '<li><span class="ai"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">'+v[2]+'</svg></span><b>'+v[0]+'</b><p>'+v[1]+'</p></li>';}).join('')+'</ul></div></section>'+conHTML()+
-      '<section class="sec"><div class="in"><div class="head"><div><h2>Tres formas de <em>trabajar juntos</em></h2></div></div><div class="plans">'+plans.map(function(p){return '<div class="plan'+(p[4]?' rec':'')+'">'+(p[4]?'<span class="topb inl">Recomendado</span>':'')+'<h3>'+p[0]+'</h3><p class="pp"><b>'+p[1]+'</b><span>'+p[2]+'</span></p><ul>'+p[3].map(function(x){return '<li>'+I.check+esc(x)+'</li>';}).join('')+'</ul><a class="btn '+(p[4]?'primary':'soft')+'" href="#oform" data-act="toform">'+p[5]+'</a></div>';}).join('')+'</div><p class="cap" style="margin-top:12px">Precios de ejemplo, sin ITBMS.</p></div></section>'+
+      '<section class="sec"><div class="in"><div class="head"><div><h2>Tres formas de <em>trabajar juntos</em></h2></div></div><div class="plans">'+plans.map(function(p){return '<div class="plan'+(p[4]?' rec':'')+'">'+(p[4]?'<span class="topb inl">Recomendado</span>':'')+'<h3>'+p[0]+'</h3><p class="pp"><b>'+p[1]+'</b><span>'+p[2]+'</span></p><ul>'+p[3].map(function(x){return '<li>'+I.check+esc(x)+'</li>';}).join('')+'</ul><a class="btn '+(p[4]?'primary':'soft')+'" href="#oform" data-act="toform">'+p[5]+'</a></div>';}).join('')+'</div><div class="incl"><div><b>La conserjería incluye</b><p>Inspección mensual con fotos, coordinación de técnicos, seguimiento de pagos y trámites, y un informe cada mes.</p></div><div><b>Se paga aparte, con su autorización</b><p>Mano de obra de técnicos externos, materiales, repuestos y facturas (luz, agua, cuota del PH). Siempre con presupuesto aprobado antes.</p></div></div><p class="cap" style="margin-top:12px">Precios de ejemplo, sin ITBMS.</p></div></section>'+
       '<section class="sec"><div class="in faq"><h2 class="h2">Preguntas de propietarios</h2><div class="qs">'+fq.map(function(q,i){return '<details'+(i===0?' open':'')+'><summary>'+q[0]+I.plus+'</summary><p>'+q[1]+'</p></details>';}).join('')+'</div></div></section>'+
       '<section class="sec"><div class="in"><p class="wa">¿Prefiere escribirnos? <button type="button" class="btn text sm" data-act="soon" data-what="WhatsApp">WhatsApp +507 6000 0000</button></p></div></section></main>'+footer();
   }
@@ -1890,7 +1958,7 @@ svg .air{stroke-dasharray:3 3;animation:airflow 1.4s linear infinite}
   function openProfile(after){
     var u=S.profile||{ho:null,or:null,vi:null,pet:null,max:S.f.max<DEF_F.max?S.f.max:550};
     var Q=[['ho','¿A qué hora empieza tu día?',['Antes de las 7','De 7 a 9','Después de las 9']],['or','¿Cómo te gusta la casa?',['Muy ordenada','Ordenada','Relajada']],['vi','¿Recibes visitas en casa?',['Casi nunca','A veces','Seguido']]];
-    var html='<div class="scrim center" data-scrim><div class="sheet" role="dialog" aria-modal="true" aria-labelledby="pf-t"><div class="sh"><h2 id="pf-t">Tu compatibilidad en 4 preguntas</h2><button type="button" class="icon-btn" data-act="close" aria-label="Cerrar">'+I.x+'</button></div><p style="color:var(--muted);margin-top:-8px">Sin cuenta. Tus respuestas se quedan en este navegador.</p>'+
+    var html='<div class="scrim center" data-scrim><div class="sheet" role="dialog" aria-modal="true" aria-labelledby="pf-t"><div class="sh"><h2 id="pf-t">Tu compatibilidad en 4 preguntas</h2><button type="button" class="icon-btn" data-act="close" aria-label="Cerrar">'+I.x+'</button></div><p style="color:var(--muted);margin-top:-8px">Sin cuenta. Tus respuestas se quedan en este navegador. El resultado es orientativo: compara hábitos, no garantiza la convivencia.</p>'+
       Q.map(function(q){return '<fieldset class="q"><legend>'+q[1]+'</legend><div class="opts3">'+q[2].map(function(o,i){return '<button type="button" class="opt" data-q="'+q[0]+'" data-v="'+i+'" aria-pressed="'+(u[q[0]]===i?'true':'false')+'">'+o+'</button>';}).join('')+'</div></fieldset>';}).join('')+
       '<fieldset class="q"><legend>¿Tienes mascota?</legend><div class="opts2"><button type="button" class="opt" data-q="pet" data-v="1" aria-pressed="'+(u.pet===true?'true':'false')+'">Sí</button><button type="button" class="opt" data-q="pet" data-v="0" aria-pressed="'+(u.pet===false?'true':'false')+'">No</button></div></fieldset>'+
       '<div class="q"><label class="ql" for="pf-max">Tu presupuesto máximo: <span id="pf-maxv">'+money(u.max)+'</span> / mes</label><input id="pf-max" type="range" min="350" max="800" step="10" value="'+u.max+'"></div>'+
