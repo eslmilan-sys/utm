@@ -1,0 +1,344 @@
+{
+ "type": "FeatureCollection",
+ "features": [
+  {
+   "type": "Feature",
+   "id": 1,
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -79.52585607268976,
+     8.989334671912909
+    ]
+   },
+   "properties": {
+    "ph": "vista-cangrejo",
+    "nombre": "PH Vista Cangrejo",
+    "barrio": "El Cangrejo",
+    "calle": "Vía Argentina",
+    "pisos": 28,
+    "amenidades": [
+     "Piscina",
+     "Gimnasio",
+     "Planta eléctrica",
+     "Seguridad 24 h"
+    ],
+    "libres": 2,
+    "desde": 430,
+    "esperan": 4
+   }
+  },
+  {
+   "type": "Feature",
+   "id": 2,
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -79.52375164419601,
+     8.992782290367018
+    ]
+   },
+   "properties": {
+    "ph": "torre-argentina",
+    "nombre": "PH Torre Argentina",
+    "barrio": "El Cangrejo",
+    "calle": "Vía Argentina",
+    "pisos": 22,
+    "amenidades": [
+     "Gimnasio",
+     "Lavandería",
+     "Seguridad 24 h"
+    ],
+    "libres": 1,
+    "desde": 520,
+    "esperan": 2
+   }
+  },
+  {
+   "type": "Feature",
+   "id": 3,
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -79.5299731256899,
+     8.985838219198726
+    ]
+   },
+   "properties": {
+    "ph": "cangrejo-park",
+    "nombre": "PH Cangrejo Park",
+    "barrio": "El Cangrejo",
+    "calle": "Calle Eusebio A. Morales",
+    "pisos": 18,
+    "amenidades": [
+     "Piscina",
+     "Seguridad 24 h"
+    ],
+    "libres": 1,
+    "desde": 400,
+    "esperan": 3
+   }
+  },
+  {
+   "type": "Feature",
+   "id": 4,
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -79.52365252431355,
+     8.986861100585323
+    ]
+   },
+   "properties": {
+    "ph": "alto-carmen",
+    "nombre": "PH Alto del Carmen",
+    "barrio": "El Cangrejo",
+    "calle": "Vía España",
+    "pisos": 30,
+    "amenidades": [
+     "Piscina",
+     "Gimnasio",
+     "Coworking",
+     "Seguridad 24 h"
+    ],
+    "libres": 2,
+    "desde": 470,
+    "esperan": 5
+   }
+  },
+  {
+   "type": "Feature",
+   "id": 5,
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -79.51825572465597,
+     8.98739963516857
+    ]
+   },
+   "properties": {
+    "ph": "samuel-lewis",
+    "nombre": "PH Samuel Lewis 58",
+    "barrio": "Obarrio",
+    "calle": "Av. Samuel Lewis",
+    "pisos": 35,
+    "amenidades": [
+     "Piscina",
+     "Gimnasio",
+     "Planta eléctrica",
+     "Seguridad 24 h"
+    ],
+    "libres": 1,
+    "desde": 650,
+    "esperan": 1
+   }
+  },
+  {
+   "type": "Feature",
+   "id": 6,
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -79.52081583959084,
+     8.983642062965945
+    ]
+   },
+   "properties": {
+    "ph": "obarrio-park",
+    "nombre": "PH Obarrio Park",
+    "barrio": "Obarrio",
+    "calle": "Calle 56 Este",
+    "pisos": 24,
+    "amenidades": [
+     "Piscina",
+     "Seguridad 24 h"
+    ],
+    "libres": 1,
+    "desde": 450,
+    "esperan": 2
+   }
+  },
+  {
+   "type": "Feature",
+   "id": 7,
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -79.51690589630068,
+     8.984117348058
+    ]
+   },
+   "properties": {
+    "ph": "calle50-plaza",
+    "nombre": "PH Calle 50 Plaza",
+    "barrio": "Obarrio",
+    "calle": "Calle 50",
+    "pisos": 40,
+    "amenidades": [
+     "Piscina",
+     "Gimnasio",
+     "Seguridad 24 h"
+    ],
+    "libres": 2,
+    "desde": 540,
+    "esperan": 6
+   }
+  },
+  {
+   "type": "Feature",
+   "id": 8,
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -79.51372162766226,
+     8.988107444333739
+    ]
+   },
+   "properties": {
+    "ph": "torre-obarrio",
+    "nombre": "PH Torre Obarrio",
+    "barrio": "Obarrio",
+    "calle": "Calle 53 Este",
+    "pisos": 26,
+    "amenidades": [
+     "Gimnasio",
+     "Seguridad 24 h"
+    ],
+    "libres": 0,
+    "desde": null,
+    "esperan": 0
+   }
+  },
+  {
+   "type": "Feature",
+   "id": 9,
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -79.50672235510466,
+     8.993168316068525
+    ]
+   },
+   "properties": {
+    "ph": "porras-view",
+    "nombre": "PH Porras View",
+    "barrio": "San Francisco",
+    "calle": "Vía Porras",
+    "pisos": 20,
+    "amenidades": [
+     "Piscina",
+     "Área social",
+     "Seguridad 24 h"
+    ],
+    "libres": 2,
+    "desde": 420,
+    "esperan": 2
+   }
+  },
+  {
+   "type": "Feature",
+   "id": 10,
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -79.51065642175006,
+     8.986796023277908
+    ]
+   },
+   "properties": {
+    "ph": "sf-gardens",
+    "nombre": "PH San Francisco Gardens",
+    "barrio": "San Francisco",
+    "calle": "Calle 72",
+    "pisos": 16,
+    "amenidades": [
+     "Jardín",
+     "Seguridad 24 h"
+    ],
+    "libres": 1,
+    "desde": 380,
+    "esperan": 1
+   }
+  },
+  {
+   "type": "Feature",
+   "id": 11,
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -79.50234638679257,
+     8.996480843922766
+    ]
+   },
+   "properties": {
+    "ph": "parque-omar",
+    "nombre": "PH Parque Omar Residences",
+    "barrio": "San Francisco",
+    "calle": "Vía Porras",
+    "pisos": 25,
+    "amenidades": [
+     "Piscina",
+     "Gimnasio",
+     "Seguridad 24 h"
+    ],
+    "libres": 1,
+    "desde": 610,
+    "esperan": 3
+   }
+  },
+  {
+   "type": "Feature",
+   "id": 12,
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -79.50753460810442,
+     8.986627218789799
+    ]
+   },
+   "properties": {
+    "ph": "calle-74",
+    "nombre": "PH Calle 74",
+    "barrio": "San Francisco",
+    "calle": "Calle 74",
+    "pisos": 14,
+    "amenidades": [
+     "Seguridad 24 h"
+    ],
+    "libres": 0,
+    "desde": null,
+    "esperan": 0
+   }
+  },
+  {
+   "type": "Feature",
+   "id": 13,
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -79.50329880318804,
+     8.990588484603304
+    ]
+   },
+   "properties": {
+    "ph": "yacht-club",
+    "nombre": "PH Yacht Club",
+    "barrio": "San Francisco",
+    "calle": "Calle 76 Este",
+    "pisos": 45,
+    "amenidades": [
+     "Piscina",
+     "Gimnasio",
+     "Vista al mar",
+     "Coworking",
+     "Área social",
+     "Planta eléctrica",
+     "Seguridad 24 h"
+    ],
+    "libres": 2,
+    "desde": 580,
+    "esperan": 7
+   }
+  }
+ ]
+}
